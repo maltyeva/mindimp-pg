@@ -1,29 +1,30 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @user.first_name + " " + @user.last_name %></h1>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
 
-<p>
-  <strong>First Name</strong>
-  <%= @user.first_name %>
-</p>
 
-<p>
-  <strong>Nick Name:</strong>
-  <%= @user.nick_name %>
-</p>
 
-<p>
-  <strong>Last Name:</strong>
-  <%= @user.last_name %>
-</p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Age:</strong>
-  <%= @user.age %>
-</p>
+  <dl id="user_info" class="dl-horizontal span2">
+    <div class="well">
+    
+    <dt>First Name</dt>
+    <dd><%= @user.first_name %></dd>
+    
+    <dt>Last Name</dt>
+    <dd><%= @user.last_name %></dd>
+    
+    <dt>Nickname</dt>
+    <dd><%= !@user.nick_name.blank? ? @user.nick_name : "(none)" %></dd>
+    
+    <dt>Email</dt>
+    <dd><%= @user.email %></dd>
+    
+    <dt>Age</dt>
+    <dd><%= @user.age %></dd>
+    </div>
+  </dl>
+
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

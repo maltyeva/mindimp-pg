@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get '/contact'  => 'high_voltage/pages#show', id: 'contact'
   get '/privacy'  => 'high_voltage/pages#show', id: 'privacy'
   get '/terms'    => 'high_voltage/pages#show', id: 'terms'
+  get '/team'    => 'high_voltage/pages#show', id: 'team'
+
 
   get '/home', to: redirect('/')
 
