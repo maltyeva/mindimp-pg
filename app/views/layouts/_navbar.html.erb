@@ -16,6 +16,10 @@
           <li class="<%= 'active' if current_page?(contact_path) %>"><%= link_to "Contact", contact_path %></li>
           <li class="<%= 'active' if current_page?(team_path) %>"><%= link_to "Our Team", contact_path %></li>
           <li class="<%= 'active' if current_page?(users_path) %>"><%= link_to "Student List", users_path %></li>
+          <li> <% if current_user %>
+          <%= link_to "My Profile", user_path(current_user.id)%>
+          <% end %> </li>
+
 
 
 

@@ -1,42 +1,103 @@
 <% provide(:title, '') %>
 
-<% provide(:jumbotron, '
-      <h1>Hello, world!</h1>
-      <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-      <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
-  '.html_safe)%>
-
   <div >
     <p id="notice"><%= flash[:notice] %></p>
     <p id="alert"><%= flash[:alert] %></p>
   </div>
+
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="http://placehold.it/1200x315" alt="...">
+      <div class="carousel-caption">
+        <h3>Caption Text</h3>
+      </div>
+    </div>
+    <div class="item">
+      <img src="http://placehold.it/1200x315" alt="...">
+      <div class="carousel-caption">
+        <h3>Caption Text</h3>
+      </div>
+    </div>
+    <div class="item">
+      <img src="http://placehold.it/1200x315" alt="...">
+      <div class="carousel-caption">
+        <h3>Caption Text</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div> <!-- Carousel -->
+
+<br>
+  
+
     <div id="nav" style="text-align: center">
     <% if current_user %>
       <%= button_to "My Profile", user_path(current_user.id), method: :get, class: "btn btn-info" %>
-      <%= button_to "Logout", :logout, method: :post , class: "btn btn-info", class: "text-center"%>
+      <%= button_to "Logout", :logout, method: :post , class: "btn btn-info"%>
     <% else %>
       <%= button_to "Register", new_user_path, method: :get, class: "btn btn-info"%> 
       <%= button_to "Login", :login, method: :get, class: "btn btn-info" %>
     <% end %>
   </div>
 
+</br>
 
-  <div class="container">
-    <!-- Example row of columns -->
-    <div class="row">
-      <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-      </div>
-      <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-        <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-     </div>
-      <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-      </div>
-    </div>
+
+   <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing" style="text-align: center">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+          <h2>交流 | 进步</h2>
+          <p>在这里，与最优秀的同龄人接触，在小班讨论课程中表达和支持自己的观点、挑战别人的见地，在互相交流和你来我往中迸发思维的火花，在沟通和合作中一起进步！</p>
+          <p><%=button_to "View Details", about_path, :method => :get, class: "btn" %></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+          <h2>知识｜思考</h2>
+          <p>以历史、文学、政治等知识体系
+             为载体，通过量身订制的英语阅读计划，收获知识储备上的增长，并学习成为一个独立、深度、理性的思者和具有国际视野的全球领袖！</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+          <h2>创新 | 合作</h2>
+          <p>跳出传统思维的桎梏，探索知识获取和个人发展道路上的新兴可能。不做死读书的应试机器，不遵循传统的职业选择，让我们做大脑里孵化奇思妙想的创业家！</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/docs.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
