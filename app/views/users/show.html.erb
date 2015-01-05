@@ -5,15 +5,26 @@
   <%= @user.email %>
 </p>
 
-<!-- <p>
-  <strong>Crypted password:</strong>
-  <%= @user.crypted_password %>
+<p>
+  <strong>First Name</strong>
+  <%= @user.first_name %>
 </p>
 
 <p>
-  <strong>Salt:</strong>
-  <%= @user.salt %>
-</p> -->
+  <strong>Nick Name:</strong>
+  <%= @user.nick_name %>
+</p>
+
+<p>
+  <strong>Last Name:</strong>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @user.age %>
+</p>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
