@@ -40,6 +40,8 @@ gem 'simple_form'
 #user permissions 
 gem 'royce'
 
+#duh, this handles mail
+gem 'actionmailer'
 
 
 

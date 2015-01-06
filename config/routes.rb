@@ -8,11 +8,14 @@ Rails.application.routes.draw do
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
 
+
   get '/about'    => 'high_voltage/pages#show', id: 'about'
   get '/contact'  => 'high_voltage/pages#show', id: 'contact'
   get '/privacy'  => 'high_voltage/pages#show', id: 'privacy'
   get '/terms'    => 'high_voltage/pages#show', id: 'terms'
   get '/team'    => 'high_voltage/pages#show', id: 'team'
+  get '/student_portal'    => 'high_voltage/pages#show', id: 'student_portal'
+  get '/admin_portal'    => 'high_voltage/pages#show', id: 'admin_portal'
 
 
   get '/home', to: redirect('/')

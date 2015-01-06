@@ -49,9 +49,12 @@
   
 
     <div id="nav" style="text-align: center">
-    <% if current_user %>
+    <% if current_user && current_user.is_admin %>
+      <%= button_to "Administrator Portal", admin_portal_path, method: :get, class: "btn btn-info" %>
+      <%= button_to "Student Portal", student_portal_path, method: :get, class: "btn btn-info" %>
+    <% elsif current_user && current_user.is_student %>
+      <%= button_to "Student Portal", student_portal_path, method: :get, class: "btn btn-info" %>
       <%= button_to "My Profile", user_path(current_user.id), method: :get, class: "btn btn-info" %>
-      <%= button_to "Logout", :logout, method: :post , class: "btn btn-info"%>
     <% else %>
       <%= button_to "Register", new_user_path, method: :get, class: "btn btn-info"%> 
       <%= button_to "Login", :login, method: :get, class: "btn btn-info" %>
