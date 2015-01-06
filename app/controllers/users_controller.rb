@@ -29,11 +29,14 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    @user.is_admin = true if User.count == 0
+
 
     respond_to do |format|
       if @user.save
         format.html { redirect_to edit_user_path(@user), notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
+       # UserMailer.welcome_email(@user).deliver!
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
