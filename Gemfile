@@ -37,6 +37,10 @@ gem 'sorcery'
 
 gem 'simple_form'
 
+#user permissions 
+gem 'royce'
+
+
 
 
 

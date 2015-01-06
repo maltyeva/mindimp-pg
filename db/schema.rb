@@ -11,21 +11,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105103324) do
+ActiveRecord::Schema.define(version: 20150106023843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "royce_connector", force: true do |t|
+    t.integer  "roleable_id",   null: false
+    t.string   "roleable_type", null: false
+    t.integer  "role_id",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "royce_connector", ["role_id"], name: "index_royce_connector_on_role_id", using: :btree
+  add_index "royce_connector", ["roleable_id", "roleable_type"], name: "index_royce_connector_on_roleable_id_and_roleable_type", using: :btree
+
+  create_table "royce_role", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "royce_role", ["name"], name: "index_royce_role_on_name", using: :btree
+
   create_table "users", force: true do |t|
-    t.string   "email",            null: false
-    t.string   "crypted_password", null: false
-    t.string   "salt",             null: false
+    t.string   "email",                            null: false
+    t.string   "crypted_password",                 null: false
+    t.string   "salt",                             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "nick_name"
     t.integer  "age"
+    t.boolean  "is_admin",         default: false
+    t.string   "is_student",       default: "t"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

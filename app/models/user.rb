@@ -8,5 +8,9 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
 
 
+  royce_roles %w[ user admin superadmin ] 
+
+
+
   
 end
