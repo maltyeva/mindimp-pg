@@ -6,6 +6,7 @@
     <th>First Name</th>
     <th>Nickname</th>
     <th>Last Name</th>
+    <th>Email</th>
 
   </tr>
   </thead>
@@ -13,8 +14,11 @@
   <% for user in @users %>
     <td><%= link_to user.first_name, user %></td>
     <td><%= link_to user.nick_name, user %></td>
-    <td><%= link_to user.last_name, user %></td>
+    <td><%= link_to user.last_name, user %></td>    
+    <td><%= link_to user.email, user %></td>
     <td><%= link_to "Edit", edit_user_path(user), :class => "btn" %></td>
+    <td><%#= link_to "Destroy", @user, :confirm => 'This will permanently delete the User. Are you sure?', :method => :destroy %></td>
+
     </tr>
   <% end %>
   </tbody>
