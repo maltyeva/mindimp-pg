@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_filter :require_login, only: [:index, :new, :create]
 
+  before_filter :require_admin, :only => :index
+
+
   # GET /users
   # GET /users.json
   def index

@@ -18,4 +18,14 @@ class ApplicationController < ActionController::Base
   end
 
 
+  def restricted_redirect_to(new_path=root_path)
+    flash[:error] = "Sorry, that action or page is restricted."
+    redirect_to new_path
+  end
+
+  def require_admin(new_path=root_path)
+    restricted_redirect_to(new_path) unless current_user.is_admin?
+  end
+
+
 end

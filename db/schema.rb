@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20150106023843) do
     t.string   "nick_name"
     t.integer  "age"
     t.boolean  "is_admin",         default: false
-    t.string   "is_student",       default: "t"
+    t.boolean  "is_student",       default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

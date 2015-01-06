@@ -23,9 +23,13 @@
     <dt>Age</dt>
     <dd><%= @user.age %></dd>
 
+    <% if @user.is_admin? %>
     <dt>Administrator</dt>
     <dd><%= @user.is_admin %></dd>
 
+    <dt>Student</dt>
+    <dd><%= @user.is_student %></dd>
+    <% end %>
     </div>
   </dl>
 
