@@ -20,7 +20,7 @@
   <%= f.input :password%>
   <%= f.input :password_confirmation %>
 
-  <%if @user.is_admin? %>
+  <%if current_user.is_admin? %>
   <%= f.input :is_admin %>
   <%= f.input :is_student %>
   <% end %>
