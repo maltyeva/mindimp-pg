@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index, :new, :create]
 
   before_filter :require_admin, :only => :index
+  before_filter :skip_password_attribute, only: :update
+
 
 
   # GET /users
@@ -76,5 +78,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :nick_name, :age, :is_admin, :is_student)
+  end
+
+
+  def skip_password_attribute
+    if params[:password].blank? && params[:password_confirmation].blank?
+      params.except!(:password, :password_confirmation)
+    end
   end
 end

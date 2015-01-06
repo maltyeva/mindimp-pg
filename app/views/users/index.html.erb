@@ -1,4 +1,4 @@
-<h1>Users</h1>
+<h1>Users | My Profile </h1>
 
 <table id="table_users" class="datatable-wide table table-striped table-bordered">
   <thead>
@@ -17,7 +17,7 @@
     <td><%= link_to user.last_name, user %></td>    
     <td><%= link_to user.email, user %></td>
     <td><%= link_to "Edit", edit_user_path(user), :class => "btn" %></td>
-    <td><%#= link_to "Destroy", @user, :confirm => 'This will permanently delete the User. Are you sure?', :method => :destroy %></td>
+    <td><%= link_to "Destroy", user, :confirm => 'This will permanently delete the User. Are you sure?', :method => :delete %></td>
 
     </tr>
   <% end %>

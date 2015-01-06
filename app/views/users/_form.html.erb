@@ -17,10 +17,11 @@
   <%= f.input :last_name %>
   <%= f.input :age %>
   <%= f.input :email %>
+  <% if current_user == @user %>
   <%= f.input :password%>
   <%= f.input :password_confirmation %>
-
-  <%if current_user.is_admin? %>
+  <% end %>
+  <% if current_user.is_admin? %>
   <%= f.input :is_admin %>
   <%= f.input :is_student %>
   <% end %>

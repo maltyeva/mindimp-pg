@@ -19,15 +19,13 @@
           <li class="<%= 'active' if current_page?(users_path) %>"><%= link_to "Student List", users_path %></li>
           <% end %>
           <li> <% if current_user %>
-          <%= link_to "My Profile", user_path(current_user.id)%>
-          <% end %> </li>
-          <li> <% if current_user %> <%= link_to "Log Out", :logout, method: :post %>
-             <% else %> <%= link_to "Log In", :login, method: :get %>
-             <% end %> </li>
-
-
-
-
+                  <%= link_to "My Profile", user_path(current_user.id)%>
+               <% end %> </li>
+          <li> <% if current_user %> 
+                  <%= link_to "Log Out", :logout, method: :post %>
+               <% else %> 
+                  <%= link_to "Log In", :login, method: :get %>
+               <% end %> </li>
 
 
         </ul>
