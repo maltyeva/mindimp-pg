@@ -13,12 +13,9 @@ class User < ActiveRecord::Base
   has_attached_file :profile_photo, 
                     :styles => { :medium => "300x300>", :thumb => "50x50>" }, 
                     :default_url => "/images/:style/missing.png",
-                    :storage => :s3,
-                    :path => ":attachment/:id/:style.:extension",
-                    :s3_credentials => {
-                        :access_key_id => "AKIAIVE5XD2EUTMKO7GA",
-                        :secret_access_key => "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"},
-                    :bucket => 'mindimp'
+                    :storage => :s3, 
+                    :s3_credentials => "#{Rails.root}/config/s3.yml",
+                    :path => "appname/:attachment/:style/:id.:extension"
 
 
   validates_attachment_content_type :profile_photo, :content_type => /\Aimage\/.*\Z/
