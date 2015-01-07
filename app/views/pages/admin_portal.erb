@@ -1,3 +1,8 @@
+<% unless current_user.is_admin? %> 
+
+<h1><%= "Sorry, you are not authorized to access this page!" %> </h1>
+
+<% else %> 
 <h1>Administrator Portal </h1>
 
 
@@ -6,3 +11,5 @@
 <%= button_to "My Profile", user_path(current_user.id), method: :get, class: "btn btn-info"%>
 </div>
 
+
+<% end %> 
