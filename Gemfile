@@ -43,6 +43,10 @@ gem 'royce'
 #duh, this handles mail
 gem 'actionmailer'
 
+#this is how we'll handle photos and uploads. 
+gem "paperclip", "~> 4.2"
+
+
 
 
 

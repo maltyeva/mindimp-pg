@@ -9,6 +9,12 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+#creates profile pic. 
+  has_attached_file :profile_photo, :styles => { :medium => "300x300>", :thumb => "50x50>" }, :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :profile_photo, :content_type => /\Aimage\/.*\Z/
+  validates_with AttachmentSizeValidator, :attributes => :profile_photo, :less_than => 10.megabytes
+
+
 
 
   royce_roles %w[ user admin superadmin ] 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150106023843) do
+ActiveRecord::Schema.define(version: 20150107061941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,17 +36,21 @@ ActiveRecord::Schema.define(version: 20150106023843) do
   add_index "royce_role", ["name"], name: "index_royce_role_on_name", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                            null: false
-    t.string   "crypted_password",                 null: false
-    t.string   "salt",                             null: false
+    t.string   "email",                                      null: false
+    t.string   "crypted_password",                           null: false
+    t.string   "salt",                                       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "nick_name"
     t.integer  "age"
-    t.boolean  "is_admin",         default: false
-    t.boolean  "is_student",       default: true
+    t.boolean  "is_admin",                   default: false
+    t.boolean  "is_student",                 default: true
+    t.string   "profile_photo_file_name"
+    t.string   "profile_photo_content_type"
+    t.integer  "profile_photo_file_size"
+    t.datetime "profile_photo_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

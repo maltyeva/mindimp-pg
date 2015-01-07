@@ -3,36 +3,44 @@
 
 
 
-  <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
-  <dl id="user_info" class="dl-horizontal span2">
-    <div class="well">
+<div class="row">
+    <div class="col-md-8">
+        <div class="well">
     
-    <dt>First Name</dt>
-    <dd><%= @user.first_name %></dd>
-    
-    <dt>Last Name</dt>
-    <dd><%= @user.last_name %></dd>
-    
-    <dt>Nickname</dt>
-    <dd><%= !@user.nick_name.blank? ? @user.nick_name : "(none)" %></dd>
-    
-    <dt>Email</dt>
-    <dd><%= @user.email %></dd>
-    
-    <dt>Age</dt>
-    <dd><%= @user.age %></dd>
+        <dt>First Name</dt>
+        <dd><%= @user.first_name %></dd>
+        
+        <dt>Last Name</dt>
+        <dd><%= @user.last_name %></dd>
+        
+        <dt>Nickname</dt>
+        <dd><%= !@user.nick_name.blank? ? @user.nick_name : "(none)" %></dd>
+        
+        <dt>Email</dt>
+        <dd><%= @user.email %></dd>
+        
+        <dt>Age</dt>
+        <dd><%= @user.age %></dd>
 
-    <% if @user.is_admin? %>
-    <dt>Administrator</dt>
-    <dd><%= @user.is_admin %></dd>
+        <% if @user.is_admin? %>
+        <dt>Administrator</dt>
+        <dd><%= @user.is_admin %></dd>
 
-    <dt>Student</dt>
-    <dd><%= @user.is_student %></dd>
-    <% end %>
+        <dt>Student</dt>
+        <dd><%= @user.is_student %></dd>
+        <% end %>
+        </div>
     </div>
-  </dl>
 
+    <div class="col-md-4">
+        <div class="thumbnail">
+        <%= image_tag @user.profile_photo.url(:medium) %>
+        </div>
+    </div>
+    
+</div>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
