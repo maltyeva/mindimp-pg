@@ -5,7 +5,10 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true, :on => :create
   validates :password_confirmation, presence: true, :on => :create
 
-  validates :email, uniqueness: true
+  validates :email, uniqueness: true, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
 
 
   royce_roles %w[ user admin superadmin ] 
