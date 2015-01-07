@@ -40,4 +40,14 @@ Rails.application.configure do
   #setting up Paperclip with Imagemagick
   Paperclip.options[:command_path] = "/usr/local/bin/"
 
+  #Paperclip Image handling
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => ENV['mindimp'],
+    :access_key_id => ENV['AKIAIVE5XD2EUTMKO7GA'],
+    :secret_access_key => ENV['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']
+    }
+   }
+
 end

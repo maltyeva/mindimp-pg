@@ -13,6 +13,11 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def student_list
+    @users = User.all
+  end
+
+
   # GET /users/1
   # GET /users/1.json
   def show

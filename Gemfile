@@ -46,6 +46,10 @@ gem 'actionmailer'
 #this is how we'll handle photos and uploads. 
 gem "paperclip", "~> 4.2"
 
+#storing the files on production 
+gem 'aws-sdk'
+
+
 
 
 

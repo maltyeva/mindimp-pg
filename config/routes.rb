@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   resources :users
   resources :user_sessions
+  
+
+  get 'student_list' => 'users#student_list', :as => :student_list
+
 
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
