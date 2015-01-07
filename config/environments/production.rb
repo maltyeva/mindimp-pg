@@ -79,12 +79,13 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   #Paperclip Image handling
-  config.paperclip_defaults = {
-  :storage => :s3,
-  :s3_credentials => {
-    :bucket => ENV['mindimp'],
-    :access_key_id => ENV['AKIAIVE5XD2EUTMKO7GA'],
-    :secret_access_key => ENV['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']
+ config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_protocol => 'http',
+    :s3_credentials => {
+      :bucket => ENV['AWS_BUCKET'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
-   }
+  }
 end
