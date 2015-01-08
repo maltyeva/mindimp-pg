@@ -18,8 +18,9 @@ class User < ActiveRecord::Base
                     :path => "appname/:attachment/:style/:id.:extension"
 
 
+
   validates_attachment_content_type :profile_photo, :content_type => /\Aimage\/.*\Z/
-  validates_with AttachmentSizeValidator, :attributes => :profile_photo, :less_than => 10.megabytes
+  validates_with AttachmentSizeValidator, :attributes => :profile_photo, :less_than => 1.megabytes
 
 
 
