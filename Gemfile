@@ -37,7 +37,7 @@ gem 'sorcery'
 
 gem 'simple_form'
 
-#user permissions 
+#user permissions -- are we using this?
 gem 'royce'
 
 #duh, this handles mail
@@ -47,7 +47,12 @@ gem 'actionmailer'
 gem "paperclip", "~> 4.2"
 
 #storing the files on production 
-gem 'aws-sdk'
+gem "paperclip-dropbox", ">= 1.1.7"
+
+
+#user authentication
+gem 'devise'
+ 
 
 
 

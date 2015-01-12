@@ -12,16 +12,14 @@ class User < ActiveRecord::Base
 #creates profile pic. 
   has_attached_file :profile_photo, 
                     :styles => { :medium => "300x300>", :thumb => "50x50>" }, 
-                    :default_url => "/images/:style/missing.png",
-                    :storage => :s3, 
-                    :s3_credentials => "#{Rails.root}/config/s3.yml",
-                    :path => "appname/:attachment/:style/:id.:extension"
-
+                    :default_url => "/images/:style/missing.png"
+                    # :storage => :dropbox,
+                    # :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
+                    # :dropbox_options => {...}
 
 
   validates_attachment_content_type :profile_photo, :content_type => /\Aimage\/.*\Z/
   validates_with AttachmentSizeValidator, :attributes => :profile_photo, :less_than => 1.megabytes
-
 
 
 

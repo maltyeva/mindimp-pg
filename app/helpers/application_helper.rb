@@ -2,7 +2,7 @@ module ApplicationHelper
 
 	def site_name
     	# Change the value below between the quotes.
-    	"Mind Impact"
+    	"MindImp"
   	end
 
   	def site_url

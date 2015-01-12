@@ -1,4 +1,4 @@
-<h1>New user</h1>
+<h1>Register for MindImp!</h1>
 
 <%= simple_form_for(@user) do |f| %>
   <% if @user.errors.any? %>
@@ -21,5 +21,5 @@
 
 
 <% end %>
-
-<%= link_to 'Back', users_path %>
+ </br>
+<%= link_to 'Back', root_path, class: "btn btn-info"%>

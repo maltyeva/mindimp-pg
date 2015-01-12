@@ -48,50 +48,20 @@
 <br>
   
 
-    <div id="nav" style="text-align: center">
+    <div id="nav" style="text-align: center" class="center jumbotron  ">
     <% if current_user && current_user.is_admin %>
-      <%= button_to "Administrator Portal", admin_portal_path, method: :get, class: "btn btn-info" %>
-      <%= button_to "Student Portal", student_portal_path, method: :get, class: "btn btn-info" %>
+      <%= link_to "Administrator Portal", admin_portal_path, class: "btn btn-lg btn-info" %>
+      <%= link_to "Student Portal", student_portal_path, class: "btn btn-lg btn-info" %>
     <% elsif current_user && current_user.is_student %>
       <%= button_to "Student Portal", student_portal_path, method: :get, class: "btn btn-info" %>
       <%= button_to "My Profile", user_path(current_user.id), method: :get, class: "btn btn-info" %>
     <% else %>
-      <%= button_to "Register", new_user_path, method: :get, class: "btn btn-info"%> 
-      <%= button_to "Login", :login, method: :get, class: "btn btn-info" %>
+      <%= link_to "Register", register_path, class: "btn btn-lg btn-info"%> 
+      <%= link_to "Login", :login, class: "btn btn-lg btn-info" %>
     <% end %>
   </div>
 
 </br>
-
-
-   <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
-    <div class="container marketing" style="text-align: center">
-
-      <!-- Three columns of text below the carousel -->
-      <div class="row">
-        <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-          <h2>交流 | 进步</h2>
-          <p>在这里，与最优秀的同龄人接触，在小班讨论课程中表达和支持自己的观点、挑战别人的见地，在互相交流和你来我往中迸发思维的火花，在沟通和合作中一起进步！</p>
-          <p><%=button_to "View Details", about_path, :method => :get, class: "btn" %></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-          <h2>知识｜思考</h2>
-          <p>以历史、文学、政治等知识体系
-             为载体，通过量身订制的英语阅读计划，收获知识储备上的增长，并学习成为一个独立、深度、理性的思者和具有国际视野的全球领袖！</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-          <h2>创新 | 合作</h2>
-          <p>跳出传统思维的桎梏，探索知识获取和个人发展道路上的新兴可能。不做死读书的应试机器，不遵循传统的职业选择，让我们做大脑里孵化奇思妙想的创业家！</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->
 
 
     <!-- Bootstrap core JavaScript
