@@ -33,12 +33,18 @@
     <% if content_for?(:jumbotron) %>
       <div class="jumbotron">
         <div class="container">
+            <% flash.each do |message_type, message| %>
+           <div class="alert alert-<%= message_type %>"><%= message %></div>
+          <% end %>
           <%= yield :jumbotron %>
         </div>
       </div>
     <% end %>
   <% else %>
     <div class="container">
+        <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
   <% end %>
   <%= yield %>
 

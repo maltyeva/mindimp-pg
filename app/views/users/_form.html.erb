@@ -18,10 +18,8 @@
   <%= f.input :age %>
   <%= f.input :email %>
   <%= f.input :profile_photo %>
-  <% if current_user == @user %>
-  <%= f.input :password%>
+  <%= f.input  :password %>
   <%= f.input :password_confirmation %>
-  <% end %>
   <% if current_user && current_user.is_admin? %>
   <%= f.input :is_admin %>
   <%= f.input :is_student %>
