@@ -12,6 +12,11 @@ class BookCategoriesController < ApplicationController
     respond_with(@book_categories)
   end
 
+  def table_index
+    @book_categories = BookCategory.all
+    respond_with(@book_categories)
+  end
+
   def show
     respond_with(@book_category)
   end

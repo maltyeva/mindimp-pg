@@ -1,29 +1,22 @@
 <h1>Book Categories</h1>
 
-<table id="table_users" class="datatable-wide table table-striped table-bordered">
-  <thead>
-  <tr>
-    <th>Title </th>
-    <th>Description </th>
+<% if !@book_categories.nil? %>
 
-  </tr>
-  </thead>
-  <tbody>
-  <% for book_category in @book_categories %>
-    <td><%= link_to book_category.title, book_category %></td>
-    <td><%= link_to book_category.description, book_category %></td>
-    <% if current_user.is_admin? %>
-    <td><%= link_to 'Edit', edit_book_category_path(book_category) %></td>
-  <td><%= link_to 'Destroy', book_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <% end %> 
-
-
-    </tr>
+<%  @book_categories.each do |c|  %>
+  <%= link_to c.title, c, class: "btn btn-lg btn-info"%>
   <% end %>
-  </tbody>
-</table>
+
+<% else %>
+There don't seem to be any categories, why don't you create one?
+<%= link_to 'Add a Book Category', new_book_category_path, :class => "btn"  %>
+<% end %>
 
 
-<br>
 
+
+
+
+
+</br>
+<%= link_to "View as a Table", categories_table_path, :class => "btn" %>
 <%= link_to 'Add a Book Category', new_book_category_path, :class => "btn"  %>

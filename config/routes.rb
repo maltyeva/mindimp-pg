@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 
   resources :book_categories
+  get 'categories_table' => 'book_categories#table_index', :as => :categories_table
+
 
   resources :books
 
