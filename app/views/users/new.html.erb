@@ -1,3 +1,6 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
 <h1>Register for MindImp!</h1>
 
 <%= simple_form_for(@user) do |f| %>
@@ -12,14 +15,18 @@
       </ul>
     </div>
   <% end %>
+
+
   <%= f.input :first_name %>
   <%= f.input :last_name %>
   <%= f.input :email, label: 'Your email' %>
   <%= f.input :password, hint: 'No special characters.' %>
   <%= f.input :password_confirmation %>
-  <%= f.button :submit %>
-
+  <%= f.submit 'Register!', class: "btn btn-info" %>
 
 <% end %>
  </br>
 <%= link_to 'Back', root_path, class: "btn btn-info"%>
+
+</div>
+</div>
