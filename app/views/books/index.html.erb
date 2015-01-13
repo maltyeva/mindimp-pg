@@ -1,0 +1,35 @@
+<h1>Book Directory</h1>
+
+<table id="table_users" class="datatable-wide table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th> </th>
+    <th>Title </th>
+    <th>Author</th>
+    <th>Description </th>
+    <th>Genre</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <% for book in @books %>
+    <td><%= image_tag book.cover(:thumb) %> </td>
+    <td><%= link_to book.title, book %></td>
+    <td><%= link_to book.author, book %></td>    
+    <td><%= link_to book.description, book %></td>
+    <td><%= link_to book.genre, book %></td>
+    <% if current_user.is_admin? %>
+    <td><%= link_to 'Edit', edit_book_path(book) %></td>
+  <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %> 
+
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+<br>
+
+  <%= link_to "Add a New Book", new_book_path, :class => "btn" %>

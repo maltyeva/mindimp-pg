@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :books
+
   resources :users
   get 'register'  => 'users#new'
 

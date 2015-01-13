@@ -1,0 +1,32 @@
+
+<h1><%= @book.title + ", " + @book.author %></h1>
+
+
+
+
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="well">
+    
+        <dd><%= @book.description %></dd>
+        </div>
+        <dt>Genre</dt>
+        <dd><%= @book.genre %></dd>
+
+    </div>
+
+    <div class="col-md-4">
+        <div class="thumbnail">
+        <%= image_tag @book.cover.url(:medium) %>
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>
