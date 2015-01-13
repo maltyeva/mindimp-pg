@@ -10,13 +10,18 @@
 <div class="row">
     <div class="col-md-8">
         <div class="well">
-    
         <dd><%= @book_category.description %></dd>
         </div>
-
-
     </div>
-
+    <div class="col-md-4">
+        <div class="well">
+        <% @book_category.books.each do |b| %>
+        	<%= link_to b.title, b%>
+        	<%= link_to b.author, b %> 
+        	<%= image_tag b.cover(:thumb) %> </br>
+        <% end %>
+    	</div>
+    </div>
     
 </div>
 

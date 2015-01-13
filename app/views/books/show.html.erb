@@ -15,8 +15,7 @@
         <dt>Genre</dt>
         <dd><%= @book.genre %></dd>
         <dt>Category</dt>
-        <dd><%= @book.book_category.title %></dd>
-
+        <dd><%= !@book.book_category.nil? ? @book.book_category.title : "(none)" %></dd>
     </div>
 
     <div class="col-md-4">
