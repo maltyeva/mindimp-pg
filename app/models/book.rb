@@ -1,5 +1,7 @@
 class Book < ActiveRecord::Base
 
+
+	belongs_to :book_category 
 	validates_presence_of :title, :author, :description 
 	validates_uniqueness_of :title, :description
 
@@ -7,7 +9,7 @@ class Book < ActiveRecord::Base
 #creates cover photo 
   has_attached_file :cover, 
                     :styles => { :medium => "300x300>", :thumb => "50x50>" }, 
-                    :default_url => "/images/:style/missing.png"
+                    :default_url => "/images/:style/book_missing.png"
                     # :storage => :dropbox,
                     # :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
                     # :dropbox_options => {...}

@@ -1,0 +1,28 @@
+
+
+<h1><%= @book_category.title %></h1>
+
+
+
+
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="well">
+    
+        <dd><%= @book_category.description %></dd>
+        </div>
+
+
+    </div>
+
+    
+</div>
+
+
+
+
+
+<%= link_to 'Edit', edit_book_category_path(@book_category) %> |
+<%= link_to 'Back', book_categories_path %>

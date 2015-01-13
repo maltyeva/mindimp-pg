@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :book_categories
+
   resources :books
 
   resources :users
