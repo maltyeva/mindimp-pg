@@ -1,5 +1,5 @@
 class AddBooksToCategories < ActiveRecord::Migration
   def change
-    add_column :book_categories, :book_id, :integer
+    add_column :books, :book_category_id, :integer
   end
 end

@@ -14,6 +14,7 @@ class BooksController < ApplicationController
 
   def show
     respond_with(@book)
+    #@category = Book.find
   end
 
   def new
@@ -47,6 +48,6 @@ class BooksController < ApplicationController
 
 
     def book_params
-      params.require(:book).permit(:title, :author, :cover, :description, :genre)
+      params.require(:book).permit(:title, :author, :cover, :description, :genre, :book_category_id)
     end
 end

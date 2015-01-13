@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20150113061835) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "book_id"
   end
 
   create_table "books", force: true do |t|
@@ -35,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150113061835) do
     t.string   "genre"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "book_category_id"
   end
 
   create_table "royce_connector", force: true do |t|
