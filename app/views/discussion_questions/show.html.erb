@@ -1,0 +1,25 @@
+
+
+
+<h1><%= @discussion_question.book.title %>, Question <%= @discussion_question.question_number %></h1>
+
+
+
+
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="well">
+    
+        <dd><%= @discussion_question.question %></dd>
+        </div>
+       
+    </div>
+    
+</div>
+
+
+
+<%= link_to 'Edit', edit_discussion_question_path(@discussion_question) %> |
+<%= link_to 'Back', discussion_questions_path %>

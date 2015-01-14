@@ -1,0 +1,23 @@
+<h1>Listing discussion_questions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @discussion_questions.each do |discussion_question| %>
+      <tr>
+        <td><%= link_to 'Show', discussion_question %></td>
+        <td><%= link_to 'Edit', edit_discussion_question_path(discussion_question) %></td>
+        <td><%= link_to 'Destroy', discussion_question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Discussion question', new_discussion_question_path %>

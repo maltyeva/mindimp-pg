@@ -1,0 +1,14 @@
+<%= simple_form_for(@discussion_question) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  	<%= f.input :question %>
+  	<%= f.input :question_number %>
+    <%= f.association :book %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

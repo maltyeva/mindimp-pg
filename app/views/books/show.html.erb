@@ -12,11 +12,30 @@
     
         <dd><%= @book.description %></dd>
         </div>
+
+        <h2>Discussion Questions: </h2>
+        <% if @book.discussion_questions.empty? && current_user.is_admin? %>
+         There don't seem to be any discussion questions, would you like to add some? </br>
+         <%= link_to "New Discussion Question", new_discussion_question_path %>
+        <% elsif @book.discussion_questions.empty? %>
+          There are no discussion questions for this book. 
+        <% else %>
+        <% @book.discussion_questions.each do |q|%>
+         <div class="well">
+         <%= q.question_number%>. <%= q.question %>
+         </div>
+         <% end %>
+        <% end %>
+
+
+
         <dt>Genre</dt>
         <dd><%= @book.genre %></dd>
         <dt>Category</dt>
         <dd><%= !@book.book_category.nil? ? @book.book_category.title : "(none)" %></dd>
     </div>
+
+
 
     <div class="col-md-4">
         <div class="thumbnail">
@@ -29,5 +48,6 @@
 
 
 
+<%= link_to 'New Discussion Question', new_discussion_question_path %> | 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
