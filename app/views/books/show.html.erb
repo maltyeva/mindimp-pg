@@ -16,7 +16,7 @@
         <h2>Discussion Questions: </h2>
         <% if @book.discussion_questions.empty? && current_user.is_admin? %>
          There don't seem to be any discussion questions, would you like to add some? </br>
-         <%= link_to "New Discussion Question", new_discussion_question_path %>
+         <%= link_to "New Discussion Question", new_discussion_question_path, class: "btn btn-info"%>
         <% elsif @book.discussion_questions.empty? %>
           There are no discussion questions for this book. 
         <% else %>
@@ -27,12 +27,15 @@
          <% end %>
         <% end %>
 
+    </br></br>
 
+        <div class="well">
 
         <dt>Genre</dt>
         <dd><%= @book.genre %></dd>
         <dt>Category</dt>
         <dd><%= !@book.book_category.nil? ? @book.book_category.title : "(none)" %></dd>
+        </div>
     </div>
 
 
