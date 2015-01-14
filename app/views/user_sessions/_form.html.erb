@@ -1,14 +1,8 @@
-<%= form_tag user_sessions_path, :method => :post do %>
-  <div class="field">
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email %>
-  </div>
-  <div class="field">
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions">
-    <%= submit_tag "Login" %>
-  </div>
-<% end %>
+<%= simple_form_for @user,  :html => {:class => 'form-signin'} , :url => {:controller =>   'user_sessions', :action => 'create'} do |f| %>
 
+  <%= f.input :email %>
+
+  <%= f.input :password %>  
+
+  <%= f.button :submit, 'Login' %>
+<% end %>

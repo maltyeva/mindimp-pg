@@ -1,22 +1,21 @@
 Rails.application.routes.draw do
 
 
-  resources :discussion_questions
 
+  #Things related to books
+  resources :discussion_questions
+  resources :books
   resources :book_categories
   get 'categories_table' => 'book_categories#table_index', :as => :categories_table
 
 
-  resources :books
-
   resources :users
   get 'register'  => 'users#new'
-
-  resources :user_sessions
-  
-
   get 'student_list' => 'users#student_list', :as => :student_list
 
+  
+  resources :user_sessions
+  
 
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
