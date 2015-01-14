@@ -1,14 +1,16 @@
 <h1>Book Categories</h1>
 
-<% if !@book_categories.nil? %>
+<% if !@book_categories.empty? %>
 
 <%  @book_categories.each do |c|  %>
   <%= link_to c.title, c, class: "btn btn-lg btn-info"%>
   <% end %>
 
 <% else %>
-There don't seem to be any categories, why don't you create one?
-<%= link_to 'Add a Book Category', new_book_category_path, :class => "btn"  %>
+<div class="well">
+There don't seem to be any book categories, why don't you add one? </br>
+<%= link_to 'Add a Book Category', new_book_category_path, :class => "btn btn-info"  %>
+</div>
 <% end %>
 
 
