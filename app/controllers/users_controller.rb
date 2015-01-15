@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+
   skip_before_filter :require_login, only: [:index, :new, :create]
 
+  before_filter :require_login
   before_filter :require_admin, :only => :index
+  before_filter :correct_user, only: [:edit, :update] 
+
  # before_filter :skip_password_attribute, only: :update
 
 
@@ -82,9 +86,9 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-  def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :nick_name, :age, :is_admin, :is_student, :profile_photo)
-  end
+   def user_params
+     params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :nick_name, :age, :is_admin, :is_student, :profile_photo)
+   end
 
 
   def skip_password_attribute

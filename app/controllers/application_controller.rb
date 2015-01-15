@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     !current_user.nil?
   end
 
-  
+
   # Logs in the given user.
   def log_in(user)
     session[:user_id] = user.id
@@ -43,11 +43,16 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    if current_user.nil?
-      flash[:error] = "Sorry, that action requires you to log in."
-      redirect_to root_path
-    end
+      unless logged_in?
+        flash[:danger] = "Please log in."
+        redirect_to login_path
+      end
   end
 
+    # Confirms the correct user.
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user == @user || current_user.is_admin?
+    end
 
 end
