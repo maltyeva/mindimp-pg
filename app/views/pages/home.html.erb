@@ -53,8 +53,8 @@
       <%= link_to "Administrator Portal", admin_portal_path, class: "btn btn-lg btn-info" %>
       <%= link_to "Student Portal", student_portal_path, class: "btn btn-lg btn-info" %>
     <% elsif current_user && current_user.is_student %>
-      <%= button_to "Student Portal", student_portal_path, method: :get, class: "btn btn-info" %>
-      <%= button_to "My Profile", user_path(current_user.id), method: :get, class: "btn btn-info" %>
+      <%= link_to "Student Portal", student_portal_path, class: "btn btn-lg btn-info" %>
+      <%= link_to "My Profile", user_path(current_user.id), class: "btn btn-lg btn-info" %>
     <% else %>
       <%= link_to "Register", register_path, class: "btn btn-lg btn-info"%> 
       <%= link_to "Login", :login, class: "btn btn-lg btn-info" %>

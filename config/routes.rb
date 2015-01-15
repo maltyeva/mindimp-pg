@@ -8,19 +8,18 @@ Rails.application.routes.draw do
   resources :book_categories
   get 'categories_table' => 'book_categories#table_index', :as => :categories_table
 
-
+  #Things related to users
   resources :users
   get 'register'  => 'users#new'
   get 'student_list' => 'users#student_list', :as => :student_list
 
-  
   resources :user_sessions
-  
-
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
 
+  resources :account_activations, only: [:edit]
 
+ 
 
   get '/about'    => 'high_voltage/pages#show', id: 'about'
   get '/contact'  => 'high_voltage/pages#show', id: 'contact'
@@ -32,7 +31,6 @@ Rails.application.routes.draw do
 
 
   get '/home', to: redirect('/')
-
   root :to => 'high_voltage/pages#show', id: 'home'
 
 

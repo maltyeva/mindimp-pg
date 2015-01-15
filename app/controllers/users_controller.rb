@@ -14,8 +14,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-    #@users = User.paginate(page: params[:page])
+    #@users = User.all
+    @users = User.paginate(page: params[:page])
   end
 
   def student_list
