@@ -12,13 +12,16 @@
   <% end %>
 
 
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
   <%= f.input :first_name %>
   <%= f.input :nick_name %>
   <%= f.input :last_name %>
   <%= f.input :age %>
   <%= f.input :email %>
   <%= f.input :profile_photo %>
-  <%= f.input  :password %>
+  <%= f.input :password %>
   <%= f.input :password_confirmation %>
   <% if current_user && current_user.is_admin? %>
   <%= f.input :is_admin %>
@@ -26,5 +29,8 @@
   <% end %>
   
   <%= f.button :submit %>
+
+ </div>
+</div>
 
 <% end %>

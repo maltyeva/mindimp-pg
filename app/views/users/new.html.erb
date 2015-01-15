@@ -4,18 +4,18 @@
 <h1>Register for MindImp!</h1>
 
 <%= simple_form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
+<!--   <%# if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%#= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+      <%# @user.errors.full_messages.each do |message| %>
+        <li><%#= message %></li>
+      <%# end %>
       </ul>
     </div>
-  <% end %>
-
+  <%# end %>
+ -->
 
   <%= f.input :first_name %>
   <%= f.input :last_name %>

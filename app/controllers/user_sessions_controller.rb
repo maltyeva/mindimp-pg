@@ -20,7 +20,7 @@ class UserSessionsController < ApplicationController
 
 
   def destroy
-    logout
+    logout if logged_in?
     redirect_to(:root, notice: 'Logged out!')
   end
 end
