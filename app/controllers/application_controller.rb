@@ -44,15 +44,24 @@ class ApplicationController < ActionController::Base
 
   def require_login
       unless logged_in?
+        store_location
         flash[:danger] = "Please log in."
         redirect_to login_path
       end
   end
 
+
+# Redirects to stored location (or to the default).
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_url] || default)
+    session.delete(:forwarding_url)
+  end
+
+
     # Confirms the correct user.
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user == @user || current_user.is_admin?
-    end
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user == @user || current_user.is_admin?
+  end
 
 end

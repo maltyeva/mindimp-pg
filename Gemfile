@@ -46,13 +46,19 @@ gem 'actionmailer'
 #this is how we'll handle photos and uploads. 
 gem "paperclip", "~> 4.2"
 
-#storing the files on production 
+#storing the files on production - should I use this?
 gem "paperclip-dropbox", ">= 1.1.7"
 
 
-#user authentication
+#user authentication - should I use this? 
 gem 'devise'
+
+#pagination - duh
+gem 'will_paginate',           '3.0.7'
+gem 'bootstrap-will_paginate', '0.0.10'
+
  
+
 
 
 

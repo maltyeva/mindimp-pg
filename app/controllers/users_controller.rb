@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    #@users = User.paginate(page: params[:page])
   end
 
   def student_list
@@ -46,7 +47,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         log_in @user
-        format.html { redirect_to :root, notice: 'Welcome to MindImp!' }
+        format.html { redirect_back_or :root, notice: 'Welcome to MindImp!' }
         format.json { render :show, status: :created, location: @user }
        # UserMailer.welcome_email(@user).deliver!
       else
@@ -89,6 +90,11 @@ class UsersController < ApplicationController
    def user_params
      params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :nick_name, :age, :is_admin, :is_student, :profile_photo)
    end
+
+  # Stores the URL trying to be accessed.
+  def store_location
+    session[:forwarding_url] = request.url if request.get?
+  end
 
 
   def skip_password_attribute

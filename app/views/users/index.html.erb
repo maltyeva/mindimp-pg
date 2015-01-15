@@ -1,33 +1,15 @@
 <h1>MindImp Users | <%= link_to "My Profile", user_path(current_user) %></h1>
 
-<table id="table_users" class="datatable-wide table table-striped table-bordered">
-  <thead>
-  <tr>
-    <th>First Name</th>
-    <th>Nickname</th>
-    <th>Last Name</th>
-    <th>Email</th>
 
-  </tr>
-  </thead>
-  <tbody>
-  <% for user in @users %>
-    <td><%= link_to user.first_name, user %></td>
-    <td><% unless user.nick_name.nil? %>
-         <%= link_to user.nick_name, user %></td>
-         <% else %>
-         <%= link_to "None", user %>
-         <% end %>
-    <td><%= link_to user.last_name, user %></td>    
-    <td><%= link_to user.email, user %></td>
-    <td><%= link_to "Edit", edit_user_path(user), :class => "btn" %></td>
-    <td><%= link_to "Destroy", user, :confirm => 'This will permanently delete the User. Are you sure?', :method => :delete %></td>
+<%#= will_paginate %>
 
-    </tr>
-  <% end %>
-  </tbody>
-</table>
 
+<ul class="users">
+     <%= render @users %>
+</ul>
+
+
+<%#= will_paginate %>
 
 <br>
 
