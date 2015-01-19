@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  skip_before_filter :require_login, only: [:index, :new, :create]
-
   before_filter :require_login
+  skip_before_filter :require_login, only: [:new, :create]
+
   before_filter :require_admin, :only => :index
   before_filter :correct_user, only: [:edit, :update] 
 
@@ -46,10 +46,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        #UserMailer.account_activation(@user).deliver!
+       # format.html { redirect_to :root, notice: 'Please check your email to activate your account.' }
         log_in @user
         format.html { redirect_back_or :root, notice: 'Welcome to MindImp!' }
         format.json { render :show, status: :created, location: @user }
-       # UserMailer.welcome_email(@user).deliver!
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }

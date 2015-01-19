@@ -5,8 +5,7 @@ require File.expand_path('../application', __FILE__)
 Rails.application.initialize!
 
 
-ActionMailer::Base.delivery_method = :smtp
-
+#ActionMailer::Base.delivery_method = :smtp
 # ActionMailer::Base.server_settings = {
 #    :address => "smtp.tutorialspoint.com",
 #    :port => 25,
