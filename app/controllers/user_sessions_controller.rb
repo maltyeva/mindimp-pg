@@ -10,6 +10,7 @@ class UserSessionsController < ApplicationController
 
   def create
     if @user = login(params[:user][:email],params[:user][:password],false)
+      @user.update_attribute(:last_login, Time.now)
       redirect_back_or_to(:root, :notice => 'Welome to MindImp!')
     else
       @user = User.new

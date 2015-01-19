@@ -8,15 +8,20 @@
 <div class="row">
     <div class="col-md-8">
         <div class="well">
+
+        <dt>Last Logged In: </dt>
+        <%# this takes care of displaying in China Standard Time %>
+        <dd><%= (@user.last_login + 28800).strftime('%B %e, %Y %l:%M %p')%></dd>
     
         <dt>First Name</dt>
         <dd><%= @user.first_name %></dd>
+
+        <dt>Nickname</dt>
+        <dd><%= !@user.nick_name.blank? ? @user.nick_name : "(none)" %></dd>
         
         <dt>Last Name</dt>
         <dd><%= @user.last_name %></dd>
         
-        <dt>Nickname</dt>
-        <dd><%= !@user.nick_name.blank? ? @user.nick_name : "(none)" %></dd>
         
         <dt>Email</dt>
         <dd><%= @user.email %></dd>
