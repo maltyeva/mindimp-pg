@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
 
 
   def name
-     [((nick_name.nil? || nick_name.length == 0) ? first_name : nickname), last_name].join(" ")
+     [((nick_name.nil? || nick_name.length == 0) ? first_name : nick_name), last_name].join(" ")
   end
 
 
