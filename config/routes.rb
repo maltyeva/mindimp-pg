@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :users
   get 'register'  => 'users#new'
   get 'student_list' => 'users#student_list', :as => :student_list
+  get 'my_courses' => 'users#course_list', :as => :my_courses
 
   resources :user_sessions
   get 'login' => 'user_sessions#new', :as => :login

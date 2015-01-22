@@ -1,0 +1,8 @@
+<h1> My Courses </h1>
+
+
+<ul class="users">
+<% @user.course_sessions.each do |c| %>
+	<%= link_to c.course.title, course_path(c.course) %> <%=c.title %> </br>
+<% end %>
+</ul>

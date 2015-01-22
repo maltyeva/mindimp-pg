@@ -23,6 +23,11 @@ class UsersController < ApplicationController
   end
 
 
+  def course_list
+    @user = current_user
+    @course_sessions = CourseSession.includes(:users).where(user: { id: current_user.id })
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show
@@ -42,7 +47,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.is_admin = true if User.count == 0
-
 
     respond_to do |format|
       if @user.save
