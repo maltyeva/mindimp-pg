@@ -14,6 +14,10 @@
         <div class="well">
         <dt> Instructor </dt>
         <dd><%= @course_session.instructor %></dd>
+        <dt> Students </dt>
+        <% @course_session.users.each do |u| %>
+            <%= link_to u.first_name + " " + u.last_name, u%> </br>
+        <% end %>
         </div>
     </div>
     <div class="col-md-4">

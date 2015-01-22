@@ -11,8 +11,11 @@
 
         <dt>Last Logged In: </dt>
         <%# this takes care of displaying in China Standard Time %>
+        <% if @user.last_login.nil? %>
+         <dd>(none)</dd>
+         <% else %> 
         <dd><%= (@user.last_login + 28800).strftime('%B %e, %Y %l:%M %p')%></dd>
-    
+         <% end %>
         <dt>First Name</dt>
         <dd><%= @user.first_name %></dd>
 

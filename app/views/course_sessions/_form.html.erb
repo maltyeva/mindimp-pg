@@ -10,6 +10,8 @@
     <%= f.input :duration %>
     <%= f.input :instructor %>
     <%= f.association :course %>
+    <%= f.association :users, :as => :select %>
+
     <%= f.button :submit %>
   </div>
 <% end %>

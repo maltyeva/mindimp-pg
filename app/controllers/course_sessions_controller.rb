@@ -22,11 +22,15 @@ class CourseSessionsController < ApplicationController
 
   def create
     @course_session = CourseSession.new(course_session_params)
+    @students_sessions = User.where(:id => params[:user_id])
+    @course_session.users << @students_sessions
     @course_session.save
     respond_with(@course_session)
   end
 
   def update
+    @students_sessions = User.where(:id => params[:user_id])
+    @course_session.users << @students_sessions
     @course_session.update(course_session_params)
     respond_with(@course_session)
   end
@@ -42,6 +46,6 @@ class CourseSessionsController < ApplicationController
     end
 
     def course_session_params
-      params.require(:course_session).permit(:title, :time, :duration, :instructor, :course_id)
+      params.require(:course_session).permit(:title, :time, :duration, :instructor, :course_id, :user_ids => [])
     end
 end

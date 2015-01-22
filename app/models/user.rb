@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
 
   authenticates_with_sorcery!
 
+  #associasions
+  has_and_belongs_to_many :course_sessions, join_table: :students_sessions
+
+
   #simple user validations
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: { maximum: 50 }
