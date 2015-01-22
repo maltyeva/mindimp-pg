@@ -1,6 +1,9 @@
 class CourseSessionsController < ApplicationController
   before_action :set_course_session, only: [:show, :edit, :update, :destroy]
 
+
+  before_filter :require_admin, :only => :edit
+
   respond_to :html
 
   def index
@@ -46,6 +49,6 @@ class CourseSessionsController < ApplicationController
     end
 
     def course_session_params
-      params.require(:course_session).permit(:title, :time, :duration, :instructor, :course_id, :user_ids => [])
+      params.require(:course_session).permit(:title, :time, :duration, :instructor, :course_id, :course_period_id, :user_ids => [])
     end
 end

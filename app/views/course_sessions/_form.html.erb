@@ -6,7 +6,7 @@
 
   <div class="form-actions">
   	<%= f.input :title %>
-    <%= f.input :time %>
+    <%= f.association :course_period, :label => "Semester" %>
     <%= f.input :duration %>
     <%= f.input :instructor %>
     <%= f.association :course %>

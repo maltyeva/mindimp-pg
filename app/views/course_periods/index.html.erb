@@ -1,0 +1,33 @@
+<h1>Semester</h1>
+
+
+
+<table id="table_course_periods" class="datatable-wide table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th>Title </th>
+    <th>Year </ht>
+
+  </tr>
+  </thead>
+  <tbody>
+  <% for course_period in @course_periods %>
+    <td><%= link_to course_period.title, course_period %></td>
+    <td><%= link_to course_period.year, course_period %></td>
+    <% if current_user.is_admin? %>
+    <td><%= link_to 'Edit', edit_course_period_path(course_period) %></td>
+  <td><%= link_to 'Destroy', course_period, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %> 
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<br>
+
+
+
+<br>
+
+
+<%= link_to 'New Semester', new_course_period_path %>

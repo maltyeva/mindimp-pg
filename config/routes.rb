@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 
 
+  resources :course_periods
+
   resources :course_sessions
 
   resources :course_categories

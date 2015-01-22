@@ -1,0 +1,13 @@
+<%= simple_form_for(@course_period) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  </div>
+
+  <div class="form-actions">
+  	<%= f.input :title %>
+    <%= f.input :year %>
+    <%= f.input :period_no %>
+    <%= f.button :submit %>
+  </div>
+<% end %>

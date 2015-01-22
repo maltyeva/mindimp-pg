@@ -2,7 +2,7 @@
 
 
 
-<h1><%= @course_session.course.title + ", " + @course_session.title + ", " + @course_session.time %></h1>
+<h1><%= @course_session.course.title + ", " + @course_session.title + ", " + @course_session.course_period.title %></h1>
 
 
 
@@ -16,7 +16,7 @@
         <dd><%= @course_session.instructor %></dd>
         <dt> Students </dt>
         <% @course_session.users.each do |u| %>
-            <%= link_to u.first_name + " " + u.last_name, u%> </br>
+            <%= link_to u.name, u%> </br>
         <% end %>
         </div>
     </div>

@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+
+<h1><%= @course_period.title %></h1>
+
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="well">
+        <dt> Year </dt>
+        <dd><%= @course_period.year %></dd>
+        </div>
+    </div>
+    <div class="col-md-4">
+    	<h4>Courses Offered</h4>
+        <div class="well">
+        <% unless @course_period.course_sessions.empty? %>
+            <% @course_period.course_sessions.each do |c| %>
+            <dd><%= link_to c.course.title + ", " + c.title, course_session_path(c)%> </dd>
+            <% end %>
+        <% else %> 
+            <dd>(none)</dd> 
+        <% end %>
+    	</div>
+    </div>
+    
+</div>
+
+
+
+<%= link_to 'Edit', edit_course_period_path(@course_period) %> |
+<%= link_to 'Back', course_periods_path %>
