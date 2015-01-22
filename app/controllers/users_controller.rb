@@ -49,7 +49,7 @@ class UsersController < ApplicationController
         #UserMailer.account_activation(@user).deliver!
        # format.html { redirect_to :root, notice: 'Please check your email to activate your account.' }
         log_in @user
-        format.html { redirect_back_or :root, notice: 'Welcome to MindImp!' }
+        format.html { redirect_to :root, notice: 'Welcome to MindImp!' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -89,7 +89,7 @@ class UsersController < ApplicationController
     end
 
    def user_params
-     params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :nick_name, :age, :is_admin, :is_student, :profile_photo)
+     params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :nick_name, :age, :is_admin, :is_student, :profile_photo, :last_login)
    end
 
   # Stores the URL trying to be accessed.

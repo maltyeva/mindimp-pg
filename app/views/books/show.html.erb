@@ -35,7 +35,13 @@
         <dt>Genre</dt>
         <dd><%= @book.genre %></dd>
         <dt>Category</dt>
-        <dd><%= !@book.book_category.nil? ? @book.book_category.title : "(none)" %></dd>
+        <% if @book.book_categories.nil? %>
+          <dd> (none) </dd> 
+        <% else %>
+          <% @book.book_categories.each do |c| %>
+           <dd>  <%= c.name %> </dd> 
+          <% end %>
+        <% end %>
         </div>
     </div>
 

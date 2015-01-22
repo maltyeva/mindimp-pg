@@ -27,11 +27,15 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    @books_categories = BookCategory.where(:id => params[:book_category_id])
+    @book.book_categories << @books_categories
     @book.save
     respond_with(@book)
   end
 
   def update
+    @books_categories = BookCategory.where(:id => params[:book_category_id])
+    @book.book_categories << @books_categories
     @book.update(book_params)
     respond_with(@book)
   end
@@ -48,6 +52,6 @@ class BooksController < ApplicationController
 
 
     def book_params
-      params.require(:book).permit(:title, :author, :cover, :description, :genre, :book_category_id, :lexile_measure)
+      params.require(:book).permit(:title, :author, :cover, :description, :genre, :book_category_id, :lexile_measure, :book_categories => [])
     end
 end
