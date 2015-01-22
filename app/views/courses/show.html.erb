@@ -7,8 +7,10 @@
         <div class="well">
         <dt> Abbreviation: </dt>
         <dd><%= @course.abbreviation %></dd>
-        <dt> Number of Sessions: </dt>
+        <dt> Number of Meetings: </dt>
         <dd><%= @course.session_no %></dd>
+        <dt> Subject Area: </dt>
+        <dd><%= link_to @course.course_category.title, course_category_path(@course.course_category) %></dd>
         </div>
     </div>
     <div class="col-md-4">

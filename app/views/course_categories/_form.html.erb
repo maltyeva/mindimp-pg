@@ -1,0 +1,12 @@
+<%= simple_form_for(@course_category) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  </div>
+
+  <div class="form-actions">
+  	<%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.button :submit %>
+  </div>
+<% end %>

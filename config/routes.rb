@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 
 
+  resources :course_categories
+
   resources :courses
 
   #Things related to books

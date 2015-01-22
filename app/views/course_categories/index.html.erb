@@ -1,0 +1,18 @@
+
+<h1>Subject Areas </h1>
+
+<% if !@course_categories.empty? %>
+
+<%  @course_categories.each do |c|  %>
+  <%= link_to c.title, c, class: "btn btn-lg btn-info"%>
+  <% end %>
+
+<% else %>
+<div class="well">
+There don't seem to be any subject areas, why don't you add one? </br>
+</div>
+<% end %>
+
+
+</br>
+<%= link_to 'Add a Subject Area', new_course_category_path %>

@@ -5,13 +5,30 @@
 <% else %> 
 <h1>Administrator Portal </h1>
 
-
-<div class="well">
-<%= link_to "Student List", users_path, class: "btn btn-info" %>  | 
-<%= link_to "My Profile", user_path(current_user.id), class: "btn btn-info"%> | 
-<%= link_to "Book List", books_path, class: "btn btn-info" %> | 
-<%= link_to "Book Categories", book_categories_path, class: "btn btn-info" %>
+<div class="row">
+    <div class="col-md-4">
+    	<h2> Students </h2>
+		<div class="well">
+		<%= link_to "Student List", users_path, class: "btn btn-info" %>  | 
+		<%= link_to "My Profile", user_path(current_user.id), class: "btn btn-info"%>
+		</div> 
+	</div>
+    <div class="col-md-4">
+    	<h2> Books </h2>
+		<div class="well">
+		<%= link_to "Book List", books_path, class: "btn btn-info" %> | 
+		<%= link_to "Book Categories", book_categories_path, class: "btn btn-info" %>
+		</div> 
+	</div>
+	<div class="col-md-4">
+		<h2> Courses </h2>
+		<div class="well">
+		<%= link_to "Courses", courses_path, class: "btn btn-info" %>
+		</div>
+	</div>
 </div>
+
+
 
 
 <% end %> 
