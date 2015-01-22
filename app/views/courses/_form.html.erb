@@ -8,7 +8,7 @@
   	<%= f.input :title %>
     <%= f.input :abbreviation %>
     <%= f.input :description %>
-    <%#= f.input :syllabus %>
+    <%= f.input :syllabus, :label => "Please attach a PDF" %>
     <%= f.association :course_category, :label => "Subject Area" %>
     <%= f.input :session_no, :label => "Number of Sessions" %>
     <%= f.button :submit %>

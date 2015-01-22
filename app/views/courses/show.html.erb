@@ -17,7 +17,8 @@
         <div class="well">
         <dt>Description: </dt>
         <dd><%= @course.description %></dd>
-        <dt>Syllabus</dt>
+        <dt>Syllabus:</dt>
+        <dd><%= link_to "Download here", @course.syllabus.url, target: "_blank" %></dd>
     	</div>
         <div class="well">
         <dt> Current Sessions: </dt>
