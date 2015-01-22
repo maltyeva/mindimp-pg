@@ -19,6 +19,16 @@
         <dd><%= @course.description %></dd>
         <dt>Syllabus</dt>
     	</div>
+        <div class="well">
+        <dt> Current Sessions: </dt>
+        <% unless @course.course_sessions.empty? %>
+            <% @course.course_sessions.each do |c| %>
+            <dd><%= link_to c.title, course_session_path(c)%> </dd>
+            <% end %>
+        <% else %> 
+            <dd>(none)</dd> 
+        <% end %>
+        </div>
     </div>
     
 </div>

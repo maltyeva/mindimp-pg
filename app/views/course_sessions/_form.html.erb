@@ -10,7 +10,7 @@
     <%= f.input :duration %>
     <%= f.input :instructor %>
     <%= f.association :course %>
-    <%= f.association :users, :as => :select %>
+    <%= f.association :users, label_method: :name, value_method: :id, include_blank: false, :label => "Students" %>
 
     <%= f.button :submit %>
   </div>

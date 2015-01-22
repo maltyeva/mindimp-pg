@@ -47,6 +47,12 @@ class User < ActiveRecord::Base
 
   royce_roles %w[ user admin superadmin ] 
 
+
+  def name
+     [((nick_name.nil? || nick_name.length == 0) ? first_name : nickname), last_name].join(" ")
+  end
+
+
   private
 
   # Converts email to all lower-case.
