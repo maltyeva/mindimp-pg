@@ -12,6 +12,16 @@
         <dt> Subject Area: </dt>
         <dd><%= link_to @course.course_category.title, course_category_path(@course.course_category) %></dd>
         </div>
+        <div class="well">
+            <% unless @course.book_category.nil? %>
+            <% @course.book_category.books.each do |b| %>
+            <%= image_tag b.cover(:thumb) %>
+            <%= link_to b.title, b %>
+            <% end %>
+            <% else %>
+            There are no books on this syllabus 
+            <% end %>
+        </div>
     </div>
     <div class="col-md-4">
         <div class="well">
