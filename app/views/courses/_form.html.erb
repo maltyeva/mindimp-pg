@@ -1,0 +1,15 @@
+<%= simple_form_for(@course) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  </div>
+
+  <div class="form-actions">
+  	<%= f.input :title %>
+    <%= f.input :abbreviation %>
+    <%= f.input :description %>
+    <%#= f.input :syllabus %>
+    <%= f.input :session_no, :label => "Number of Sessions" %>
+    <%= f.button :submit %>
+  </div>
+<% end %>

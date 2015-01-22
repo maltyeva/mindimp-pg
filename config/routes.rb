@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 
 
+  resources :courses
+
   #Things related to books
   resources :discussion_questions
   resources :books

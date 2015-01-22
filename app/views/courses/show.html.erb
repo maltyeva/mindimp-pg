@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @course.title %></h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="well">
+        <dt> Abbreviation: </dt>
+        <dd><%= @course.abbreviation %></dd>
+        <dt> Number of Sessions: </dt>
+        <dd><%= @course.session_no %></dd>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="well">
+        <dt>Description: </dt>
+        <dd><%= @course.description %></dd>
+        <dt>Syllabus</dt>
+    	</div>
+    </div>
+    
+</div>
+
+
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>

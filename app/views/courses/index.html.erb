@@ -1,0 +1,33 @@
+<h1>Courses</h1>
+
+
+
+<table id="table_courses" class="datatable-wide table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th>Title </th>
+    <th>Abbreviation</th>
+    <th>Description </th>
+    <th>Number of Sessions</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <% for course in @courses %>
+    <td><%= link_to course.title, course %></td>
+    <td><%= link_to course.abbreviation, course %></td>    
+    <td><%= link_to course.description, course %></td>
+    <td><%= link_to course.session_no, course %></td>
+    <% if current_user.is_admin? %>
+    <td><%= link_to 'Edit', edit_course_path(course) %></td>
+  <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %> 
+
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<br>
+
+<%= link_to 'Add a New Course', new_course_path %>

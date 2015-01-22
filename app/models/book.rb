@@ -2,9 +2,9 @@ class Book < ActiveRecord::Base
 
 
 	has_and_belongs_to_many :book_categories, join_table: :books_categories
-  
-
   has_many :discussion_questions
+
+  
 	validates_presence_of :title, :author, :description 
 	validates_uniqueness_of :title, :description
 
