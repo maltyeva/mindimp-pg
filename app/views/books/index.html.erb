@@ -19,11 +19,12 @@
     <td><%= link_to book.author, book %></td>    
     <td><%= link_to book.description, book %></td>
     <td><%= link_to book.genre, book %></td>
-    <% unless book.book_categories.empty? %>
-          <% @book.book_categories.each do |c| %>
-           <td>  <%= c.name %> </td> 
-          <% end %>
-         <% else %>
+    <% unless book.book_categories.nil? %>
+        <td><% book.book_categories.each do |c| %>
+            <%= c.title %> </br>
+            <% end %>
+        </td> 
+      <% else %>
          <td><%= link_to "None", book %></td>
          <% end %>    <% if current_user.is_admin? %>
     <td><%= link_to 'Edit', edit_book_path(book) %></td>

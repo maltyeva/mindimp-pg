@@ -39,7 +39,7 @@
           <dd> (none) </dd> 
         <% else %>
           <% @book.book_categories.each do |c| %>
-           <dd>  <%= c.name %> </dd> 
+           <dd>  <%= link_to c.title, book_category_path(c) %> </dd> 
           <% end %>
         <% end %>
         </div>
