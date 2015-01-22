@@ -1,0 +1,15 @@
+<%= simple_form_for(@course_session) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  </div>
+
+  <div class="form-actions">
+  	<%= f.input :title %>
+    <%= f.input :time %>
+    <%= f.input :duration %>
+    <%= f.input :instructor %>
+    <%= f.association :course %>
+    <%= f.button :submit %>
+  </div>
+<% end %>
