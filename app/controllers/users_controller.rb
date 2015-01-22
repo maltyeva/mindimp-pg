@@ -93,7 +93,9 @@ class UsersController < ApplicationController
     end
 
    def user_params
-     params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :nick_name, :age, :is_admin, :is_student, :profile_photo, :last_login)
+     params.require(:user).permit(:email, :password, :password_confirmation, :first_name, 
+                                  :last_name, :nick_name, :age, :is_admin, :is_student, 
+                                  :profile_photo, :last_login, :bio, :hometown, :high_school)
    end
 
   # Stores the URL trying to be accessed.

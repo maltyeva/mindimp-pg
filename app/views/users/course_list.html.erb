@@ -1,8 +1,13 @@
 <h1> My Courses </h1>
 
-
+<% if @user.course_sessions.empty? %>
+<h3>You don't seem to be enrolled in any classes right now.</h3>
+<% else %>
 <ul class="users">
 <% @user.course_sessions.each do |c| %>
 	<%= link_to c.course.title, course_path(c.course) %> <%=c.title %> </br>
 <% end %>
 </ul>
+<% end %>
+
+<%= link_to "Back", student_portal_path, class: "btn btn-lg btn-info"%>

@@ -1,6 +1,5 @@
-<h1><%= @user.first_name + " " + @user.last_name %></h1>
-
-
+<h1><%= @user.first_name + " " + (!@user.nick_name.blank? ? "(#{@user.nick_name}) " : "") + @user.last_name %></h1>
+<h4><%= @user.email %></h4>
 
 
 <p id="notice"><%= notice %></p>
@@ -8,29 +7,16 @@
 <div class="row">
     <div class="col-md-8">
         <div class="well">
-
-        <dt>Last Logged In: </dt>
-        <%# this takes care of displaying in China Standard Time %>
-        <% if @user.last_login.nil? %>
-         <dd>(none)</dd>
-         <% else %> 
-        <dd><%= (@user.last_login + 28800).strftime('%B %e, %Y %l:%M %p')%></dd>
-         <% end %>
-        <dt>First Name</dt>
-        <dd><%= @user.first_name %></dd>
-
-        <dt>Nickname</dt>
-        <dd><%= !@user.nick_name.blank? ? @user.nick_name : "(none)" %></dd>
-        
-        <dt>Last Name</dt>
-        <dd><%= @user.last_name %></dd>
-        
-        
-        <dt>Email</dt>
-        <dd><%= @user.email %></dd>
-        
+        <dt>About Me</dt>
+        <dd><%= @user.bio %></dd>
         <dt>Age</dt>
         <dd><%= @user.age %></dd>
+        <dt>High School</dt>
+        <dd><%= @user.high_school %></dd>
+        <dt>Hometown</dt>
+        <dd><%= @user.hometown %></dd>
+        </div>
+
 
         <% if @user.is_admin? %>
         <dt>Administrator</dt>
@@ -38,8 +24,15 @@
 
         <dt>Student</dt>
         <dd><%= @user.is_student %></dd>
+        <dt>Last Logged In: </dt>
+        <%# this takes care of displaying in China Standard Time %>
+        <% if @user.last_login.nil? %>
+         <dd>(none)</dd>
+         <% else %> 
+        <dd><%= (@user.last_login + 28800).strftime('%B %e, %Y %l:%M %p')%></dd>
+         <% end %>
         <% end %>
-        </div>
+
     </div>
 
     <div class="col-md-4">
@@ -50,6 +43,6 @@
     
 </div>
 
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
+</br>
+<%= link_to 'Edit Profile', edit_user_path(@user) %> |
 <%= link_to 'Back', root_path %>

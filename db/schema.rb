@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150122082730) do
+ActiveRecord::Schema.define(version: 20150122094005) do
 
   create_table "book_categories", force: true do |t|
     t.string   "title"
@@ -124,6 +124,9 @@ ActiveRecord::Schema.define(version: 20150122082730) do
     t.boolean  "activated"
     t.datetime "activated_at"
     t.datetime "last_login"
+    t.string   "hometown"
+    t.string   "high_school"
+    t.text     "bio"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
