@@ -28,7 +28,7 @@
 
 
 
-<% if curren_user.is_admin? %>
+<% if current_user.is_admin? %>
 <%= link_to 'Edit Category', edit_book_category_path(@book_category), class: 'btn btn-info' %> 
 <% end %>
 </br>
