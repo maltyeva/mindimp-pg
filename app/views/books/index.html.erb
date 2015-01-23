@@ -21,7 +21,7 @@
     <td><%= link_to book.genre, book %></td>
     <% unless book.book_categories.nil? %>
         <td><% book.book_categories.each do |c| %>
-            <%= c.title %> </br>
+            <%= link_to c.title, book_category_path(c) %> </br>
             <% end %>
         </td> 
       <% else %>

@@ -18,7 +18,7 @@
         </div>
 
 
-        <% if @user.is_admin? %>
+        <% if current_user.is_admin? %>
         <dt>Administrator</dt>
         <dd><%= @user.is_admin %></dd>
 

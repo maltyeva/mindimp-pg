@@ -30,6 +30,7 @@
         <dt>Syllabus:</dt>
         <dd><%= link_to "Download here", @course.syllabus.url, target: "_blank" %></dd>
     	</div>
+        <%if current_user.is_admin? %>
         <div class="well">
         <dt> Current Sessions: </dt>
         <% unless @course.course_sessions.empty? %>
@@ -40,6 +41,7 @@
             <dd>(none)</dd> 
         <% end %>
         </div>
+        <% end %>
     </div>
     
 </div>

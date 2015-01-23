@@ -30,4 +30,8 @@
 </table>
 <br>
 
+
+<% if current_user.is_admin? %>
 <%= link_to 'Add a New Course', new_course_path %>
+<% end %> 
+

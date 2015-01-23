@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
-  before_filter :require_admin, :only => :edit
+  before_filter :require_admin, only: [:edit, :new]
 
   respond_to :html
 

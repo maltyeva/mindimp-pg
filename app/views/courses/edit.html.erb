@@ -2,5 +2,9 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @course %> |
+
+<% if current_user.is_admin? %>
+<%= link_to 'Show', @course %> 
+<% end %>
+</br>
 <%= link_to 'Back', courses_path %>

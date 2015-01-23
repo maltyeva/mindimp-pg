@@ -8,6 +8,12 @@
 <%= link_to "My Courses", my_courses_path, class: "btn btn-lg btn-info"%>
 </div>
 
+<div class="well">
+<%= link_to "Book List", books_path, class: "btn btn-lg btn-info" %> | 
+<%= link_to "Available Courses", courses_path, class: "btn btn-lg btn-info" %>
+
+</div>
+
 <% else %>
 
 <h1> Please login first </h1>
