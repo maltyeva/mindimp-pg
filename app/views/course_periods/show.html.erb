@@ -5,14 +5,8 @@
 
 
 <div class="row">
+    <h4>Courses Offered</h4>
     <div class="col-md-8">
-        <div class="well">
-        <dt> Year </dt>
-        <dd><%= @course_period.year %></dd>
-        </div>
-    </div>
-    <div class="col-md-4">
-    	<h4>Courses Offered</h4>
         <div class="well">
         <% unless @course_period.course_sessions.empty? %>
             <% @course_period.course_sessions.each do |c| %>
@@ -21,6 +15,12 @@
         <% else %> 
             <dd>(none)</dd> 
         <% end %>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="well">
+        <dt> Year </dt>
+        <dd><%= @course_period.year %></dd>
     	</div>
     </div>
     

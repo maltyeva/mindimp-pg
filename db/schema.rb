@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150122102215) do
+ActiveRecord::Schema.define(version: 20150123015841) do
 
   create_table "book_categories", force: true do |t|
     t.string   "title"
@@ -53,6 +53,9 @@ ActiveRecord::Schema.define(version: 20150122102215) do
     t.integer  "period_no"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active"
+    t.boolean  "upcoming"
+    t.boolean  "past"
   end
 
   create_table "course_sessions", force: true do |t|

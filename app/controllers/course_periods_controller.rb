@@ -44,7 +44,7 @@ class CoursePeriodsController < ApplicationController
     end
 
     def course_period_params
-      params.require(:course_period).permit(:title, :year, :period_no)
+      params.require(:course_period).permit(:title, :year, :period_no, :active, :past, :upcoming)
 
     end
 end
