@@ -40,4 +40,6 @@
 
 <br>
 
+<% if current_user.is_admin? %>
   <%= link_to "Add a New Book", new_book_path, :class => "btn" %>
+<% end %>

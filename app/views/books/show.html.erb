@@ -22,7 +22,8 @@
         <% else %>
         <% @book.discussion_questions.each do |q|%>
          <div class="well">
-         <%= q.question_number%>. <%= q.question %> <%= link_to "Edit", edit_discussion_question_path(q) %>
+         <%= q.question_number%>. <%= q.question %> 
+         <% if current_user.is_admin?%> <%= link_to "Edit", edit_discussion_question_path(q) %><% end %>
          </div>
          <% end %>
         <% end %>
@@ -57,7 +58,8 @@
 
 
 
-
+<% if current_user.is_admin? %>
 <%= link_to 'New Discussion Question', new_discussion_question_path %> | 
-<%= link_to 'Edit Book', edit_book_path(@book) %> |
+<%= link_to 'Edit Book', edit_book_path(@book) %> 
+<% end %></br>
 <%= link_to 'Back', books_path %>
