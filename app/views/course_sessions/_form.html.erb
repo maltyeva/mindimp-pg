@@ -6,8 +6,9 @@
 
   <div class="form-actions">
   	<%= f.input :title %>
-    <%= f.association :course_period, :label => "Semester" %>
-    <%= f.input :duration %>
+    <%= f.association :course_period, :label => "Academic Term" %>
+    <%= f.input :time, :label => "Class Meeting Time" %>
+    <%= f.input :duration, :label => "Class Time Duration" %>
     <%= f.input :instructor %>
     <%= f.association :course %>
     <%= f.association :users, label_method: :name, value_method: :id, include_blank: false, as: :check_boxes, :label => "Students" %>

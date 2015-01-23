@@ -22,8 +22,13 @@
     </div>
     <div class="col-md-4">
         <div class="well">
+        <dt>Course</dt>
         <%= link_to @course_session.course.title, course_path(@course_session.course) %>
-    	</div>
+    	<dt> Time </dt>
+        <dd><%= @course_session.time %></dd>
+        <dt> Duration </dt>
+        <dd><%= @course_session.duration %></dd>
+        </div>
     </div>
     
 </div>

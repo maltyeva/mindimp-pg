@@ -7,6 +7,7 @@ class CoursePeriodsController < ApplicationController
 
   def index
     @course_periods = CoursePeriod.all
+    @active_course_periods = CoursePeriod.where("active = ?", true)
     respond_with(@course_periods)
   end
 

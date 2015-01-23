@@ -47,6 +47,8 @@
 </div>
 
 
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
+<% if current_user.is_admin? %>
+<%= link_to 'Edit', edit_course_path(@course) %>  
+<% end %>
+</br>
 <%= link_to 'Back', courses_path %>

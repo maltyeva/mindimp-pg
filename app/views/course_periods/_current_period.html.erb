@@ -1,0 +1,17 @@
+<h2>Current Term </h2>
+
+
+<div class="well">
+ <% if active_course_periods.empty? %>
+  <h4>There are no active academic terms at this time.</h4>
+ <% else %>
+  <% active_course_periods.each do |c| %>
+  <h4><%= c.title  %> </h4>
+   <ul class="users">
+    <% c.course_sessions.each do |s| %>
+         <li>  <%= s.course.title + ": " + s.title %> </li>
+     <% end %>
+   </ul> 
+  <% end %>
+ <% end %>
+</div>
