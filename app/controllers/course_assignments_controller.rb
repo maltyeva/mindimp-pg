@@ -3,6 +3,10 @@ class CourseAssignmentsController < ApplicationController
 
   respond_to :html
 
+  before_filter :require_login
+  before_filter :require_admin, only: [:edit, :new, :index]
+
+
   def index
     @course_assignments = CourseAssignment.all
     respond_with(@course_assignments)
@@ -43,6 +47,6 @@ class CourseAssignmentsController < ApplicationController
 
     def course_assignment_params
       params.require(:course_assignment).permit(:title, :description, :description, :format, 
-                                                :due_date, :course_session_id)
+                                                :due_date, :course_session_id, :number)
     end
 end

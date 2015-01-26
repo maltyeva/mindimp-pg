@@ -1,4 +1,30 @@
 <p id="notice"><%= notice %></p>
 
+
+
+<h1><%= @course_assignment.title %></h1>
+
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="well">
+        	<dd>Assignment no. <%= @course_assignment.number%></dd>
+        	<dt>Description: </dt>
+        	<dd><%= @course_assignment.description %></dd>
+        	<dt>Type: </dt>
+        	<dd><%= @course_assignment.format %></dd>
+        	<dt>Due Date: </dt>
+        	<dd><%= @course_assignment.due_date.strftime('%B %e, %Y') %></dd>
+
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="well">
+        	<%= link_to @course_assignment.course_session.full_title, course_session_path(@course_assignment.course_session)%>
+    	</div>
+    </div>
+    
+</div>
+
 <%= link_to 'Edit', edit_course_assignment_path(@course_assignment) %> |
 <%= link_to 'Back', course_assignments_path %>

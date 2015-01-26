@@ -9,4 +9,9 @@ class CourseSession < ActiveRecord::Base
 
 	validates_presence_of :title, :course
 
+
+ def full_title
+     [course.title, title].join(": ")
+  end
+
 end
