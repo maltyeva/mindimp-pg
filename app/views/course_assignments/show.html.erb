@@ -26,5 +26,12 @@
     
 </div>
 
+
+</br>
+<%= link_to "Back to Course", course_session_path(@course_assignment.course_session) %>
+
+</br>
+<% if current_user.is_admin? %>
 <%= link_to 'Edit', edit_course_assignment_path(@course_assignment) %> |
 <%= link_to 'Back', course_assignments_path %>
+<% end %>

@@ -2,22 +2,28 @@
 
 
 
-<h1><%= @course_session.course.title + ", " + @course_session.title + ", " + @course_session.course_period.title %></h1>
+<h1><%= @course_session.course.title + ": " + @course_session.title + ", " + @course_session.course_period.title %></h1>
+
+<hr />
+<!-- SUBNAV SECTION -->
+<div id="subnavbar" class="subnav" role="navigation">
+  <ul class="nav nav-pills">
+    <li><a href="#class">Overview</a></li>
+    <li><a href="#assignments">Assignments </a></li>
+    <li><a href="#students">Students Roster</a></li>
+  </ul>
+</div>
+<hr />
+<!-- SUBBODY SECTION -->
 
 
-
-
-<p id="notice"><%= notice %></p>
-
+<section id="class">
 <div class="row">
+    <h3>Overview:</h3>
     <div class="col-md-8">
         <div class="well">
         <dt> Instructor </dt>
         <dd><%= @course_session.instructor %></dd>
-        <dt> Students </dt>
-        <% @course_session.users.each do |u| %>
-            <%= link_to u.name, u%> </br>
-        <% end %>
         </div>
     </div>
     <div class="col-md-4">
@@ -30,9 +36,49 @@
         <dd><%= @course_session.duration %></dd>
         </div>
     </div>
-    
 </div>
+</section>
 
+
+<section id="assignments">
+<div class="row">
+    <h3>Assignments:</h3>
+    <div class="col-md-8">
+                <div class="well">
+                <% if @course_session.course_assignments.empty? && current_user.is_admin? %>
+                There don't seem to be any assignments, would you like to add one? </br>
+                <%= link_to "New Assignment", new_course_assignment_path, class: "btn btn-info"%>
+                <% elsif @course_session.course_assignments.empty?  %>
+                There are no assignments for this course. 
+                <% else %>
+                <% @course_session.course_assignments.each do |a|%>
+                <div class="well">
+                    <%= a.number%>. <%= link_to a.title, course_assignment_path(a) %> </br>
+                    <%= a.description %>
+                     <% if current_user.is_admin?%> <%= link_to "(edit)", edit_course_assignment_path(a) %><% end %></div>
+                     <% end %>
+                     <% end %>
+                </div>
+            </div>
+        </div>
+</section>
+
+
+<section id="students">
+<div class="row">
+    <h3>Student Roster:</h3>
+    <div class="col-md-8">
+                <div class="well">
+                <ul class="users">
+                 <% @course_session.users.each do |u| %>
+                <li> <%= image_tag u.profile_photo.url(:thumb) %>
+                <%= link_to u.name, user_path(u) %>   </li>              
+                <% end %>
+                </ul>
+                </div>
+            </div>
+        </div>
+</section>
 
 
 
