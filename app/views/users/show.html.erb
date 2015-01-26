@@ -4,6 +4,24 @@
 
 <p id="notice"><%= notice %></p>
 
+
+<hr />
+<!-- SUBNAV SECTION -->
+<div id="subnavbar" class="subnav" role="navigation">
+  <ul class="nav nav-pills">
+    <li><a href="#bio">Biographical Information</a></li>
+    <li><a href="#class">Class Information</a></li>
+    <li><a href="#assessments">Assessments</a></li>
+    <% if current_user.is_admin? %>
+      <li><a href="#admin">Admin Settings</a></li>
+    <% end %>
+  </ul>
+</div>
+<hr />
+<!-- SUBBODY SECTION -->
+
+<section id="bio">
+<h3> About <%= @user.first_name %></h3>
 <div class="row">
     <div class="col-md-8">
         <div class="well">
@@ -17,7 +35,49 @@
         <dd><%= @user.hometown %></dd>
         </div>
 
+    </div>
 
+    <div class="col-md-4">
+        <div class="thumbnail">
+        <%= image_tag @user.profile_photo.url(:medium) %>
+        </div>
+    </div>
+    
+</div>
+</section>
+
+
+<section id="class">
+<h3>Class Information</h3>
+<div class="row">
+    <div class="col-md-8">
+        <div class="well">
+        <% if @user.course_sessions.empty? %>
+        <h4><%= @user.name %> is not enrolled in any classes right now.</h4>
+        <% else %>
+        <ul class="users">
+        <% @user.course_sessions.where(active: true).each do |c| %>
+        <%= link_to c.course.title, course_path(c.course) %> <%=link_to c.title, course_session_path(c) %> </br>
+        <% end %>
+        </ul>
+        <% end %>
+        </div>
+    </div>
+</div>      
+</section>
+
+
+<section id="assessments">
+<h3>Assessments</h3>
+     <div class="well">
+        There are no assessments at this time. 
+    </div>
+</section>
+
+
+<section id="admin">
+    <h3>Administrator Settings</h3>
+         <div class="well">
         <% if current_user.is_admin? %>
         <dt>Administrator</dt>
         <dd><%= @user.is_admin %></dd>
@@ -32,17 +92,17 @@
         <dd><%= (@user.last_login + 28800).strftime('%B %e, %Y %l:%M %p')%></dd>
          <% end %>
         <% end %>
-
     </div>
+</section>
 
-    <div class="col-md-4">
-        <div class="thumbnail">
-        <%= image_tag @user.profile_photo.url(:medium) %>
-        </div>
-    </div>
-    
-</div>
 
 </br>
 <%= link_to 'Edit Profile', edit_user_path(@user) %> |
 <%= link_to 'Back', root_path %>
+
+
+<!-- $('.subnav').affix({
+      offset: {
+        top: $('#navtop').height()
+      }
+});  -->

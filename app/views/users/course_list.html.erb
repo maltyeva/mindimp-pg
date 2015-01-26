@@ -5,7 +5,7 @@
 <% else %>
 <ul class="users">
 <% @user.course_sessions.where(active: true).each do |c| %>
-	<%= link_to c.course.title, course_path(c.course) %> <%=c.title %> </br>
+        <%= link_to c.course.title, course_path(c.course) %> <%=link_to c.title, course_session_path(c) %> </br>
 <% end %>
 </ul>
 <% end %>
