@@ -11,6 +11,7 @@
     <%= f.input :duration, :label => "Class Time Duration" %>
     <%= f.input :instructor %>
     <%= f.association :course %>
+    <%= f.input :active, :hint => "Check if the class is currently ongoing" %>
     <%= f.association :users, label_method: :name, value_method: :id, include_blank: false, as: :check_boxes, :label => "Students" %>
     <%= f.button :submit %>
   </div>

@@ -34,7 +34,7 @@
         <div class="well">
         <dt> Current Sessions: </dt>
         <% unless @course.course_sessions.empty? %>
-            <% @course.course_sessions.each do |c| %>
+            <% @course.course_sessions.where(active: true).each do |c| %>
             <dd><%= link_to c.title, course_session_path(c)%> </dd>
             <% end %>
         <% else %> 
