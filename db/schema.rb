@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126054704) do
+ActiveRecord::Schema.define(version: 20150126075249) do
+
+  create_table "assignment_responses", force: true do |t|
+    t.text     "text"
+    t.datetime "submitted"
+    t.string   "grade"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.integer  "course_assignment_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "book_categories", force: true do |t|
     t.string   "title"

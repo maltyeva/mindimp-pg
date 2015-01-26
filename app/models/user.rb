@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   #associasions
   has_and_belongs_to_many :course_sessions, join_table: :students_sessions
+  has_many :assignment_responses
 
 
   #simple user validations
@@ -35,10 +36,7 @@ class User < ActiveRecord::Base
   has_attached_file :profile_photo, 
                     :styles => { :medium => "300x300>", :thumb => "50x50>" }, 
                     :default_url => "/images/:style/missing.png"
-                    # :storage => :dropbox,
-                    # :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
-                    # :dropbox_options => {...}
-
+                    # :storage => :s3
 
   validates_attachment_content_type :profile_photo, :content_type => /\Aimage\/.*\Z/
   validates_with AttachmentSizeValidator, :attributes => :profile_photo, :less_than => 1.megabytes

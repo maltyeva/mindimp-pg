@@ -1,0 +1,23 @@
+<h1>Listing assignment_responses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assignment_responses.each do |assignment_response| %>
+      <tr>
+        <td><%= link_to 'Show', assignment_response %></td>
+        <td><%= link_to 'Edit', edit_assignment_response_path(assignment_response) %></td>
+        <td><%= link_to 'Destroy', assignment_response, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Assignment response', new_assignment_response_path %>

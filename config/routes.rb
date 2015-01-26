@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 
 
+  resources :assignment_responses
+
   resources :course_assignments
 
   resources :course_periods
