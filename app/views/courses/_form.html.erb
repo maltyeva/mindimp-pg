@@ -11,7 +11,7 @@
     <%= f.input :syllabus, :label => "Syllabus", :hint => "Please attach a PDF" %>
     <%= f.association :course_category, :label => "Subject Area" %>
     <%= f.input :session_no, :label => "Number of Sessions" %>
-    <%= f.association :book_category %>
+    <%= f.association :book_category, :label => "Book List", :hint => "(Optional)" %>
     <%= f.button :submit %>
   </div>
 <% end %>
