@@ -26,6 +26,22 @@
     
 </div>
 
+<% if current_user.is_admin? %>
+<h3>Responses: </h3>
+<div class="row">
+    <div class="col-md-8">
+        <div class="well">
+            <% @course_assignment.assignment_responses.each do |r| %>
+            <li><%= link_to r.user.name, r %> | 
+                <%= (r.submitted + 28800).strftime('%B %e, %Y %l:%M %p') %>
+            </li>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<% end %>
+
 
 </br>
 <%= link_to "Back to Course", course_session_path(@course_assignment.course_session) %>
