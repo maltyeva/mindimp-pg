@@ -4,6 +4,7 @@ class CreateAssignmentResponses < ActiveRecord::Migration
       t.text :text
       t.datetime :submitted
       t.string :grade
+      t.text :comments
       t.attachment :attachment
       t.integer :course_assignment_id
       t.integer :user_id

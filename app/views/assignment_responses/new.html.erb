@@ -1,5 +1,19 @@
-<h1>New assignment_response</h1>
+<h1>New Response</h1>
 
-<%= render 'form' %>
+<%= simple_form_for(@assignment_response) do |f| %>
+  <%= f.error_notification %>
 
-<%= link_to 'Back', assignment_responses_path %>
+  <div class="form-inputs">
+  </div>
+
+  <div class="form-actions">
+  	<%= f.association :course_assignment %>
+  	<%= f.input :text, :hint => "If you are uploading an attachment, please mention it here." %>
+  	<%#= f.input :attachment %>
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+
+
+<%#= link_to 'Back', assignment_responses_path %>

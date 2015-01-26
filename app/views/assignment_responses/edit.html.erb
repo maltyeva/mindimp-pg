@@ -1,6 +1,17 @@
-<h1>Editing assignment_response</h1>
+<h1>Grading Assignment:</h1>
+
+<div class="well">
+<dt>Student:  </dt>
+<dd><%= @assignment_response.user.name %></dd>
+<hr />
+<dt>Assignment: </dt>
+<dd><%= @assignment_response.text %></dd>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @assignment_response %> |
+
+
+
+<%= link_to 'Back to response', @assignment_response %> |
 <%= link_to 'Back', assignment_responses_path %>

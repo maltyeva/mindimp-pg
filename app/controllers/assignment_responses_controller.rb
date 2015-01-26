@@ -26,6 +26,8 @@ class AssignmentResponsesController < ApplicationController
 
   def create
     @assignment_response = AssignmentResponse.new(assignment_response_params)
+    @assignment_response.update_attribute(:submitted, Time.now)
+    @assignment_response.update_attribute(:user, current_user)
     @assignment_response.save
     respond_with(@assignment_response)
   end
@@ -47,6 +49,6 @@ class AssignmentResponsesController < ApplicationController
 
     def assignment_response_params
       params.require(:assignment_response).permit(:text, :submitted, :grade, :attachment, 
-                                                  :course_assignment_id, :user_id)
+                                                  :course_assignment_id, :user_id, :comments)
     end
 end

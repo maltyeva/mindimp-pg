@@ -1,4 +1,22 @@
 <p id="notice"><%= notice %></p>
 
+<h1> <%= @assignment_response.user.name + "'s response to " + @assignment_response.course_assignment.title %> </h1>
+
+<div class="well">
+<dt>Response:  </dt>
+<dd><%= @assignment_response.text %></dd>
+<hr />
+<dt>Submitted: </dt>
+<dd><%= (@assignment_response.submitted + 28800).strftime('%B %e, %Y %l:%M %p')%></dd>
+<dt>Grade: </dt>
+<dd><%= @assignment_response.grade %></dd>
+<dt>Comments: </dt>
+<dd><%= @assignment_response.comments %></dd>
+</div>
+
+</br>
+
+<% if current_user.is_admin? %>
 <%= link_to 'Edit', edit_assignment_response_path(@assignment_response) %> |
 <%= link_to 'Back', assignment_responses_path %>
+<% end %>

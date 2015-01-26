@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20150126075249) do
     t.text     "text"
     t.datetime "submitted"
     t.string   "grade"
+    t.text     "comments"
     t.string   "attachment_file_name"
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
