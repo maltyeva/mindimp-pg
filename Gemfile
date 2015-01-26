@@ -45,9 +45,8 @@ gem 'actionmailer'
 
 #this is how we'll handle photos and uploads. 
 gem "paperclip", "~> 4.2"
-
-#storing the files on production - should I use this?
-gem "paperclip-dropbox", ">= 1.1.7"
+gem 'aws-sdk'
+gem 'nokogiri'
 
 
 #user authentication - should I use this? 
