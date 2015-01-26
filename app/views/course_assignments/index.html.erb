@@ -1,23 +1,40 @@
-<h1>Listing course_assignments</h1>
+<h1>Assignment Index</h1>
 
-<table>
+
+
+
+
+<table id="table_users" class="datatable-wide table table-striped table-bordered">
   <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <tr>
+    <th>Course </th>
+    <th>Title</th>
+    <th>Description </th>
+    <th>Format</th>
+    <th>Due Date</th>
 
+  </tr>
+  </thead>
   <tbody>
-    <% @course_assignments.each do |course_assignment| %>
-      <tr>
-        <td><%= link_to 'Show', course_assignment %></td>
-        <td><%= link_to 'Edit', edit_course_assignment_path(course_assignment) %></td>
-        <td><%= link_to 'Destroy', course_assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <% for assignment in @course_assignments %>
+    <td><%= link_to assignment.course_session.full_title, assignment %></td>
+    <td><%= link_to assignment.title, assignment %></td>    
+    <td><%= link_to assignment.description, assignment %></td>
+    <td><%= link_to assignment.format, assignment %></td>
+    <td><%= link_to assignment.due_date.strftime('%B %e, %Y'), assignment %></td>
+   <% if current_user.is_admin? %>
+         <td><%= link_to 'Edit', edit_course_assignment_path(assignment) %></td>
+        <td><%= link_to 'Delete', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %> 
+    </tr>
+  <% end %>
   </tbody>
 </table>
 
+
+
 <br>
 
+<% if current_user.is_admin? %>
 <%= link_to 'New Course assignment', new_course_assignment_path %>
+<% end %>

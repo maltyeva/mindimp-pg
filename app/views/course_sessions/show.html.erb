@@ -63,7 +63,6 @@
         </div>
 </section>
 
-
 <section id="students">
 <div class="row">
     <h3>Student Roster:</h3>
@@ -81,6 +80,8 @@
 </section>
 
 
-
+<% if current_user.is_admin? %>
+<%= link_to "New Assignment", new_course_assignment_path %> |
 <%= link_to 'Edit', edit_course_session_path(@course_session) %> |
 <%= link_to 'Back', course_sessions_path %>
+<% end %>
