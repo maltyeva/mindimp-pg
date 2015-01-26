@@ -3,6 +3,7 @@ class CourseSession < ActiveRecord::Base
 	#this handles the associations
 	belongs_to :course
 	belongs_to :course_period
+	has_many :course_assignments
     has_and_belongs_to_many :users, join_table: :students_sessions
 
 

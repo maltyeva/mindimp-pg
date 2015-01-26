@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126024635) do
+ActiveRecord::Schema.define(version: 20150126054704) do
 
   create_table "book_categories", force: true do |t|
     t.string   "title"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 20150126024635) do
   create_table "books_categories", force: true do |t|
     t.integer "book_id"
     t.integer "book_category_id"
+  end
+
+  create_table "course_assignments", force: true do |t|
+    t.integer  "number"
+    t.string   "title"
+    t.text     "description"
+    t.string   "format"
+    t.datetime "due_date"
+    t.integer  "course_session_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "course_categories", force: true do |t|

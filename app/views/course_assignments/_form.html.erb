@@ -1,0 +1,16 @@
+<%= simple_form_for(@course_assignment) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  </div>
+
+  <div class="form-actions">
+  	<%= f.association :course_session %>
+  	<%= f.input :number %>
+  	<%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :format %>
+    <%= f.input :due_date %>
+    <%= f.button :submit %>
+  </div>
+<% end %>
