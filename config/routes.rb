@@ -3,15 +3,15 @@ Rails.application.routes.draw do
 
 
   resources :assignment_responses
-
   resources :course_assignments
 
+
+  #things related to courses
   resources :course_periods
+  get 'academic_terms' => 'course_periods#index'
 
   resources :course_sessions
-
   resources :course_categories
-
   resources :courses
 
   #Things related to books

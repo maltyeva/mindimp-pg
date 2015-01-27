@@ -9,7 +9,7 @@
   <h4><%= c.title  %> </h4>
    <ul class="users">
     <% c.course_sessions.each do |s| %>
-         <li>  <%= s.course.title + ": " + s.title %> </li>
+         <li>  <%= link_to s.full_title, course_session_path(s) %> </li>
      <% end %>
    </ul> 
   <% end %>

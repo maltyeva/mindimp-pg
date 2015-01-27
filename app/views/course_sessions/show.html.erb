@@ -83,6 +83,6 @@
 
 <% if current_user.is_admin? %>
 <%= link_to "New Assignment", new_course_assignment_path %> |
-<%= link_to 'Edit', edit_course_session_path(@course_session) %> |
+<%= link_to 'Edit Course Session', edit_course_session_path(@course_session) %> |
 <%= link_to 'Back', course_sessions_path %>
 <% end %>

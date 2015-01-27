@@ -3,17 +3,19 @@
 <h1> <%= @assignment_response.user.name + "'s response to " + @assignment_response.course_assignment.title %> </h1>
 
 <div class="well">
-<dt>Response:  </dt>
-<dd><%= @assignment_response.text %></dd>
-<dt>Attachment: </dt>
-<dd><%= link_to "Download ", @assignment_response.attachment.url, target: "_blank" %></dd>
-<hr />
-<dt>Submitted: </dt>
-<dd><%= (@assignment_response.submitted + 28800).strftime('%B %e, %Y %l:%M %p')%></dd>
-<dt>Grade: </dt>
-<dd><%= @assignment_response.grade %></dd>
-<dt>Comments: </dt>
-<dd><%= @assignment_response.comments %></dd>
+	<dt>Response:  </dt>
+	<dd><%= @assignment_response.text %></dd>
+	<% if !@assignment_response.attachment.nil?%>
+		<dt>Attachment: </dt>
+		<dd><%= link_to "Download ", @assignment_response.attachment.url, target: "_blank" %></dd>
+	<% end %>
+	<hr />
+	<dt>Submitted: </dt>
+	<dd><%= (@assignment_response.submitted + 28800).strftime('%B %e, %Y %l:%M %p')%></dd>
+	<dt>Grade: </dt>
+	<dd><%= @assignment_response.grade %></dd>
+	<dt>Comments: </dt>
+	<dd><%= @assignment_response.comments %></dd>
 </div>
 
 </br>
