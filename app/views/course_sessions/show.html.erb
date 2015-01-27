@@ -54,7 +54,8 @@
                 <% @course_session.course_assignments.each do |a|%>
                 <div class="well">
                     <%= a.number%>. <%= link_to a.title, course_assignment_path(a) %> </br>
-                    <%= a.description %>
+                    <%= a.description %></br>
+                    <dt>Due:</dt><%= (a.due_date + 28800).strftime('%B %e, %Y')%>
                      <% if current_user.is_admin?%> <%= link_to "(edit)", edit_course_assignment_path(a) %><% end %></div>
                      <% end %>
                      <% end %>

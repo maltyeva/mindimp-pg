@@ -23,6 +23,14 @@
         	<%= link_to @course_assignment.course_session.full_title, course_session_path(@course_assignment.course_session)%>
     	</div>
     </div>
+
+<% if current_user.enrolled? %>
+    <div class="col-md-4">
+        <div class="well">
+            <%= link_to "Add a response!", new_assignment_response_path, class: "btn btn-info"%>
+        </div>
+    </div>
+<% end %>
     
 </div>
 

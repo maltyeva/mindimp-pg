@@ -19,7 +19,7 @@
             <%= link_to b.title, b %>
             <% end %>
             <% else %>
-            There are no books on this syllabus 
+            There are no books on this syllabus.
             <% end %>
         </div>
     </div>
@@ -28,7 +28,11 @@
         <dt>Description: </dt>
         <dd><%= @course.description %></dd>
         <dt>Syllabus:</dt>
-        <dd><%= link_to "Download here", @course.syllabus.url, target: "_blank" %></dd>
+        <% unless @course.syllabus.nil? %>
+            <dd><%= link_to "Download here", @course.syllabus.url, target: "_blank" %></dd>
+        <% else %>
+            <dd>There is no syllabus available for this class. </dd>
+        <% end %>
     	</div>
         <%if current_user.is_admin? %>
         <div class="well">
