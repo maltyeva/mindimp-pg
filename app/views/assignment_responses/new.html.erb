@@ -7,9 +7,9 @@
   </div>
 
   <div class="form-actions">
-  	<%= f.association :course_assignment %>
+  	<%= f.association :course_assignment, :label => "Assignment" %>
   	<%= f.input :text, :hint => "If you are uploading an attachment, please mention it here." %>
-  	<%#= f.input :attachment %>
+  	<%= f.input :attachment, :hint => "Please upload a PDF" %>
     <%= f.button :submit %>
   </div>
 <% end %>

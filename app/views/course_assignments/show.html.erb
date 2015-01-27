@@ -24,7 +24,8 @@
     	</div>
     </div>
 
-<% if current_user.enrolled? %>
+<%# this needs to be refactored %>
+<% if current_user.in?(@course_assignment.course_session.users) %>
     <div class="col-md-4">
         <div class="well">
             <%= link_to "Add a response!", new_assignment_response_path, class: "btn btn-info"%>

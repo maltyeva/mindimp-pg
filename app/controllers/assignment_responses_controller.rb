@@ -7,6 +7,8 @@ class AssignmentResponsesController < ApplicationController
   before_filter :require_login
   before_filter :require_admin, only: [:edit, :index, :update]
 
+  
+
   def index
     @assignment_responses = AssignmentResponse.all
     respond_with(@assignment_responses)
