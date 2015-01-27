@@ -1,5 +1,9 @@
 <h1>Book Directory</h1>
 
+
+<%= will_paginate @books %>
+
+
 <table id="table_users" class="datatable-wide table table-striped table-bordered">
   <thead>
   <tr>
@@ -36,6 +40,8 @@
   <% end %>
   </tbody>
 </table>
+
+<%= will_paginate @books %>
 
 
 <br>

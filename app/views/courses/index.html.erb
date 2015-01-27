@@ -1,5 +1,6 @@
 <h1>Courses</h1>
 
+<%= will_paginate @courses %>
 
 
 <table id="table_courses" class="datatable-wide table table-striped table-bordered">
@@ -27,6 +28,9 @@
   </tbody>
 </table>
 <br>
+
+<%= will_paginate @courses %>
+
 
 
 <% if current_user.is_admin? %>
