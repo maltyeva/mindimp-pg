@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   authenticates_with_sorcery!
 
-  #associasions
+  #associations
   has_and_belongs_to_many :course_sessions, join_table: :students_sessions
   has_many :assignment_responses
 
@@ -25,14 +25,10 @@ class User < ActiveRecord::Base
                     length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX }
 
+  validates :password, length: { minimum: 6 }, confirmation: true, :on => :create 
+  validates :password_confirmation, presence: true, :on => :create 
 
-
-  validates :password, length: { minimum: 6 }
-  validates :password, confirmation: true
-  validates :password_confirmation, presence: true
-
-
-  #creates profile pic. 
+  #this creates the profile pic. 
   has_attached_file :profile_photo, 
                     :styles => { :medium => "300x300>", :thumb => "50x50>" }, 
                     :default_url => "/images/:style/missing.png"
@@ -43,13 +39,19 @@ class User < ActiveRecord::Base
 
 
 
+
+  #not sure if using this yet. Let's keep this for now. 
   royce_roles %w[ user admin superadmin ] 
 
-
+  #helper method to set the full username 
   def name
      [((nick_name.nil? || nick_name.length == 0) ? first_name : nick_name), last_name].join(" ")
   end
 
+
+  def password_required?
+    password.present? || password_confirmation.present? || !external? || email_changed?
+  end
 
   private
 
