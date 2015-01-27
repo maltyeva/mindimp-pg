@@ -1,16 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @course.title %></h1>
+<h1><%= @course.title + " | " + @course.abbreviation %></h1>
 
 <div class="row">
     <div class="col-md-8">
         <div class="well">
-        <dt> Abbreviation: </dt>
-        <dd><%= @course.abbreviation %></dd>
-        <dt> Number of Meetings: </dt>
-        <dd><%= @course.session_no %></dd>
-        <dt> Subject Area: </dt>
-        <dd><%= link_to @course.course_category.title, course_category_path(@course.course_category) %></dd>
+            <dt>Description: </dt>
+            <dd><%= @course.description %></dd>
+            <dt> Subject Area: </dt>
+            <dd><%= link_to @course.course_category.title, course_category_path(@course.course_category) %></dd>
         </div>
         <div class="well">
             <% unless @course.book_category.nil? %>
@@ -19,14 +17,14 @@
             <%= link_to b.title, b %>
             <% end %>
             <% else %>
-            There are no books on this syllabus.
+            There is no book list for this class.
             <% end %>
         </div>
     </div>
     <div class="col-md-4">
         <div class="well">
-        <dt>Description: </dt>
-        <dd><%= @course.description %></dd>
+        <dt> Class Duration: </dt>
+        <dd><%= @course.session_no %> weeks</dd>
         <dt>Syllabus:</dt>
         <% unless @course.syllabus.nil? %>
             <dd><%= link_to "Download here", @course.syllabus.url, target: "_blank" %></dd>

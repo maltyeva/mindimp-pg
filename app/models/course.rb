@@ -1,9 +1,14 @@
 class Course < ActiveRecord::Base
 
+	#The Associations involved with course
 	belongs_to :course_category
 	belongs_to :book_category
 	has_many :course_sessions
+
+	#validations
 	validates_presence_of :title, :abbreviation, :description, :session_no, :course_category
+	validates_uniqueness_of :title, :abbreviation
+
 
 	#creating the syllabus attachment
 	has_attached_file :syllabus 
