@@ -6,16 +6,13 @@ class Book < ActiveRecord::Base
 
   
 	validates_presence_of :title, :author, :description 
-	validates_uniqueness_of :title, :description
-
+	validates_uniqueness_of :title
 
 #creates cover photo 
   has_attached_file :cover, 
                     :styles => { :medium => "300x300>", :thumb => "50x50>" }, 
                     :default_url => "/images/:style/book_missing.png"
-                    # :storage => :dropbox,
-                    # :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
-                    # :dropbox_options => {...}
+                    # :storage => :s3
 
 
   validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/

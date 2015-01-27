@@ -9,7 +9,7 @@
     <div class="col-md-8">
         <div class="well">
         	<dd>Assignment no. <%= @course_assignment.number%></dd>
-        	<dt>Description: </dt>
+        	<dt>Guidelines: </dt>
         	<dd><%= @course_assignment.description %></dd>
         	<dt>Type: </dt>
         	<dd><%= @course_assignment.format %></dd>
@@ -31,14 +31,31 @@
             <%= link_to "Add a response!", new_assignment_response_path, class: "btn btn-info"%>
         </div>
     </div>
-<% end %>
-    
+<% end %>   
 </div>
 
-<% if current_user.is_admin? %>
-<h3>Responses: </h3>
 <div class="row">
     <div class="col-md-8">
+       <h3>Responses: </h3>
+        <div class="well">
+            <% if @course_assignment.visible?%>
+            <% @course_assignment.assignment_responses.each do |r| %>
+            <dd><div class="well">
+                <%= r.user.name + ": " + r.text  %> 
+            </div></dd>
+            <% end %>
+            <% else %> 
+             There are no public responses for this assignment. 
+            <% end %>
+        </div>
+    </div>
+</div>
+
+
+<% if current_user.is_admin? %>
+<div class="row">
+    <div class="col-md-8">
+        <h3> Graded Responses: </h3>
         <div class="well">
             <% @course_assignment.assignment_responses.each do |r| %>
             <li><%= link_to r.user.name, r %> | 
@@ -57,6 +74,6 @@
 
 </br>
 <% if current_user.is_admin? %>
-<%= link_to 'Edit', edit_course_assignment_path(@course_assignment) %> |
+<%= link_to 'Edit Assignment', edit_course_assignment_path(@course_assignment) %> |
 <%= link_to 'Back', course_assignments_path %>
 <% end %>

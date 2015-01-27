@@ -47,6 +47,6 @@ class CourseAssignmentsController < ApplicationController
 
     def course_assignment_params
       params.require(:course_assignment).permit(:title, :description, :description, :format, 
-                                                :due_date, :course_session_id, :number)
+                                                :due_date, :course_session_id, :number, :visible)
     end
 end

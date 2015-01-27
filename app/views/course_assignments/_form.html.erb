@@ -8,9 +8,10 @@
   	<%= f.association :course_session, label_method: :full_title, value_method: :id %>
   	<%= f.input :number %>
   	<%= f.input :title %>
-    <%= f.input :description %>
+    <%= f.input :description, :label => "Guidelines: " %>
     <%= f.input :format %>
     <%= f.input :due_date %>
+    <%= f.input :visible, :label => "Responses visible to students", :hint => "Check if you want students to see each other's responses." %>
     <%= f.button :submit %>
   </div>
 <% end %>
