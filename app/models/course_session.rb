@@ -5,7 +5,7 @@ class CourseSession < ActiveRecord::Base
 	belongs_to :course_period
 	has_many :course_assignments
     has_and_belongs_to_many :users, join_table: :students_sessions
-   # has_one :instructor
+    #has_one :instructor, :through => :users  , :conditions => ['user.is_admin = ?', true]
 
 
 

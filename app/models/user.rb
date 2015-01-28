@@ -41,13 +41,12 @@ class User < ActiveRecord::Base
 
 
   #not sure if using this yet. Let's keep this for now. 
-  royce_roles %w[ user admin superadmin ] 
+  royce_roles %w[ user instructor ] 
 
   #helper method to set the full username 
   def name
      [((nick_name.nil? || nick_name.length == 0) ? first_name : nick_name), last_name].join(" ")
   end
-
 
   def password_required?
     password.present? || password_confirmation.present? || !external? || email_changed?
@@ -64,7 +63,6 @@ class User < ActiveRecord::Base
   def User.new_token
     SecureRandom.urlsafe_base64
   end
-
 
   # Returns the hash digest of the given string.
   def User.digest(string)
@@ -84,7 +82,6 @@ class User < ActiveRecord::Base
     return false if digest.nil?
     BCrypt::Password.new(digest).is_password?(token)
   end
-
 
   
 end
