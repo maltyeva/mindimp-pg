@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
   respond_to :html
 
   def index
-    @courses = Course.all.paginate(page: params[:page], per_page: 10)
+    @courses = Course.all
     respond_with(@courses)
   end
 

@@ -8,7 +8,7 @@ class BooksController < ApplicationController
   respond_to :html
 
   def index
-    @books = Book.all.paginate(page: params[:page], per_page: 10)
+    @books = Book.all
     respond_with(@books)
   end
 
