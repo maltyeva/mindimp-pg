@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
 
-
+  #things related to assignments
   resources :assignment_responses
   resources :course_assignments
-
 
   #things related to courses
   resources :course_periods
@@ -32,8 +31,8 @@ Rails.application.routes.draw do
 
   resources :account_activations, only: [:edit]
 
- 
 
+  #static pages
   get '/about'    => 'high_voltage/pages#show', id: 'about'
   get '/contact'  => 'high_voltage/pages#show', id: 'contact'
   get '/privacy'  => 'high_voltage/pages#show', id: 'privacy'
@@ -42,9 +41,14 @@ Rails.application.routes.draw do
   get '/student_portal'    => 'high_voltage/pages#show', id: 'student_portal'
   get '/admin_portal'    => 'high_voltage/pages#show', id: 'admin_portal'
 
-
+  #home route
   get '/home', to: redirect('/')
   root :to => 'high_voltage/pages#show', id: 'home'
+
+   # error pages
+  %w( 404 422 500 503 ).each do |code|
+    get code, :to => "errors#show", :code => code
+  end
 
 
 
