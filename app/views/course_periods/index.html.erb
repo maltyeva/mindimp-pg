@@ -11,23 +11,17 @@
   <tr>
     <th>Title </th>
     <th>Year </ht>
-
   </tr>
   </thead>
+
   <tbody>
   <% for course_period in @course_periods %>
     <td><%= link_to course_period.title, course_period %><%= course_period.active? ? " (active)" : course_period.upcoming? ? " (upcoming)" : " (past)" %></td>
     <td><%= link_to course_period.year, course_period %></td>
-    <% if current_user.is_admin? %>
-    <td><%= link_to 'Edit', edit_course_period_path(course_period) %></td>
-  <td><%= link_to 'Destroy', course_period, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <% end %> 
-
-    </tr>
+  </tr>
   <% end %>
   </tbody>
 </table>
-<br>
 
 
 

@@ -60,6 +60,7 @@
 
 <% if current_user.is_admin? %>
 <%= link_to 'New Discussion Question', new_discussion_question_path %> | 
-<%= link_to 'Edit Book', edit_book_path(@book) %> 
+<%= link_to 'Edit Book', edit_book_path(@book) %> | 
+<%= link_to 'Destroy Book', @book, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %></br>
 <%= link_to 'Back', books_path %>

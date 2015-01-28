@@ -29,4 +29,5 @@
 
 
 <%= link_to 'Edit', edit_course_period_path(@course_period) %> |
+<%= link_to 'Destroy Academic Term', @course_period, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', course_periods_path %>

@@ -4,21 +4,15 @@
 
 <table id="table_course_sessions" class="datatable-wide table table-striped table-bordered">
   <thead>
-  <tr>
-    <th>Course </th>
-    <th>Session Name </ht>
-
-  </tr>
+    <tr>
+      <th>Course </th>
+      <th>Session Name </ht>
+    </tr>
   </thead>
   <tbody>
   <% for course_session in @course_sessions %>
     <td><%= link_to course_session.course.title, course_session %></td>
     <td><%= link_to course_session.title, course_session %></td>
-    <% if current_user.is_admin? %>
-    <td><%= link_to 'Edit', edit_course_session_path(course_session) %></td>
-  <td><%= link_to 'Destroy', course_session, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <% end %> 
-
     </tr>
   <% end %>
   </tbody>
