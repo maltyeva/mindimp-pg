@@ -30,14 +30,19 @@ gem 'spring',        group: :development
 
 gem 'high_voltage'
 
+#ui things
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
+gem 'simple_form'
+gem 'jquery-datatables-rails', '~> 3.1.1'
+#pagination - duh
+gem 'will_paginate',           '3.0.7'
+gem 'bootstrap-will_paginate', '0.0.10'
+
 
 #user authentication
 gem 'sorcery'
-
-gem 'simple_form'
 
 #user permissions -- are we using this?
 gem 'royce'
@@ -50,13 +55,8 @@ gem "paperclip", "~> 4.2"
 gem 'aws-sdk'
 gem 'nokogiri'
 
-
 #user authentication - should I use this? 
 gem 'devise'
-
-#pagination - duh
-gem 'will_paginate',           '3.0.7'
-gem 'bootstrap-will_paginate', '0.0.10'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'

@@ -13,6 +13,7 @@
  *= require bootstrap_and_overrides
  *= require bootstrap.min
  *= require_tree .
+ *= require dataTables/jquery.dataTables
  *= require_self
  */
  @font-face {
