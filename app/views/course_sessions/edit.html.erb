@@ -1,6 +1,7 @@
-<h1>Editing <%= @course_session.course.title + ", " + @course_session.title %></h1>
+<h1>Editing <%= @course_session.full_title %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @course_session %> |
-<%= link_to 'Back', course_sessions_path %>
+<br>
+<%= link_to 'Back to Course Session', @course_session %> |
+<%= link_to 'Back to Course Session List', course_sessions_path %>

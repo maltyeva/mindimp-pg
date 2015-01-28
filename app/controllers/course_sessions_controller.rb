@@ -1,7 +1,7 @@
 class CourseSessionsController < ApplicationController
   before_action :set_course_session, only: [:show, :edit, :update, :destroy]
 
-
+  before_filter :require_login
   before_filter :require_admin, only: [:index, :edit, :update, :destroy, :new]
 
   respond_to :html
