@@ -1,5 +1,8 @@
 <h1><%= @user.first_name + " " + (!@user.nick_name.blank? ? "(#{@user.nick_name}) " : "") + @user.last_name %></h1>
 <h4><%= @user.email %></h4>
+<% if current_user.is_admin? %>
+<%= render 'follow_form' %> 
+<% end %>
 
 
 <p id="notice"><%= notice %></p>
@@ -80,9 +83,7 @@
 <section id="follow">
 <h3>Followers</h3>
      <div class="well">
-<!--renders the follows. needs refactoring -->
         <%= render 'follow_stats' %> </br>
-        <%= render 'follow_form' %>  
     </div>
 
 </section>
