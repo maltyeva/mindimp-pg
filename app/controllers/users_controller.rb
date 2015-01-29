@@ -4,12 +4,8 @@ class UsersController < ApplicationController
   before_filter :require_login
   skip_before_filter :require_login, only: [:new, :create]
 
-  before_filter :require_admin, :only => :index
+  before_filter :require_admin, only: [:index, :following, :followers]
   before_filter :correct_user, only: [:edit, :update] 
-
- # before_filter :skip_password_attribute, only: :update
-
-
 
   # GET /users
   # GET /users.json
@@ -84,6 +80,21 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  #Methods for followiing
+  def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
   end
 
   private

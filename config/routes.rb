@@ -31,6 +31,14 @@ Rails.application.routes.draw do
 
   resources :account_activations, only: [:edit]
 
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
+  resources :relationships,       only: [:create, :destroy]
+
 
   #static pages
   get '/about'    => 'high_voltage/pages#show', id: 'about'
@@ -45,7 +53,7 @@ Rails.application.routes.draw do
   get '/home', to: redirect('/')
   root :to => 'high_voltage/pages#show', id: 'home'
 
-   # error pages
+  # error pages
   %w( 404 422 500 503 ).each do |code|
     get code, :to => "errors#show", :code => code
   end

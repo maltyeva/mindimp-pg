@@ -13,6 +13,7 @@
     <li><a href="#class">Class Information</a></li>
     <li><a href="#assessments">Assessments</a></li>
     <% if current_user.is_admin? %>
+      <li><a href="#follow">Followers</a></li>
       <li><a href="#admin">Admin Settings</a></li>
     <% end %>
   </ul>
@@ -73,6 +74,21 @@
         There are no assessments at this time. 
     </div>
 </section>
+
+
+
+<section id="follow">
+<h3>Followers</h3>
+     <div class="well">
+<!--renders the follows. needs refactoring -->
+        <%= render 'follow_stats' %> </br>
+        <%= render 'follow_form' %>  
+    </div>
+
+</section>
+
+
+
 
 
 <section id="admin">
