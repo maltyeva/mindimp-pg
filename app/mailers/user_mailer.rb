@@ -1,35 +1,44 @@
 class UserMailer < ActionMailer::Base
   default from: "info@mindimp.com"
 
-
- def welcome_email(user)
+  # Subject can be set in your I18n file at config/locales/en.yml
+  # with the following lookup:
+  #
+  #   en.user_mailer.activation_needed_email.subject
+  #
+  def activation_needed_email(user)
     @user = user
-    @url  = 'http://mindimp.com/login'
-    email_with_name = %("#{@user.first_name}" <#{@user.email}>)
-    mail(to: email_with_name, 
-    	 subject: 'Welcome to your MindImp Account!')
+        if Rails.env.production?
+          @url  = "http://www.app.mindimp.com/users/#{user.activation_token}/activatelogin"
+      else
+          # Our dev & test URL
+          @url  = "http://localhost:3000/users/#{user.activation_token}/activate"
+      end
+    mail(:to => user.email,
+       :subject => "Welcome to MindImp!")
+
   end
 
+  def activation_success_email(user)
+    @user = user
+    if Rails.env.production?
+          @url  = "http://www.app.mindimp.com/login"
+      else
+          # Our dev & test URL
+          @url  = "http://localhost:3000/login"
+      end
+    mail(:to => user.email,
+       :subject => "Your account is now activated")
+  end
+
+
+
+  # email_with_name = %("#{@user.first_name}" <#{@user.email}>)
+  # mail(to: email_with_name, 
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
-  #   en.user_mailer.account_activation.subject
+  #   en.user_mailer.activation_success_email.subject
   #
-  def account_activation(user)
-    @user = user
-    mail to: user.email, subject: "Please activate your MindImp account."
-  end
-
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.password_reset.subject
-  #
-  def password_reset
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
-  end
-
 end

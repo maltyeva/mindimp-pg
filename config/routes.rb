@@ -39,6 +39,13 @@ Rails.application.routes.draw do
   resources :relationships,       only: [:create, :destroy]
 
 
+  resources :users do
+    member do
+      get :activate
+    end
+  end
+
+
   #static pages
   get '/about'    => 'high_voltage/pages#show', id: 'about'
   get '/contact'  => 'high_voltage/pages#show', id: 'contact'

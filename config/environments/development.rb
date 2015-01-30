@@ -14,10 +14,21 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :test
-  host = 'localhost:3000'
-  config.action_mailer.default_url_options = { host: host }
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.smtp_settings = {
+      :address              => "smtp.gmail.com",
+      :port                 => "587",
+      :domain               => "localhost:3000",
+      :authentication       => "plain",
+      :user_name            => ENV['GMAIL_USERNAME'],
+      :password             => ENV['GMAIL_PASSWORD'],
+      :enable_starttls_auto => true,
+      :ssl => true
+    }
+
 
 
   # Print deprecation notices to the Rails logger.
@@ -41,15 +52,7 @@ Rails.application.configure do
 
   #setting up Paperclip with Imagemagick
   Paperclip.options[:command_path] = "/usr/local/bin/"
- #using Amazon cloud storage
-  # config.paperclip_defaults = {
-  #   :storage => :s3,
-  #   :s3_protocol => 'http',
-  #   :bucket => ENV['AWS_BUCKET'],
-  #   :s3_credentials => {
-  #     :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-  #     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-  #   }
-  # }
+  #using Amazon cloud storage on production only -- not development. 
+
 
 end

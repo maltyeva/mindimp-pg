@@ -16,8 +16,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
 
 
-
-  #simple user validations
+  #user validations
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: { maximum: 50 }
 
@@ -28,7 +27,7 @@ class User < ActiveRecord::Base
                     length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX }
 
-  #this takes care of passwrds on update                  
+  #this takes care of passwords on update                  
   validates :password, length: { minimum: 6 }, confirmation: true, if: ->(record) { record.new_record? || record.password.present? || record.password_confirmation.present?  }
   validates :password_confirmation, presence: true, :on => :create 
 

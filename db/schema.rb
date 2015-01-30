@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129021838) do
+ActiveRecord::Schema.define(version: 20150130020416) do
 
   create_table "assignment_responses", force: true do |t|
     t.text     "text"
@@ -157,30 +157,32 @@ ActiveRecord::Schema.define(version: 20150129021838) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                                      null: false
-    t.string   "crypted_password",                           null: false
-    t.string   "salt",                                       null: false
+    t.string   "email",                                       null: false
+    t.string   "crypted_password",                            null: false
+    t.string   "salt",                                        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "nick_name"
     t.integer  "age"
-    t.boolean  "is_admin",                   default: false
-    t.boolean  "is_student",                 default: true
+    t.boolean  "is_admin",                    default: false
+    t.boolean  "is_student",                  default: true
     t.string   "profile_photo_file_name"
     t.string   "profile_photo_content_type"
     t.integer  "profile_photo_file_size"
     t.datetime "profile_photo_updated_at"
     t.string   "activation_digest"
-    t.boolean  "activated"
-    t.datetime "activated_at"
     t.datetime "last_login"
     t.string   "hometown"
     t.string   "high_school"
     t.text     "bio"
+    t.string   "activation_state"
+    t.string   "activation_token"
+    t.datetime "activation_token_expires_at"
   end
 
+  add_index "users", ["activation_token"], name: "index_users_on_activation_token", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end
