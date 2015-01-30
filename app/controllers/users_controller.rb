@@ -49,7 +49,7 @@ class UsersController < ApplicationController
         #UserMailer.account_activation(@user).deliver!
         # format.html { redirect_to :root, notice: 'Please check your email to activate your account.' }
         #log_in @user
-        format.html { redirect_to :root, notice: 'Welcome to MindImp!' }
+        format.html { redirect_to :root, notice: 'Thank you for creating your MindImp Account! Please check your email for more details.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
