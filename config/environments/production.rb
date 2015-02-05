@@ -65,12 +65,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :enable_starttls_auto => true,
-    :address => "smtp.gmail.com",
-    :port => 587,
-    :domain => "gmail.com",
-    :authentication => :login,
-    :user_name => "user@myapp.com",
-    :password => "mypassword"
+    :address => "email-smtp.us-west-2.amazonaws.com",
+    :port => "465",
+    :domain => "www.dry-citadel-6111.herokuapp.com",
+    :authentication => :plain,
+    :user_name            => ENV["SMTP_USERNAME"],
+    :password             => ENV["SMTP_PASSWORD"],
+    :tsl                  => true
   }
 
 

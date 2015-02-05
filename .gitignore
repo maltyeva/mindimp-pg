@@ -14,3 +14,10 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+
+# Ignore the certs
+/certs
+
+#Ignore the secret passwords
+/config/initializers/app_env_vars.rb

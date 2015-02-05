@@ -4,6 +4,7 @@ development:
   reconnect: false
   database: mindimp_development
   pool: 5
+  timeout: 5000
   username: root
   password:
   host: localhost
@@ -25,6 +26,7 @@ production:
   encoding: unicode
   reconnect: false
   database: mindimp_production
+  timeout: 5000
   pool: 5
   username: postgres
   password:
