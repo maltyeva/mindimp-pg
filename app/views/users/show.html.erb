@@ -61,7 +61,8 @@
         <% else %>
         <ul class="users">
         <% @user.course_sessions.where(active: true).each do |c| %>
-        <%= link_to c.course.title, course_path(c.course) %> <%=link_to c.title, course_session_path(c) %> </br>
+        <%= c.course_period.title %>: </br>
+        <%= link_to c.full_title, course_session_path(c) %> </br>
         <% end %>
         </ul>
         <% end %>
@@ -73,30 +74,38 @@
 
 <section id="assessments">
 <h3>Assessments</h3>
+<div class="row">
+    <div class="col-md-8">
      <div class="well">
         There are no assessments at this time. 
     </div>
+</div>
+</div>
 </section>
 
 
 
 <section id="follow">
 <h3>Followers</h3>
+<div class="row">
+    <div class="col-md-8">
      <div class="well">
         <%= render 'follow_stats' %> </br>
     </div>
-
+</div>
+</div>
 </section>
 
 
 
 <section id="admin">
+    <div class="row">
+    <div class="col-md-8">
     <h3>Administrator Settings</h3>
          <div class="well">
         <% if current_user.is_admin? %>
         <dt>Administrator</dt>
         <dd><%= @user.is_admin %></dd>
-
         <dt>Student</dt>
         <dd><%= @user.is_student %></dd>
         <dt>Last Logged In: </dt>
@@ -108,6 +117,8 @@
          <% end %>
         <% end %>
     </div>
+</div>
+</div>
 </section>
 
 
