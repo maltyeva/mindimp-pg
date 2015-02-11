@@ -17,7 +17,7 @@
     <li><a href="#assessments">Assessments</a></li>
     <% if current_user.is_admin? %>
       <li><a href="#follow">Followers</a></li>
-      <li><a href="#admin">Admin Settings</a></li>
+      <li><a href="#admin">Settings</a></li>
     <% end %>
   </ul>
 </div>
@@ -97,17 +97,20 @@
 </section>
 
 
-
+<% if current_user.is_admin? %>
 <section id="admin">
     <div class="row">
     <div class="col-md-8">
-    <h3>Administrator Settings</h3>
+    <h3>Settings</h3>
          <div class="well">
-        <% if current_user.is_admin? %>
         <dt>Administrator</dt>
         <dd><%= @user.is_admin %></dd>
         <dt>Student</dt>
         <dd><%= @user.is_student %></dd>
+        <dt>Skype ID</dt>
+        <dd><%= @user.skype_id %></dd>  
+        <dt>Phone Number</dt>
+        <dd><%= @user.phone %></dd>      
         <dt>Last Logged In: </dt>
         <%# this takes care of displaying in China Standard Time %>
         <% if @user.last_login.nil? %>

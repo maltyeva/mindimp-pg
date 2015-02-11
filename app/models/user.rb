@@ -41,10 +41,16 @@ class User < ActiveRecord::Base
   validates_with AttachmentSizeValidator, :attributes => :profile_photo, :less_than => 1.megabytes
 
 
-
-
   #not sure if using this yet. Let's keep this for now. 
   royce_roles %w[ user instructor ] 
+
+
+
+  #ok, let's define the scopes here
+ scope :instructor, lambda { where('is_admin= ?', 'true') }
+
+
+
 
   #helper method to set the full username 
   def name

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150205083800) do
+ActiveRecord::Schema.define(version: 20150211035035) do
 
   create_table "assignment_responses", force: true do |t|
     t.text     "text"
@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 20150205083800) do
     t.string   "title"
     t.string   "time"
     t.string   "duration"
-    t.string   "instructor"
     t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -117,6 +116,12 @@ ActiveRecord::Schema.define(version: 20150205083800) do
     t.text     "question"
     t.integer  "question_number"
     t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "instructors", force: true do |t|
+    t.integer  "course_session_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -182,6 +187,9 @@ ActiveRecord::Schema.define(version: 20150205083800) do
     t.datetime "activation_token_expires_at"
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
+    t.string   "type"
+    t.string   "skype_id"
+    t.string   "phone"
   end
 
   add_index "users", ["activation_token"], name: "index_users_on_activation_token", using: :btree
