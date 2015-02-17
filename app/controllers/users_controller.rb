@@ -61,6 +61,9 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    if @user.is_admin == true
+      @user.type = "Instructor"
+    end
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'Successfully updated profile.' }
