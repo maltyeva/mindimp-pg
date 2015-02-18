@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     #@users = User.all
-    @users = User.paginate(page: params[:page], per_page: 10)
+    @users = User.paginate(page: params[:page], per_page: 10).where(:type => params[:type])
   end
 
   def student_list
@@ -32,6 +32,8 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @user.type = params[:type]
+
   end
 
   # GET /users/1/edit
@@ -60,10 +62,7 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
-  def update
-    if @user.is_admin == true
-      @user.type = "Instructor"
-    end
+  def update    
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'Successfully updated profile.' }

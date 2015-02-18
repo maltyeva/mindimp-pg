@@ -45,7 +45,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :instructors, controller: 'users', type: 'Instructor'
+  resources :instructors, :controller => "users", :type => 'Instructor'
 
 
 
