@@ -10,8 +10,8 @@
     <%= f.association :course_period, :label => "Academic Term" %>
     <%= f.input :time, :label => "Class Meeting Time" %>
     <%= f.input :duration, :label => "Class Time Duration" %>
-    <%= f.association :instructor, label_method: :name, include_blank: false %>
-    <%= f.input :active, :hint => "Check if the class is currently ongoing" %>
+    <%#= f.association :instructor, label_method: :name, include_blank: false %>
+    <%= f.input :active, :hint => "Check the box if the class is currently ongoing" %>
     <%= f.association :users, label_method: :name, value_method: :id, include_blank: false, as: :check_boxes, :label => "Students" %>
     <%= f.button :submit %>
   </div>

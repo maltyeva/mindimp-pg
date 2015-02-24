@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211035035) do
+ActiveRecord::Schema.define(version: 20150224022024) do
 
   create_table "assignment_responses", force: true do |t|
     t.text     "text"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20150211035035) do
     t.integer  "course_period_id"
     t.boolean  "active"
     t.integer  "instructor_id"
+    t.string   "instructor_name"
   end
 
   create_table "courses", force: true do |t|
@@ -187,7 +188,6 @@ ActiveRecord::Schema.define(version: 20150211035035) do
     t.datetime "activation_token_expires_at"
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
-    t.string   "type"
     t.string   "skype_id"
     t.string   "phone"
   end

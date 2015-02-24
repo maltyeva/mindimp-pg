@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     #@users = User.all
-    @users = User.paginate(page: params[:page], per_page: 10).where(:type => params[:type])
+    @users = User.paginate(page: params[:page], per_page: 10) #.where(:type => params[:type])
   end
 
   def student_list
@@ -33,11 +33,11 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @user.type = params[:type]
-
   end
 
   # GET /users/1/edit
   def edit
+    @user.type = params[:type]
   end
 
   # POST /users
