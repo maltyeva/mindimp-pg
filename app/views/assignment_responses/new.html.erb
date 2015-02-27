@@ -1,13 +1,17 @@
 <h1>New Response</h1>
 
-<%= simple_form_for(@assignment_response) do |f| %>
+<p><dt>Submitted by:</dt>  <%= current_user.name %></p>
+<p><dt>Assignment:</dt>
+<dd><%=@course_assignment.title + ": " + @course_assignment.description %><dd></p>
+
+<%= simple_form_for([@course_assignment, @assignment_response]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
   </div>
 
   <div class="form-actions">
-  	<%= f.association :course_assignment, :label => "Assignment" %>
+  	<%#= f.association :course_assignment, :label => "Assignment" %>
   	<%= f.input :text, :hint => "If you are uploading an attachment, please mention it here." %>
   	<%= f.input :attachment, :hint => "Please upload a PDF" %>
     <%= f.button :submit %>

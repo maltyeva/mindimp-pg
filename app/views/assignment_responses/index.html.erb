@@ -1,23 +1,39 @@
-<h1>Listing assignment_responses</h1>
+<h1>All Responses to <%= @course_assignment.title + " (" + @course_assignment.course_session.full_title + ")"%></h1>
 
-<table>
+
+<table id="table_responses" class="datatable-wide table table-striped table-bordered">
   <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <tr>
+    <th>Student </th>
+    <th>Response</th>
+    <th>Grade </th>
+    <th>Comments</th>
+    <th>Submitted</th>
 
+
+  </tr>
+  </thead>
   <tbody>
-    <% @assignment_responses.each do |assignment_response| %>
-      <tr>
-        <td><%= link_to 'Show', assignment_response %></td>
-        <td><%= link_to 'Edit', edit_assignment_response_path(assignment_response) %></td>
-        <td><%= link_to 'Destroy', assignment_response, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <% for r in @assignment_responses %>
+    <td><%= link_to r.user.name, user_path(r.user)%></td>
+    <td><%= link_to "Click to View", course_assignment_assignment_response_path(@course_assignment, r) %></td>
+    <% if r.grade.nil? %>
+        <td>This assignment hasn't been graded.</td>
+    <% else %>
+        <td><%= link_to r.grade, course_assignment_assignment_response_path(@course_assignment, r) %></td>
     <% end %>
+    <% if r.comments.nil? %>
+        <td>None</td>
+    <% else %>
+    <td><%= link_to r.comments, course_assignment_assignment_response_path(@course_assignment, r) %></td>
+    <% end %>
+    <td><%= link_to (r.submitted + 28800).strftime('%B %e, %Y %l:%M %p'), course_assignment_assignment_response_path(@course_assignment, r) %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Assignment response', new_assignment_response_path %>
+
+<br>
+<%= link_to 'Back to Assignment', course_assignment_path(@course_assignment) %>

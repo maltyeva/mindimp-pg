@@ -1,0 +1,15 @@
+<p><dt>Discussion Question:</dt>
+<dd><%=@discussion_question.question %><dd></p>
+
+<%= simple_form_for([@discussion_question, @discussion_response]) do |f| %>
+
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  </div>
+
+  <div class="form-actions">
+  	<%= f.input :response %>
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<div class="well">
+	<dt>Book: </dt>
+	<dd><%= @discussion_question.book.title%></dd>
+	<dt>Question:</dt>
+	<dd><%= @discussion_question.question %></dd>
+	<dt>Response</dt>
+	<dd><%= @discussion_response.response %></dd>
+	<hr />
+	<dt>Submitted:<dt>
+	<dd><%=(@discussion_response.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %><dd>
+	<dt>Submitted By:<dt>
+	<dd><%=@discussion_response.user.name %><dd>
+</div>
+
+<p>
+<%= link_to 'Edit', edit_discussion_question_discussion_response_path(@discussion_question, @discussion_response) %> |
+<%= link_to 'Back to responses', discussion_question_discussion_responses_path(@discussion_question) %> | 
+<%= link_to 'Back to book', book_path(@discussion_question.book) %>
+</p>
+

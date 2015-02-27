@@ -27,17 +27,16 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @responses = DiscussionResponse.where(user_id: @user.id)
   end
 
   # GET /users/new
   def new
     @user = User.new
-    @user.type = params[:type]
   end
 
   # GET /users/1/edit
   def edit
-    @user.type = params[:type]
   end
 
   # POST /users
@@ -94,8 +93,6 @@ class UsersController < ApplicationController
 end
 
 
-
-
   #Methods for followiing
   def following
     @title = "Following"
@@ -111,6 +108,30 @@ end
     render 'show_follow'
   end
 
+
+  def responses
+    @title = "Book Responses"
+    @user  = User.find(params[:id])
+    @responses = DiscussionResponse.where(user_id: @user.id)
+    render 'responses'
+  end
+
+
+  #adding a book to the book list
+  def add_book
+    @book = Book.find(params[:book])
+
+        @books_students = Book.where(:id => params[:book_category_id])
+
+    @user_books = []
+    current_user.follow(@user)
+    respond_to do |format|
+      format.html { redirect_to @user }
+      format.js
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -121,7 +142,7 @@ end
      params.require(:user).permit(:email, :password, :password_confirmation, :first_name, 
                                   :last_name, :nick_name, :age, :is_admin, :is_student, 
                                   :profile_photo, :last_login, :bio, :hometown, :high_school,
-                                  :phone, :skype_id)
+                                  :phone, :skype_id, :book_ids => [])
    end
 
   # Stores the URL trying to be accessed.

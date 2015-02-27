@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
 
   #things related to assignments
-  resources :assignment_responses
-  resources :course_assignments
+  resources :course_assignments do
+    resources :assignment_responses
+  end
 
   #things related to courses
   resources :course_periods
@@ -14,7 +15,10 @@ Rails.application.routes.draw do
   resources :courses
 
   #Things related to books
-  resources :discussion_questions
+  resources :discussion_questions do
+      resources :discussion_responses
+  end 
+  
   resources :books
   resources :book_categories
   get 'categories_table' => 'book_categories#table_index', :as => :categories_table
@@ -34,6 +38,7 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :following, :followers
+      get :responses
     end
   end
   resources :relationships,       only: [:create, :destroy]
@@ -45,7 +50,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :instructors, :controller => "users", :type => 'Instructor'
+  #resources :instructors, :controller => "users", :type => 'Instructor'
 
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150224022024) do
+ActiveRecord::Schema.define(version: 20150226083057) do
 
   create_table "assignment_responses", force: true do |t|
     t.text     "text"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 20150224022024) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "book_lists", force: true do |t|
+    t.integer  "watcher_id"
+    t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "book_lists", ["book_id"], name: "index_book_lists_on_book_id", using: :btree
+  add_index "book_lists", ["watcher_id", "book_id"], name: "index_book_lists_on_watcher_id_and_book_id", unique: true, using: :btree
+  add_index "book_lists", ["watcher_id"], name: "index_book_lists_on_watcher_id", using: :btree
 
   create_table "books", force: true do |t|
     t.string   "title"
@@ -117,6 +128,14 @@ ActiveRecord::Schema.define(version: 20150224022024) do
     t.text     "question"
     t.integer  "question_number"
     t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "discussion_responses", force: true do |t|
+    t.text     "response"
+    t.integer  "user_id"
+    t.integer  "discussion_question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

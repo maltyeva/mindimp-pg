@@ -1,0 +1,7 @@
+<h1>Add a Response to the Discussion Question  </h1>
+
+<p><dt>Submitted by:</dt>  <%= current_user.name %></p>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', book_path(@discussion_question.book) %>

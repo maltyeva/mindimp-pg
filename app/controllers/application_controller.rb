@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
 
     # Confirms the correct user.
   def correct_user
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
     redirect_to(root_url) unless current_user == @user || current_user.is_admin?
   end
 

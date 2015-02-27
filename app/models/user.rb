@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   #associations
   has_and_belongs_to_many :course_sessions, join_table: :students_sessions
   has_many :assignment_responses
+  has_many :discusson_responses
+
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
@@ -14,6 +16,12 @@ class User < ActiveRecord::Base
                                    dependent:   :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+
+  #these associations will set up the book lists
+  # has_many :book_lists, class_name: "BookList", 
+  #                          foreign_key: "book_id", 
+  #                          dependent: :destroy
+  # has_many :books, through: :book_lists
 
 
   #user validations
@@ -47,7 +55,7 @@ class User < ActiveRecord::Base
 
 
   #ok, let's define the scopes here
- scope :instructor, lambda { where('is_admin= ?', 'true') }
+  #scope :instructor, lambda { where('is_admin= ?', 'true') }
 
 
 

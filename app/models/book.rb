@@ -4,6 +4,12 @@ class Book < ActiveRecord::Base
 	has_and_belongs_to_many :book_categories, join_table: :books_categories
   has_many :discussion_questions
 
+  has_many :watching_users, class_name: "BookList", 
+                            foreign_key: "watcher_id", 
+                            dependent: :destroy
+  has_many :watchers, through: :watching_users, source: :watcher
+
+
   
 	validates_presence_of :title, :author, :description 
 	validates_uniqueness_of :title

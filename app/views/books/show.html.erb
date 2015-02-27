@@ -23,7 +23,11 @@
         <% @book.discussion_questions.each do |q|%>
          <div class="well">
          <%= q.question_number%>. <%= q.question %> 
-         <% if current_user.is_admin?%> <%= link_to "Edit", edit_discussion_question_path(q) %><% end %>
+         <dt><%= link_to "Respond", new_discussion_question_discussion_response_path(q)%> </dt>
+         <% if current_user.is_admin?%> 
+            <%= link_to "Edit Question", edit_discussion_question_path(q) %> | 
+            <%=link_to "View all responses", discussion_question_discussion_responses_path(q) %>
+         <% end %>
          </div>
          <% end %>
         <% end %>

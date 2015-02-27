@@ -1,0 +1,24 @@
+<h1>All Responses for <%= @discussion_question.book.title + ", question " + @discussion_question.question_number.to_s %> </h1>
+
+<table id="table_responses" class="datatable-wide table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th> Response </th>
+      <th> Student </th>
+      <th> Submitted </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% for d in @discussion_question.discussion_responses %>
+      <tr>
+      <td> <%= link_to d.response, discussion_question_discussion_response_path(@discussion_question, d)%></td>
+      <td> <%= d.user.name %>
+      <td><%=(d.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %><td>
+      <% end %>
+      </tr>
+  </tbody>
+</table>
+
+<br>
+

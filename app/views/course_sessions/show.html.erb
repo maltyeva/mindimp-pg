@@ -23,7 +23,7 @@
     <div class="col-md-8">
         <div class="well">
         <dt> Instructor </dt>
-        <dd><%= link_to @course_session.instructor.name, user_path(@course_session.instructor)%></dd>
+        <dd><%#= link_to @course_session.instructor.name, user_path(@course_session.instructor)%></dd>
         </div>
     </div>
     <div class="col-md-4">
@@ -56,7 +56,7 @@
                     <%= a.number%>. <%= link_to a.title, course_assignment_path(a) %> </br>
                     <%= a.description %></br>
                     <dt>Due:</dt><%= (a.due_date + 28800).strftime('%B %e, %Y')%>
-                     <% if current_user.is_admin?%> <%= link_to "(edit)", edit_course_assignment_path(a) %><% end %></div>
+                     <% if current_user.is_admin?%> <%= link_to "(edit assignment)", edit_course_assignment_path(a) %><% end %></div>
                      <% end %>
                      <% end %>
                 </div>

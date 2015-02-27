@@ -28,7 +28,7 @@
 <% if current_user.in?(@course_assignment.course_session.users) %>
     <div class="col-md-4">
         <div class="well">
-            <%= link_to "Add a response!", new_assignment_response_path, class: "btn btn-info"%>
+            <%= link_to "Add a response!", new_course_assignment_assignment_response_path(@course_assignment), class: "btn btn-info"%>
         </div>
     </div>
 <% end %>   
@@ -58,7 +58,7 @@
         <h3> Graded Responses: </h3>
         <div class="well">
             <% @course_assignment.assignment_responses.each do |r| %>
-            <li><%= link_to r.user.name, r %> | 
+            <li><%= link_to r.user.name, course_assignment_assignment_response_path(@course_assignment, r) %> | 
                 <%= (r.submitted + 28800).strftime('%B %e, %Y %l:%M %p') %>
             </li>
             <% end %>
