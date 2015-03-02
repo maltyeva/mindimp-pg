@@ -8,5 +8,4 @@ class DiscussionQuestion < ActiveRecord::Base
 
   	scope :visible, where(:visible => true)
 
-
 end

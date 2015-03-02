@@ -17,6 +17,7 @@ class DiscussionResponsesController < ApplicationController
 
   def show
     respond_with(@discussion_response)
+    @user = User.where(user_id: :comment_by)
   end
 
   def new
@@ -35,6 +36,7 @@ class DiscussionResponsesController < ApplicationController
   end
 
   def update
+    @discussion_response.update_attribute(:comment_by, current_user.id)
     @discussion_response.update(discussion_response_params)
     respond_with(@discussion_question, @discussion_response)
   end
@@ -56,6 +58,6 @@ class DiscussionResponsesController < ApplicationController
   end
 
     def discussion_response_params
-      params.require(:discussion_response).permit(:response, :user_id, :discussion_question_id, :comments)
+      params.require(:discussion_response).permit(:response, :user_id, :discussion_question_id, :comments, :comment_by)
     end
 end

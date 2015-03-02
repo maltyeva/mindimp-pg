@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(version: 20150302064605) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "comments"
+    t.integer  "comment_by"
   end
 
   create_table "instructors", force: true do |t|

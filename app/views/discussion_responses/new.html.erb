@@ -1,7 +1,20 @@
 <h1>Add a Response to the Discussion Question  </h1>
 
+<p><dt>Discussion Question:</dt>
+<dd><%=@discussion_question.question %><dd></p>
 <p><dt>Submitted by:</dt>  <%= current_user.name %></p>
 
-<%= render 'form' %>
+<%= simple_form_for([@discussion_question, @discussion_response]) do |f| %>
+
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  </div>
+
+  <div class="form-actions">
+  	<%= f.input :response %>
+    <%= f.button :submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Back', book_path(@discussion_question.book) %>

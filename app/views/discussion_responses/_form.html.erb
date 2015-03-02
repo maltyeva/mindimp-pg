@@ -1,5 +1,5 @@
-<p><dt>Discussion Question:</dt>
-<dd><%=@discussion_question.question %><dd></p>
+<p><dt>Comments By: </dt>
+<dd><%= current_user.name %><dd></p>
 
 <%= simple_form_for([@discussion_question, @discussion_response]) do |f| %>
 
@@ -9,7 +9,7 @@
   </div>
 
   <div class="form-actions">
-  	<%= f.input :response %>
+  	<%= f.input :comments %>
     <%= f.button :submit %>
   </div>
 <% end %>

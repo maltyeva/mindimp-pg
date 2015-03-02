@@ -1,4 +1,16 @@
-<h1>Editing Discussion Response</h1>
+<h1>Comment on the Discussion Response for "<%= @discussion_response.book %>"</h1>
+
+
+<div class="well">
+<dt>Submitted by:  </dt>
+<dd><%= @discussion_response.user.name %></dd>
+<hr />
+<dt> Question: </dt>
+<dd><%=@discussion_question.question %><dd></p>
+<dt> Response: </dt>
+<dd><%= @discussion_response.response %></dd>
+</div>
+
 
 <%= render 'form' %>
 
