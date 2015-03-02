@@ -15,6 +15,7 @@ class BooksController < ApplicationController
   def show
     respond_with(@book)
     #@category = Book.find
+    @book.discussion_questions = DiscussionQuestion.where(book_id: @book.id)
   end
 
   def new

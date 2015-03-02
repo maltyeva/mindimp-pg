@@ -56,6 +56,6 @@ class DiscussionResponsesController < ApplicationController
   end
 
     def discussion_response_params
-      params.require(:discussion_response).permit(:response, :user_id, :discussion_question_id)
+      params.require(:discussion_response).permit(:response, :user_id, :discussion_question_id, :comments)
     end
 end

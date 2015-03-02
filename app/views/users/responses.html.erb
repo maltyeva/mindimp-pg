@@ -1,3 +1,11 @@
+<h1><%= @title %></h1>
+
+<ul>
 <% @responses.each do |r| %>
-<%= r.response %>
+<li><%= r.response + ", submitted " + r.created_at.to_s %> <br/>(<%= r.discussion_question.book.title %>)  </li>
 <% end %>
+</ul>
+
+
+</br>
+<%= link_to "Back", user_path%>

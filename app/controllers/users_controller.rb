@@ -110,7 +110,7 @@ end
 
 
   def responses
-    @title = "Book Responses"
+    @title = "Reading Responses"
     @user  = User.find(params[:id])
     @responses = DiscussionResponse.where(user_id: @user.id)
     render 'responses'

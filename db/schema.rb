@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226083057) do
+ActiveRecord::Schema.define(version: 20150302064605) do
 
   create_table "assignment_responses", force: true do |t|
     t.text     "text"
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(version: 20150226083057) do
     t.integer  "book_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "visible",         default: false
   end
 
   create_table "discussion_responses", force: true do |t|
@@ -138,6 +139,7 @@ ActiveRecord::Schema.define(version: 20150226083057) do
     t.integer  "discussion_question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "comments"
   end
 
   create_table "instructors", force: true do |t|
