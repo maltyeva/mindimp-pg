@@ -78,21 +78,22 @@
 </section>
 
 
-<!-- <section id="books">
+ <section id="books">
     <h3>My Books</h3>
     <div class="row">
         <div class="col-md-8">
             <div class="well">
-                <dt> Total Discussion Questions Answered: <%#= @responses.count %></dt> </br>
+                <dt> Total Discussion Questions Answered: <%= @responses.count %></dt> </br>
+                <% unless @responses.empty? %>
                 <dt> Latest Discussion Question Submitted on: </dt>
-                <dd><%#= @responses.last.created_at %> for <%#= link_to @responses.last.discussion_question.book.title, book_path(@responses.last.discussion_question.book) %></dd>
+                <dd><%= @responses.last.created_at %> for <%= link_to @responses.last.discussion_question.book.title, book_path(@responses.last.discussion_question.book) %></dd>
                 <hr />
-                <%#= link_to "View All Responses", responses_user_path(@user) %>
+                <%= link_to "View All Responses", responses_user_path(@user) %>
+                <% end %>
             </div>
         </div>
     </div>
-</section> -->
-
+</section> 
 
 <section id="assessments">
 <h3>Assessments</h3>
