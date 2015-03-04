@@ -60,14 +60,14 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
   #config.action_mailer.smtp_settings = { port: 25 }
-  config.action_mailer.default_url_options = { :host => 'www.dry-citadel-6111.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'app.mindimp.com' }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :enable_starttls_auto => true,
     :address => "email-smtp.us-west-2.amazonaws.com",
     :port => "465",
-    :domain => "www.dry-citadel-6111.herokuapp.com",
+    :domain => "app.mindimp.com",
     :authentication => :plain,
     :user_name            => ENV["SMTP_USERNAME"],
     :password             => ENV["SMTP_PASSWORD"],
