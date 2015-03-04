@@ -1,5 +1,6 @@
-<h1><%= @user.first_name + " " + (!@user.nick_name.blank? ? "(#{@user.nick_name}) " : "") + @user.last_name %></h1>
-<h4><%= @user.email %></h4>
+<h1><%= @user.first_name + " " + (!@user.nick_name.blank? ? "(#{@user.nick_name}) " : "") + @user.last_name %> </h1> 
+
+<h4><%= @user.activation_state == "pending" ? "Pending Activation" : @user.email %></h4>
 <% if current_user.is_admin? %>
 <%= render 'follow_form' %> 
 <% end %>
@@ -76,6 +77,21 @@
 </div>      
 </section>
 
+
+<!-- <section id="books">
+    <h3>My Books</h3>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="well">
+                <dt> Total Discussion Questions Answered: <%= @responses.count %></dt> </br>
+                <dt> Latest Discussion Question Submitted on: </dt>
+                <dd><%= @responses.last.created_at %> for <%= link_to @responses.last.discussion_question.book.title, book_path(@responses.last.discussion_question.book) %></dd>
+                <hr />
+                <%#= link_to "View All Responses", responses_user_path(@user) %>
+            </div>
+        </div>
+    </div>
+</section> -->
 
 
 <section id="assessments">

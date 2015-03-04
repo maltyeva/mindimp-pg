@@ -24,7 +24,7 @@ class UserMailer < ActionMailer::Base
     if Rails.env.production?
           @url  = "https://dry-citadel-6111.herokuapp.com/login"
       else
-          # Our dev & test URLx
+          # Our dev & test URL
           @url  = "http://localhost:3000/login"
       end
     mail(:to => user.email,
