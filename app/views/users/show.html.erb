@@ -1,6 +1,7 @@
-<h1><%= @user.first_name + " " + (!@user.nick_name.blank? ? "(#{@user.nick_name}) " : "") + @user.last_name %> </h1> 
+<h1><%= @user.first_name + " " + (!@user.nick_name.blank? ? "(#{@user.nick_name}) " : "") + @user.last_name %> 
+<%= @user.activation_state == "pending" ? "| Pending Activation" : "" %> </h1> 
 
-<h4><%= @user.activation_state == "pending" ? "Pending Activation" : @user.email %></h4>
+<h4><%= @user.email %></h4>
 <% if current_user.is_admin? %>
 <%= render 'follow_form' %> 
 <% end %>

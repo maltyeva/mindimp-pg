@@ -8,7 +8,7 @@ module ApplicationHelper
   	def site_url
     	if Rails.env.production?
       		# Place your production URL in the quotes below
-      		"http://www.mindimp.com.cn"
+      		"http://www.app.mindimp.com"
     	else
       		# Our dev & test URL
       		"http://localhost:3000"

@@ -9,7 +9,7 @@ class UserMailer < ActionMailer::Base
   def activation_needed_email(user)
     @user = user
         if Rails.env.production?
-          @url  = "https://dry-citadel-6111.herokuapp.com/users/#{user.activation_token}/activate"
+          @url  = "https://app.mindimp.com/users/#{user.activation_token}/activate"
       else
           # Our dev & test URL
           @url  = "http://localhost:3000/users/#{user.activation_token}/activate"
@@ -22,7 +22,7 @@ class UserMailer < ActionMailer::Base
   def activation_success_email(user)
     @user = user
     if Rails.env.production?
-          @url  = "https://dry-citadel-6111.herokuapp.com/login"
+          @url  = "https://app.mindimp.com/login"
       else
           # Our dev & test URL
           @url  = "http://localhost:3000/login"
