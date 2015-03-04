@@ -46,7 +46,7 @@
 
     <div class="col-md-4">
         <div class="thumbnail">
-        <%= image_tag @user.profile_photo.url(:medium) %>
+        <%#= image_tag @user.profile_photo.url(:medium) %>
         </div>
     </div>
     
@@ -75,3 +75,85 @@
     </div>
 </div>      
 </section>
+
+<section id="books">
+    <h3>My Books</h3>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="well">
+                <dt> Total Discussion Questions Answered: <%= @responses.count %></dt> </br>
+                <dt> Latest Discussion Question Submitted on: </dt>
+                <dd><%= @responses.last.created_at %> for <%= link_to @responses.last.discussion_question.book.title, book_path(@responses.last.discussion_question.book) %></dd>
+                <hr />
+                <%= link_to "View All Responses", responses_user_path(@user) %>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="assessments">
+<h3>Assessments</h3>
+<div class="row">
+    <div class="col-md-8">
+     <div class="well">
+        There are no assessments at this time. 
+    </div>
+</div>
+</div>
+</section>
+
+<% end %>
+
+
+
+<section id="follow">
+<h3>Followers</h3>
+<div class="row">
+    <div class="col-md-8">
+     <div class="well">
+        <%= render 'follow_stats' %> </br>
+    </div>
+</div>
+</div>
+</section>
+
+
+<% if current_user.is_admin? %>
+<section id="admin">
+    <div class="row">
+    <div class="col-md-8">
+    <h3>Settings</h3>
+         <div class="well">
+        <dt>Administrator</dt>
+        <dd><%= @user.is_admin %></dd>
+        <dt>Student</dt>
+        <dd><%= @user.is_student %></dd>
+        <dt>Skype ID</dt>
+        <dd><%= @user.skype_id %></dd>  
+        <dt>Phone Number</dt>
+        <dd><%= @user.phone %></dd>      
+        <dt>Last Logged In: </dt>
+        <%# this takes care of displaying in China Standard Time %>
+        <% if @user.last_login.nil? %>
+         <dd>(none)</dd>
+         <% else %> 
+        <dd><%= (@user.last_login + 28800).strftime('%B %e, %Y %l:%M %p')%></dd>
+         <% end %>
+        <% end %>
+    </div>
+</div>
+</div>
+</section>
+
+
+</br>
+<%= link_to 'Edit Profile', edit_user_path(@user) %> |
+<%= link_to 'Back', root_path %>
+
+
+<!-- $('.subnav').affix({
+      offset: {
+        top: $('#navtop').height()
+      }
+});  -->
