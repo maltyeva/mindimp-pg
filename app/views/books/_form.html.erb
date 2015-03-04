@@ -6,6 +6,8 @@
     <%= f.input :author %>
     <%= f.input :description %>
     <%= f.input :lexile_measure %>
+    <%= f.input :url, :hint => "Purchase Link" %>
+    <%= f.input :page_count %>
     <%= f.input :genre %>
   	<%= f.input :cover %>
     <%= f.association :book_categories, as: :check_boxes  %>

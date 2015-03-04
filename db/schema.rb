@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302175331) do
+ActiveRecord::Schema.define(version: 20150304084355) do
 
   create_table "assignment_responses", force: true do |t|
     t.text     "text"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 20150302175331) do
     t.datetime "updated_at"
     t.integer  "book_category_id"
     t.integer  "lexile_measure"
+    t.string   "url"
+    t.integer  "page_count"
   end
 
   create_table "books_categories", force: true do |t|

@@ -35,6 +35,8 @@
     </br></br>
 
         <div class="well">
+        <dt>Page Count </dt>
+        <dd><%= @book.page_count %></dd>
         <dt>Lexile Measure </dt>
         <dd><%= @book.lexile_measure %></dd>
         <dt>Genre</dt>
@@ -56,6 +58,7 @@
         <div class="thumbnail">
         <%= image_tag @book.cover.url(:medium) %>
         </div>
+        <%= link_to "Buy this book!", @book.url, :class => "btn btn-info" %>
     </div>
     
 </div>
