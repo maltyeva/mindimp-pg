@@ -52,3 +52,24 @@
     
 </div>
 </section>
+
+
+<section id="class">
+<h3>My Classes </h3>
+<div class="row">
+    <div class="col-md-8">
+        <div class="well">
+        <% if @user.course_sessions.nil? %>
+        <h4><%= @user.name %> is not enrolled in any classes right now.</h4>
+        <% else %>
+        <ul class="users">
+        <% @user.course_sessions.where(active: true).each do |c| %>
+        <%= c.course_period.title %>: </br>
+        <%= link_to c.full_title, course_session_path(c) %> </br>
+        <% end %>
+        </ul>
+        <% end %>
+        </div>
+    </div>
+</div>      
+</section>
