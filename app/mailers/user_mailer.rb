@@ -22,9 +22,9 @@ class UserMailer < ActionMailer::Base
   def activation_success_email(user)
     @user = user
     if Rails.env.production?
-          @url  = "http://www.dry-citadel-6111.herokuapp.com/login"
+          @url  = "https://dry-citadel-6111.herokuapp.com/login"
       else
-          # Our dev & test URL
+          # Our dev & test URLx
           @url  = "http://localhost:3000/login"
       end
     mail(:to => user.email,
