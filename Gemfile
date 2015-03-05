@@ -54,7 +54,7 @@ gem 'actionmailer'
 
 #this is how we'll handle photos and uploads. 
 gem "paperclip", "~> 4.2"
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 gem 'nokogiri'
 
 #user authentication - should I use this? 
