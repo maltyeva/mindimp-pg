@@ -8,6 +8,8 @@
 <div class="row">
     <div class="col-md-8">
 
+    	<dd><%= @article.description %></dd><hr />
+
 
         <div class="well">
        	<h2>Discussion Questions: </h2>
@@ -35,9 +37,13 @@
         <dd><%= @article.author %></dd>
         <dt>Source: </dt>
         <dd><%= @article.source %></dd>
-        <dt>Published on: </dt>
-        <dd><%= (@article.published + 28000).strftime('%B %e, %Y')%></dd><hr />
-        <p><%= link_to "Read", @article.url, class: "btn btn-info" %></p>
+        <dt>Date of Publication: </dt>
+        <dd><%= (@article.published + 28000).strftime('%B %e, %Y')%></dd>
+        <dt>Word Count: </dt>
+        <dd><%= @article.word_count %></dd>
+        <dt>Reading Level: </dt>
+        <dd><%= @article.level %></dd><hr />
+        <p><%= link_to "Read Article", @article.url, class: "btn btn-info" %></p>
        </div>
     
 	</div>
