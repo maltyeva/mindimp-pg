@@ -4,8 +4,8 @@ class UsersController < ApplicationController
   before_filter :require_login
   skip_before_filter :require_login, only: [:new, :create, :activate]
 
-  before_filter :require_admin, only: [:index, :following, :followers]
-  before_filter :correct_user, only: [:edit, :update] 
+  before_filter :require_admin, only: [:index, :following, :followers, :destroy]
+  #before_filter :correct_user, only: [:edit, :update] 
 
   # GET /users
   # GET /users.json
@@ -37,7 +37,6 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
   end
 
   # POST /users
