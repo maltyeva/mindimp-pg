@@ -6,6 +6,19 @@
   </div>
 
 
+  <% if current_user && current_user.is_admin %>
+    <div id="nav" style="text-align: center" class="center jumbotron  ">
+
+      <%= link_to "Administrator Portal", admin_portal_path, class: "btn btn-lg btn-info" %>
+      <%= link_to "Student Portal", student_portal_path, class: "btn btn-lg btn-info" %>
+    </div>
+  <% elsif current_user && current_user.is_student %>
+      <div id="nav" style="text-align: center" class="center jumbotron  ">
+      <%= link_to "Student Portal", student_portal_path, class: "btn btn-lg btn-info" %>
+      <%= link_to "My Profile", user_path(current_user.id), class: "btn btn-lg btn-info" %>
+    </div>
+  <% else %>
+
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -17,21 +30,21 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-      <img src="http://placehold.it/1200x315" alt="...">
+      <img src="http://i.imgur.com/25MNs9i.png" alt="...">
       <div class="carousel-caption">
-        <h3>Caption Text</h3>
+        <h3>Book Program</h3>
       </div>
     </div>
     <div class="item">
-      <img src="http://placehold.it/1200x315" alt="...">
+      <img src="http://i.imgur.com/viJrFdN.png" alt="...">
       <div class="carousel-caption">
-        <h3>Caption Text</h3>
+        <h3>Courses</h3>
       </div>
     </div>
     <div class="item">
-      <img src="http://placehold.it/1200x315" alt="...">
+      <img src="http://i.imgur.com/B5IXSMO.png" alt="...">
       <div class="carousel-caption">
-        <h3>Caption Text</h3>
+        <h3>User Profiles</h3>
       </div>
     </div>
   </div>
@@ -45,23 +58,14 @@
   </a>
 </div> <!-- Carousel -->
 
-<br>
-  
-
-    <div id="nav" style="text-align: center" class="center jumbotron  ">
-    <% if current_user && current_user.is_admin %>
-      <%= link_to "Administrator Portal", admin_portal_path, class: "btn btn-lg btn-info" %>
-      <%= link_to "Student Portal", student_portal_path, class: "btn btn-lg btn-info" %>
-    <% elsif current_user && current_user.is_student %>
-      <%= link_to "Student Portal", student_portal_path, class: "btn btn-lg btn-info" %>
-      <%= link_to "My Profile", user_path(current_user.id), class: "btn btn-lg btn-info" %>
-    <% else %>
+<br> 
+  <div id="nav" style="text-align: center" class="center jumbotron  ">
       <%= link_to "Register", register_path, class: "btn btn-lg btn-info"%> 
       <%= link_to "Login", :login, class: "btn btn-lg btn-info" %>
-    <% end %>
   </div>
-
 </br>
+
+<% end %>
 
 
     <!-- Bootstrap core JavaScript
