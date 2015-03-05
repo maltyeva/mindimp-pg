@@ -1,0 +1,17 @@
+<%= simple_form_for(@article) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  	<%= f.input :title %>
+    <%= f.input :author %>
+    <%= f.input :source %>
+    <%= f.input :url, :label => "URL" %>
+    <%= f.input :category %>
+    <%= f.input :published %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

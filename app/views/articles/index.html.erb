@@ -1,0 +1,30 @@
+<h1>Article Directory</h1>
+
+
+<table id="table_articless" class="datatable-wide table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th>Title </th>
+    <th>Author</th>
+    <th>Source </th>
+    <th>Category</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <% for article in @articles %>
+    <td><%= link_to article.title, article %></td>
+    <td><%= link_to article.author, article %></td>    
+    <td><%= link_to article.source, article %></td>
+    <td><%= link_to article.category, article %></td> 
+    </tr>
+  <% end %>
+</tbody>
+</table>
+
+
+<br>
+
+<% if current_user.is_admin? %>
+  <%= link_to "Add a New Article", new_article_path, :class => "btn" %>
+<% end %>

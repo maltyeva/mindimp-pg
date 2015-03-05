@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   end 
   
   resources :books
+  resources :articles
+
   resources :book_categories
   get 'categories_table' => 'book_categories#table_index', :as => :categories_table
 

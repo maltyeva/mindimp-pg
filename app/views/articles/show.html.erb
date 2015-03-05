@@ -1,0 +1,52 @@
+<h1><%= @article.title + ", " + @article.source %></h1>
+
+
+
+
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+    <div class="col-md-8">
+
+
+        <div class="well">
+       	<h2>Discussion Questions: </h2>
+        <% if @article.discussion_questions.empty? && current_user.is_admin? %>
+         <p>There don't seem to be any discussion questions, would you like to add some? </p>
+         <%= link_to "New Discussion Question", new_discussion_question_path, class: "btn btn-info"%>
+        <% elsif @article.discussion_questions.empty? %>
+          There are no discussion questions for this book. 
+        <% else %>
+        <% @article.discussion_questions.each do |q|%>
+         <dt>Week: <%= q.week_number %>, Chapters <%= q.chapters %></dt> <%= q.question %> 
+         <dt><%= link_to "Respond", new_discussion_question_discussion_response_path(q)%> </dt>
+         <% if current_user.is_admin?%> 
+            <%= link_to "Edit Question", edit_discussion_question_path(q) %> | 
+            <%=link_to "View all responses", discussion_question_discussion_responses_path(q) %>
+         <% end %>
+         <% end %>
+        <% end %>
+     	</div>
+     </div>
+
+   	<div class="col-md-4">
+       <div class="well">
+        <dt>Author: </dt>
+        <dd><%= @article.author %></dd>
+        <dt>Source: </dt>
+        <dd><%= @article.source %></dd>
+        <dt>Published on: </dt>
+        <dd><%= (@article.published + 28000).strftime('%B %e, %Y')%></dd><hr />
+        <p><%= link_to "Read", @article.url, class: "btn btn-info" %></p>
+       </div>
+    
+	</div>
+</div>
+
+
+<% if current_user.is_admin? %>
+<%= link_to 'New Discussion Question', new_discussion_question_path %> | 
+<%= link_to 'Edit Article', edit_article_path(@article) %> | 
+<%= link_to 'Destroy Article', @article, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %></br>
+<%= link_to 'Back', articles_path %>
