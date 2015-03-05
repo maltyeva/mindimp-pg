@@ -3,7 +3,8 @@
 
   <div class="form-inputs">
   	<%= f.input :question %>
-  	<%= f.input :question_number %>
+  	<%= f.input :week_number, :label => "Week Number"  %>
+    <%= f.input :chapters, :hint => "e.g. 1-3" %>
     <%= f.association :book %>
     <%= f.input :visible, :hint => "Check if you'd like the question to be visible on the book page" %>
   </div>

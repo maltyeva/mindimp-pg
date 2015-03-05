@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304084355) do
+ActiveRecord::Schema.define(version: 20150305034552) do
 
   create_table "assignment_responses", force: true do |t|
     t.text     "text"
@@ -128,11 +128,13 @@ ActiveRecord::Schema.define(version: 20150304084355) do
 
   create_table "discussion_questions", force: true do |t|
     t.text     "question"
-    t.integer  "question_number"
     t.integer  "book_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "visible",         default: false
+    t.boolean  "visible",     default: false
+    t.string   "chapter"
+    t.integer  "week_number"
+    t.string   "chapters"
   end
 
   create_table "discussion_responses", force: true do |t|

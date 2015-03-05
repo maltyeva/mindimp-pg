@@ -22,7 +22,7 @@
         <% else %>
         <% @book.discussion_questions.each do |q|%>
          <div class="well">
-         <%= q.question_number%>. <%= q.question %> 
+         <dt>Week: <%= q.week_number %>, Chapters <%= q.chapters %></dt> <%= q.question %> 
          <dt><%= link_to "Respond", new_discussion_question_discussion_response_path(q)%> </dt>
          <% if current_user.is_admin?%> 
             <%= link_to "Edit Question", edit_discussion_question_path(q) %> | 
