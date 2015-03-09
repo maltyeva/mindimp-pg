@@ -1,7 +1,10 @@
 
 
-
+<% if !@discussion_question.book.nil? %>
 <h1><%= @discussion_question.book.title %>, Week <%= @discussion_question.week_number %></h1>
+<% else %>
+<h1><%= @discussion_question.article.title %>, Week <%= @discussion_question.week_number %></h1>
+<% end %> 
 
 
 
@@ -24,4 +27,8 @@
 
 
 <%= link_to 'Edit Question', edit_discussion_question_path(@discussion_question) %> |
+<% if !@discussion_question.book.nil? %>
 <%= link_to 'Back to Book', book_path(@discussion_question.book) %>
+<% else %>
+<%= link_to 'Back to Article', article_path(@discussion_question.article) %>
+<% end %> 

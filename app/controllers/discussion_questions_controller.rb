@@ -47,6 +47,6 @@ class DiscussionQuestionsController < ApplicationController
     end
 
     def discussion_question_params
-      params.require(:discussion_question).permit(:question, :week_number, :book_id, :visible, :chapters)
+      params.require(:discussion_question).permit(:question, :week_number, :book_id, :visible, :chapters, :article_id)
     end
 end
