@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150305090958) do
+ActiveRecord::Schema.define(version: 20150309055102) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(version: 20150305090958) do
     t.text     "description"
     t.integer  "word_count"
     t.integer  "level"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
   end
 
   create_table "assignment_responses", force: true do |t|
