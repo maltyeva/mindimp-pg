@@ -3,6 +3,8 @@ class CourseSessionsController < ApplicationController
 
   before_filter :require_login
   before_filter :require_admin, only: [:index, :edit, :update, :destroy, :new]
+  before_filter :set_courses
+
 
   respond_to :html
 

@@ -1,7 +1,10 @@
 class CoursePeriodsController < ApplicationController
   before_action :set_course_period, only: [:show, :edit, :update, :destroy]
   
+  before_filter :require_login
   before_filter :require_admin, :only => :edit
+  before_filter :set_courses
+
 
   respond_to :html
 

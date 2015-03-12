@@ -69,4 +69,23 @@ class ApplicationController < ActionController::Base
     redirect_to(root_url) unless current_user == @user || current_user.is_admin?
   end
 
+  def set_books
+    @user = User.find(session[:user_id])
+    redirect_to(root_url) unless current_user.books == true || current_user.is_admin?
+  end
+
+  def set_articles
+    @user = User.find(session[:user_id])
+    redirect_to(root_url) unless current_user.articles == true || current_user.is_admin?
+  end
+
+   def set_courses
+    @user = User.find(session[:user_id])
+    redirect_to(root_url) unless current_user.courses == true || current_user.is_admin?
+  end
+
+
+
+
+
 end

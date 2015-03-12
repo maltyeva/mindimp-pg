@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
 
   before_filter :require_login
   before_filter :require_admin, only: [:edit, :new]
+  before_filter :set_articles
 
   respond_to :html
 
