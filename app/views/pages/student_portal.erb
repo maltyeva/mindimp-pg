@@ -2,15 +2,27 @@
 
 <h1> Student Portal </h1>
 
-<div class="well">
-
-<%= link_to "My Profile", user_path(current_user.id), class: "btn btn-lg btn-info"%> | 
-<%= link_to "My Courses", my_courses_path, class: "btn btn-lg btn-info"%>
+<div class="row">
+<div class="col-md-6">
+	<div class="well">
+		<%= link_to "My Profile", user_path(current_user.id), class: "btn btn-lg btn-info"%> | 
+		<%= link_to "Available Courses", courses_path, class: "btn btn-lg btn-info" %>
+	</div>
 </div>
 
-<div class="well">
-<%= link_to "Book List", books_path, class: "btn btn-lg btn-info" %> | 
-<%= link_to "Available Courses", courses_path, class: "btn btn-lg btn-info" %>
+<div class="col-md-6">
+	<div class="well">
+		<% if current_user.books == true || current_user.is_admin? %>
+		<%= link_to "Book List", books_path, class: "btn btn-lg btn-info" %> |
+		<% end %> 
+		<% if current_user.articles == true || current_user.is_admin? %>
+		<%= link_to "Article List", articles_path, class: "btn btn-lg btn-info" %> | 
+		<% end %>
+		<% if current_user.courses == true || current_user.is_admin? %>
+		<%= link_to "My Courses", my_courses_path, class: "btn btn-lg btn-info"%> 
+		<% end %>
+	</div>
+</div>
 
 </div>
 

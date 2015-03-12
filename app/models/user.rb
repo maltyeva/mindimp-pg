@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+
   #these associations will set up the book lists
   # has_many :book_lists, class_name: "BookList", 
   #                          foreign_key: "book_id", 
