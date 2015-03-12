@@ -49,8 +49,8 @@ class User < ActiveRecord::Base
   validates_with AttachmentSizeValidator, :attributes => :profile_photo, :less_than => 1.megabytes
 
 
-  #not sure if using this yet. Let's keep this for now. 
-  royce_roles %w[ user instructor ] 
+  #using roles to 
+  royce_roles %w[ articles books classes ] 
 
 
 
@@ -83,6 +83,34 @@ class User < ActiveRecord::Base
   def following?(other_user)
     following.include?(other_user)
   end
+
+
+  #helper methods to create roles
+  def add_articles
+    user.add_role 'articles'
+  end
+
+  def remove_articles
+    user.remove_role 'articles'
+  end
+
+  def add_books
+    user.add_role 'books'
+  end
+
+  def remove_books
+    user.remove_role 'books'
+  end
+
+  def add_courses
+    user.add_role 'courses'
+  end
+
+  def remove_courses
+    user.remove_role 'courses'
+  end
+
+
 
 
   private
