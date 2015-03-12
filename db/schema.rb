@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150312051609) do
+ActiveRecord::Schema.define(version: 20150312061722) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -241,6 +241,10 @@ ActiveRecord::Schema.define(version: 20150312051609) do
     t.boolean  "articles"
     t.boolean  "books"
     t.boolean  "courses"
+    t.string   "college"
+    t.string   "major"
+    t.string   "hobbies"
+    t.string   "fav_book"
   end
 
   add_index "users", ["activation_token"], name: "index_users_on_activation_token", using: :btree

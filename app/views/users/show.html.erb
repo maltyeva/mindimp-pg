@@ -37,12 +37,23 @@
         <div class="well">
         <dt>About Me</dt>
         <dd><%= @user.bio.html_safe %></dd>
+        <dt>Hobbies</dt>
+        <dd><%= @user.hobbies %></dd>
+        <dt>Favorite Book</dt>
+        <dd><%= @user.fav_book %></dd>
         <dt>Age</dt>
         <dd><%= @user.age %></dd>
-        <dt>High School</dt>
-        <dd><%= @user.high_school %></dd>
         <dt>Hometown</dt>
         <dd><%= @user.hometown %></dd>
+        <dt>High School</dt>
+        <dd><%= @user.high_school %></dd>
+        <% if @user.is_admin? %>
+        <dt>College</dt>
+        <dd><%= @user.college %></dd>
+        <dt>Major</dt>
+        <dd><%= @user.major %></dd>
+        <% end %>
+
         </div>
 
     </div>
