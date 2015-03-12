@@ -8,6 +8,7 @@
     <th>Author</th>
     <th>Source </th>
     <th>Category</th>
+    <th>Reading Level</th>
 
   </tr>
   </thead>
@@ -17,6 +18,9 @@
     <td><%= link_to article.author, article %></td>    
     <td><%= link_to article.source, article %></td>
     <td><%= link_to article.category, article %></td> 
+    <% unless article.level.nil? %>
+    <td> <%= link_to article.level, article %></td> 
+    <% end %>
     </tr>
   <% end %>
 </tbody>
