@@ -36,7 +36,7 @@
     <div class="col-md-8">
         <div class="well">
         <dt>About Me</dt>
-        <dd><%= @user.bio %></dd>
+        <dd><%= @user.bio.html_safe %></dd>
         <dt>Age</dt>
         <dd><%= @user.age %></dd>
         <dt>High School</dt>
