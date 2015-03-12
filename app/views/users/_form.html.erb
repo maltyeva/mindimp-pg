@@ -31,6 +31,9 @@
   <% if current_user && current_user.is_admin? %>
   <%= f.input :is_admin %>
   <%= f.input :is_student %>
+  <%= f.input :articles %>
+  <%= f.input :books %>
+  <%= f.input :courses %>
   <% end %>
   
   <%= f.button :submit %>

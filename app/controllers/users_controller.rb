@@ -120,9 +120,7 @@ end
   #adding a book to the book list
   def add_book
     @book = Book.find(params[:book])
-
-        @books_students = Book.where(:id => params[:book_category_id])
-
+    @books_students = Book.where(:id => params[:book_category_id])
     @user_books = []
     current_user.follow(@user)
     respond_to do |format|
@@ -142,7 +140,7 @@ end
      params.require(:user).permit(:email, :password, :password_confirmation, :first_name, 
                                   :last_name, :nick_name, :age, :is_admin, :is_student, 
                                   :profile_photo, :last_login, :bio, :hometown, :high_school,
-                                  :phone, :skype_id, :book_ids => [])
+                                  :phone, :skype_id, :books, :articles, :courses, :book_ids => [])
    end
 
   # Stores the URL trying to be accessed.
