@@ -68,6 +68,8 @@ Rails.application.routes.draw do
   get '/student_portal'    => 'high_voltage/pages#show', id: 'student_portal'
   get '/admin_portal'    => 'high_voltage/pages#show', id: 'admin_portal'
   get '/community' => 'high_voltage/pages#show', id: 'community'
+  get '/zoom' => 'high_voltage/pages#show', id: 'zoom'
+
 
   #home route
   get '/home', to: redirect('/')

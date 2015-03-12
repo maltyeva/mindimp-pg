@@ -1,5 +1,10 @@
 <h1>All Responses for <%= @discussion_question.book.title + ", Week " + @discussion_question.week_number.to_s %> </h1>
 
+<div class="well">
+<dd>Discussion Question: </dd>
+<dt><%= @discussion_question.question %></dt>
+</div>
+
 <table id="table_responses" class="datatable-wide table table-striped table-bordered">
   <thead>
     <tr>
