@@ -17,10 +17,10 @@
          <p>There don't seem to be any discussion questions, would you like to add some? </p>
          <%= link_to "New Discussion Question", new_discussion_question_path, class: "btn btn-info"%>
         <% elsif @article.discussion_questions.empty? %>
-          There are no discussion questions for this book. 
+          There are no discussion questions for this article. 
         <% else %>
         <% @article.discussion_questions.each do |q|%>
-         <dt>Week: <%= q.week_number %>, Chapters <%= q.chapters %></dt> <%= q.question %> 
+         <dt> <%= q.question %> </dt>
          <dt><%= link_to "Respond", new_discussion_question_discussion_response_path(q)%> </dt>
          <% if current_user.is_admin?%> 
             <%= link_to "Edit Question", edit_discussion_question_path(q) %> | 
