@@ -69,6 +69,9 @@ Rails.application.routes.draw do
   get '/admin_portal'    => 'high_voltage/pages#show', id: 'admin_portal'
   get '/community' => 'high_voltage/pages#show', id: 'community'
   get '/zoom' => 'high_voltage/pages#show', id: 'zoom'
+  get '/zoom_tour' => 'high_voltage/pages#show', id: 'zoom_tour'
+  get '/zoom_tips' => 'high_voltage/pages#show', id: 'zoom_tips'
+
 
 
   #home route

@@ -3,7 +3,7 @@ class CourseSession < ActiveRecord::Base
 	#this handles the associations
 	belongs_to :course
 	belongs_to :course_period
-   # belongs_to :instructor, :class_name => "User"
+    #belongs_to :instructor, :class_name => "User"
 
 
 
