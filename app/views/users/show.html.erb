@@ -36,7 +36,9 @@
     <div class="col-md-8">
         <div class="well">
         <dt>About Me</dt>
+        <% unless @user.bio.nil? %>
         <dd><%= @user.bio.html_safe %></dd>
+        <% end %>
         <dt>Hobbies</dt>
         <dd><%= @user.hobbies %></dd>
         <dt>Favorite Book</dt>
