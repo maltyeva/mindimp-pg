@@ -2,7 +2,7 @@
 
 <ul>
 <% @responses.each do |r| %>
-<li><%= r.response + ", submitted " + r.created_at.to_s %> <br/>(<%= r.discussion_question.book.title %>)  </li>
+<li><%= r.response + ", submitted " + r.created_at.to_s %> <br/>(<%= r.discussion_question.book == nil ? "none" : r.discussion_question.book.title %>)  </li>
 <% end %>
 </ul>
 
