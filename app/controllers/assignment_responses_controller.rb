@@ -33,11 +33,15 @@ class AssignmentResponsesController < ApplicationController
     @assignment_response.update_attribute(:submitted, Time.now)
     @assignment_response.update_attribute(:user, current_user)
     @assignment_response.save
+    @instructor = @assignment_response.course_assignment.course_session.instructor
+    UserMailer.submit_assignment_email(@instructor, @assignment_response).deliver
+    flash[:notice] = "Successfully submitted assignment"
     respond_with(@course_assignment, @assignment_response)
   end
 
   def update
     @assignment_response.update(assignment_response_params)
+    #UserMailer.grade_assignment_email(@instructor, @assignment_response).deliver
     respond_with(@course_assignment, @assignment_response)
   end
 

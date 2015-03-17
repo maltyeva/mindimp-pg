@@ -46,5 +46,18 @@ class UserMailer < ActionMailer::Base
   end
 
 
+  def submit_assignment_email(instructor, assignment_response)
+    @instructor = instructor
+    @assignment_response = assignment_response
+    mail(:to => instructor.email, 
+         :subject => "Reponse to #{@assignment_response.course_assignment.title} by #{@assignment_response.user.name}")
+  end
+
+  def grade_assignment_email
+    mail(:to => user.email, 
+        :subject => "An Assignemnt has been graded!")
+  end
+
+
 
 end
