@@ -2,7 +2,7 @@ class CourseSessionsController < ApplicationController
   before_action :set_course_session, only: [:show, :edit, :update, :destroy]
 
   before_filter :require_login
-  before_filter :require_admin, only: [:index, :edit, :update, :destroy, :new]
+  before_filter :require_admin, only: [:index, :edit, :update, :destroy, :new, :my_course_sessions]
   before_filter :set_courses
 
 
@@ -29,6 +29,7 @@ class CourseSessionsController < ApplicationController
     @course_session = CourseSession.new(course_session_params)
     @students_sessions = User.where(:id => params[:user_id])
     @course_session.users << @students_sessions
+    @instructors = User.where(is_admin: true).all
     @course_session.save
     respond_with(@course_session)
   end
@@ -43,6 +44,11 @@ class CourseSessionsController < ApplicationController
   def destroy
     @course_session.destroy
     respond_with(@course_session)
+  end
+
+
+  def my_course_sessions
+    @sessions = CourseSession.where(instructor_id: current_user.id).all
   end
 
   private

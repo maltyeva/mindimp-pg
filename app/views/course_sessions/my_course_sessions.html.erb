@@ -1,0 +1,7 @@
+<h1>My Courses</h1>
+
+<% unless @sessions.nil? %>
+<% @sessions.each do |s| %>
+	<%= link_to s.title, course_session_path(s) %>
+<% end %>
+<% end %> 

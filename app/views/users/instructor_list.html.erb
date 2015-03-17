@@ -1,0 +1,28 @@
+<h1>My Instructors</h1>
+
+
+<h2>My Course Instructors </h2>
+
+
+<% if @user.course_sessions.empty? %>
+<h3>You don't seem to be enrolled in any classes right now.</h3>
+<% else %>
+<ul class="users">
+<% @user.course_sessions.where(active: true).each do |c| %>
+        <%= link_to c.instructor.name, course_session_path(c) %> </br>
+<% end %>
+</ul>
+<% end %>
+
+<h2>My Reading Instructors</h2>
+
+<% unless @followers.empty? %>
+<% @followers.each do |f|%>
+<%= f.name %>
+<% end %>
+<% end %>
+
+
+
+</br>
+<%= link_to "Back", student_portal_path, class: "btn btn-lg btn-info"%>

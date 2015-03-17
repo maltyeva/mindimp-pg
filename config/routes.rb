@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   resources :course_periods
   get 'academic_terms' => 'course_periods#index'
 
-  resources :course_sessions
+  resources :course_sessions 
+  get 'my_sessions' => 'course_sessions#my_course_sessions', :as => :my_sessions
+
   resources :course_categories
   resources :courses
 
@@ -30,6 +32,8 @@ Rails.application.routes.draw do
   get 'register'  => 'users#new'
   get 'student_list' => 'users#student_list', :as => :student_list
   get 'my_courses' => 'users#course_list', :as => :my_courses
+  get 'my_instructors' => 'users#instructor_list', :as => :my_instructors
+
 
   resources :user_sessions
   get 'login' => 'user_sessions#new', :as => :login

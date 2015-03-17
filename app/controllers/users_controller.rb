@@ -24,10 +24,17 @@ class UsersController < ApplicationController
     @course_sessions = CourseSession.includes(:users).where(user: { id: current_user.id })
   end
 
+  def instructor_list
+    @user = current_user
+    @course_sessions = CourseSession.includes(:users).where(user: { id: current_user.id })
+    @followers = @user.followers.paginate(page: params[:page])
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show
     @responses = DiscussionResponse.where(user_id: @user.id)
+    @my_courses = CourseSession.where(instructor_id: @user.id)
   end
 
   # GET /users/new
