@@ -42,8 +42,9 @@ class AssignmentResponsesController < ApplicationController
   def update
     @assignment_response.update_attribute(:grader, current_user)
     @assignment_response.update(assignment_response_params)
-    #@grader = @assignment_response.grader
-    #UserMailer.grade_assignment_email(@grader, @assignment_response).deliver
+    @grader = current_user
+    UserMailer.grade_assignment_email(@grader, @assignment_response).deliver
+    flash[:notice] = "Successfully graded assignment and sent notification"
     respond_with(@course_assignment, @assignment_response)
   end
 
