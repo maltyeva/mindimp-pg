@@ -1,0 +1,11 @@
+Dear <%= @user.name %>
+===============================================
+
+<%= @course_assignment.course_session.instructor.name %> has added a new assignment to the class. 
+
+
+<%= @course_assignment.title %>
+<%= @course_assignment.description %>
+Due: <%= (@course_assignment.due_date + 28800).strftime('%B %e, %Y')%>
+
+Have a great day!

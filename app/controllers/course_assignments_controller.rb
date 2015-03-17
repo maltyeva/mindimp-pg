@@ -27,7 +27,12 @@ class CourseAssignmentsController < ApplicationController
   def create
     @course_assignment = CourseAssignment.new(course_assignment_params)
     @course_assignment.save
+    @users = @course_assignment.course_session.users
+    @users.each do |u|
+        UserMailer.create_assignment_email(u, @course_assignment).deliver
+      end
     respond_with(@course_assignment)
+    flash[:notice] = "Created Assignment and sent notification"
   end
 
   def update

@@ -59,9 +59,6 @@ Rails.application.routes.draw do
     end
   end
 
-  #resources :instructors, :controller => "users", :type => 'Instructor'
-
-
 
   #static pages
   get '/about'    => 'high_voltage/pages#show', id: 'about'

@@ -16,7 +16,6 @@ class UserMailer < ActionMailer::Base
       end
     mail(:to => user.email,
        :subject => "Welcome to MindImp!")
-
   end
 
   def activation_success_email(user)
@@ -31,13 +30,21 @@ class UserMailer < ActionMailer::Base
        :subject => "Your MindImp account is now activated!")
   end
 
-
   def reset_password_email(user)
     @user = user
     @url  = edit_password_reset_url(user.reset_password_token)
     mail(:to => user.email,
          :subject => "Your MindImp password has been reset")
   end
+
+  def create_assignment_email(user, course_assignment)
+    @user = user
+    @course_assignment = course_assignment
+    mail(:to => user.email,
+         :subject => "#{@course_assignment.course_session.course.abbreviation}: #{@course_assignment.title}", 
+         :from => @course_assignment.course_session.instructor.email )
+  end
+
 
 
 end
