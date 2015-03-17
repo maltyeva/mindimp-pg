@@ -7,6 +7,7 @@
   <div class="form-actions">
   	<%= f.input :grade %>
     <%= f.input :comments %>
+    <%#= f.hidden_field :grader_id, :value => current_user.id %>
     <%= f.button :submit %>
   </div>
 <% end %>

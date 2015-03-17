@@ -40,8 +40,10 @@ class AssignmentResponsesController < ApplicationController
   end
 
   def update
+    @assignment_response.update_attribute(:grader, current_user)
     @assignment_response.update(assignment_response_params)
-    #UserMailer.grade_assignment_email(@instructor, @assignment_response).deliver
+    #@grader = @assignment_response.grader
+    #UserMailer.grade_assignment_email(@grader, @assignment_response).deliver
     respond_with(@course_assignment, @assignment_response)
   end
 
@@ -64,6 +66,7 @@ class AssignmentResponsesController < ApplicationController
 
     def assignment_response_params
       params.require(:assignment_response).permit(:text, :submitted, :grade, :attachment, 
-                                                  :course_assignment_id, :user_id, :comments)
+                                                  :course_assignment_id, :user_id, :grader_id, 
+                                                  :comments)
     end
 end

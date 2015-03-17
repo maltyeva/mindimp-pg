@@ -41,7 +41,7 @@ class UserMailer < ActionMailer::Base
     @user = user
     @course_assignment = course_assignment
     mail(:to => user.email,
-         :subject => "#{@course_assignment.course_session.course.abbreviation}: #{@course_assignment.title}", 
+         :subject => "[#{@course_assignment.course_session.course.abbreviation}]: #{@course_assignment.title}", 
          :from => @course_assignment.course_session.instructor.email )
   end
 
@@ -50,12 +50,14 @@ class UserMailer < ActionMailer::Base
     @instructor = instructor
     @assignment_response = assignment_response
     mail(:to => instructor.email, 
-         :subject => "Reponse to #{@assignment_response.course_assignment.title} by #{@assignment_response.user.name}")
+         :subject => "[#{@assignment_response.course_assignment.course_session.course.abbreviation}]Response to #{@assignment_response.course_assignment.title} by #{@assignment_response.user.name}")
   end
 
-  def grade_assignment_email
-    mail(:to => user.email, 
-        :subject => "An Assignemnt has been graded!")
+  def grade_assignment_email(grader, assignment_response)
+    @grader = grader
+    @assignment_response = assignment_response
+    mail(:to => @assignment_response.user.email, 
+         :subject => "An Assignemnt has been graded!")
   end
 
 

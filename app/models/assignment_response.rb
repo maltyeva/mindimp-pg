@@ -1,7 +1,10 @@
 class AssignmentResponse < ActiveRecord::Base
 
-	belongs_to :user
+	belongs_to :user, foreign_key: "user_id"
+	belongs_to :grader, :class_name => "User", foreign_key: "grader_id"
+
 	belongs_to :course_assignment
+
 
 
 	validates_presence_of :text
