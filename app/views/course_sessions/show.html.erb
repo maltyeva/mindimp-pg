@@ -24,7 +24,7 @@
         <div class="well">
         <dt> Instructor </dt>
         <% unless @course_session.instructor.nil? %>
-        <dd><%= link_to @course_session.instructor.name, user_path(@course_session.instructor)%></dd>
+        <dd><%= image_tag @course_session.instructor.profile_photo.url(:thumb) %><%= link_to @course_session.instructor.name, user_path(@course_session.instructor)%></dd>
         <% end %>
         </div>
     </div>

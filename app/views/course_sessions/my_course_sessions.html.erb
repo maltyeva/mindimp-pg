@@ -2,6 +2,8 @@
 
 <% unless @sessions.nil? %>
 <% @sessions.each do |s| %>
-	<%= link_to s.title, course_session_path(s) %>
+<li>
+	<ul><%= link_to s.full_title, course_session_path(s) %></ul>
+</ul>
 <% end %>
 <% end %> 

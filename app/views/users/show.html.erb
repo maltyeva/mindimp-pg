@@ -1,7 +1,12 @@
 <h1><%= @user.first_name + " " + (!@user.nick_name.blank? ? "(#{@user.nick_name}) " : "") + @user.last_name %> 
 <%= @user.activation_state == "pending" ? "| Pending Activation" : "" %> </h1>  
 
-<h4><%= @user.email %>   | <% if @user.is_admin? %> <%= link_to "Site Administrator", user_path(@user), class: "btn btn-info" %> <% end %></h4>
+<h4><%= @user.email %>   | 
+    <% if @user.is_admin? %> 
+        <%= link_to "Site Administrator", user_path(@user), class: "btn btn-info" %> 
+        <% else %>
+        <%= link_to "Student", user_path(@user), class: "btn btn-info" %> 
+        <% end %></h4><hr />
 <% if current_user.is_admin? %>
 <%= render 'follow_form' %> 
 <% end %>
@@ -144,8 +149,6 @@
     <h3>Settings</h3>
          <div class="well">
         <h4>Permissions: </h4>
-        <dt>Student</dt>
-        <dd><%= @user.is_student %></dd>
         <dt>Articles</dt>
         <dd><%= @user.articles %></dd>
         <dt>Books</dt>
