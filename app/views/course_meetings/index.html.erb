@@ -1,23 +1,24 @@
-<h1>Listing course_meetings</h1>
+<h1>All Course meetings for <%= @course_session.full_title + ', ' + @course_session.course_period.title %> </h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @course_meetings.each do |course_meeting| %>
-      <tr>
-        <td><%= link_to 'Show', course_meeting %></td>
-        <td><%= link_to 'Edit', edit_course_meeting_path(course_meeting) %></td>
-        <td><%= link_to 'Destroy', course_meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<ol>
+    <% @course_meetings.each do |c|%>
+      <li><div class="well">
+      <%= c.preparation_notes%>
+      <dt>Instructor Notes:</dt>
+      <dd><%= c.instructor_notes%></dd>
+      <dt>Class Notes:</dt>
+      <dd><%= c.class_notes%></dd>
+      <%= link_to '(edit meeting)', edit_course_session_course_meeting_path(@course_session, c) %>
+      </div></li>
     <% end %>
-  </tbody>
-</table>
+</ol>
+
 
 <br>
 
-<%= link_to 'New Course meeting', new_course_meeting_path %>
+<% if current_user.is_admin? %>
+<%= link_to "Add a Course Meeting", new_course_session_course_meeting_path(@course_session)%> | 
+<%= link_to 'Back to Course', course_session_path(@course_session) %>
+<% end %>
+
