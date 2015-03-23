@@ -19,14 +19,16 @@
         <% elsif @article.discussion_questions.empty? %>
           There are no discussion questions for this article. 
         <% else %>
+        <ol>
         <% @article.discussion_questions.each do |q|%>
-         <dt> <%= q.question %> </dt>
+         <li> <%= q.question %> </li>
          <dt><%= link_to "Respond", new_discussion_question_discussion_response_path(q)%> </dt>
          <% if current_user.is_admin?%> 
             <%= link_to "Edit Question", edit_discussion_question_path(q) %> | 
             <%=link_to "View all responses", discussion_question_discussion_responses_path(q) %>
          <% end %>
          <% end %>
+        </ol>
         <% end %>
      	</div>
      </div>
