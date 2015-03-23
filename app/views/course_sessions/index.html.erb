@@ -10,9 +10,9 @@
     </tr>
   </thead>
   <tbody>
-  <% for course_session in @course_sessions %>
-    <td><%= link_to course_session.course.title, course_session %></td>
-    <td><%= link_to course_session.title, course_session %></td>
+  <% @course_sessions.each do |c| %>
+    <td><%= link_to c.course.title, c %></td>
+    <td><%= link_to c.title, c %></td>
     </tr>
   <% end %>
   </tbody>
