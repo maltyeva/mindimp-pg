@@ -10,6 +10,7 @@
   <ul class="nav nav-pills">
     <li><a href="#class">Overview</a></li>
     <li><a href="#assignments">Assignments </a></li>
+    <li><a href="#meetings">Meetings </a></li>
     <li><a href="#students">Students Roster</a></li>
   </ul>
 </div>
@@ -65,6 +66,34 @@
             </div>
         </div>
 </section>
+
+
+<section id="meetings">
+    <div class="row">
+        <div class="col-md-8">
+        <h3>Class Meetings</h3>
+            <div class="well">
+                <ol>
+                <%if @course_session.course_meetings.nil? %>
+                    There are no meeting listed for this course
+                <% else %>
+                    <% @course_session.course_meetings.each do |c| %>
+                    <li><div class="well"><%= c.preparation_notes %>
+                    <% if current_user.is_admin? %>
+                        <dt>Instructor Notes: </dt>
+                        <dd><%= c.instructor_notes%></dd>
+                        <dt>Class Notes: </dt>
+                        <dd><%= c.class_notes%></dd>
+                    <% end %>
+                    </div></li>
+                    <% end %>
+                <% end %>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 <section id="students">
 <div class="row">
