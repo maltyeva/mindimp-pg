@@ -1,4 +1,9 @@
+<% if !@discussion_question.book.nil?%>
 <h1>All Responses for <%= @discussion_question.book.title + ", Week " + @discussion_question.week_number.to_s %> </h1>
+<% else %>
+<h1>All Responses for <%= @discussion_question.article.title %> </h1>
+<% end %>
+
 
 <div class="well">
 <dd>Discussion Question: </dd>
