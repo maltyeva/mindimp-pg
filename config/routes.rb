@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   #things related to assignments
   resources :course_assignments do
     resources :assignment_responses
@@ -10,7 +11,10 @@ Rails.application.routes.draw do
   resources :course_periods
   get 'academic_terms' => 'course_periods#index'
 
-  resources :course_sessions 
+  resources :course_sessions  do  
+    resources :course_meetings
+  end
+
   get 'my_sessions' => 'course_sessions#my_course_sessions', :as => :my_sessions
 
   resources :course_categories

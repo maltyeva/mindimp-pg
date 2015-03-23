@@ -1,0 +1,17 @@
+<p><dt>Course Session: </dt>
+<dd><%= link_to @course_session.full_title, course_session_path(@course_session) %><dd></p>
+
+
+<%= simple_form_for([@course_session, @course_meeting]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  </div>
+
+  <div class="form-actions">
+  	<%= f.input :preparation_notes, :hint => "Add notes here for students to see before a class meeting" %>
+  	<%= f.input :instructor_notes, :hint => "Add notes here to prepare the instructor for the session" %>
+  	<%= f.input :class_notes, :hint => "Add notes here about the class meeting itself" %>
+    <%= f.button :submit %>
+  </div>
+<% end %>

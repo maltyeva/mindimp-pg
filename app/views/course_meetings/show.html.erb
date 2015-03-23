@@ -1,0 +1,16 @@
+<h1>Meeting notes for <%= @course_session.full_title %></h1>
+
+<p id="notice"><%= notice %></p>
+
+<div class="well">
+	<dt>Preparation Notes: </dt>
+	<dd><%= @course_meeting.preparation_notes%></dd>
+	<dt>Instructor Notes: </dt>
+	<dd><%= @course_meeting.instructor_notes%></dd>
+	<dt>Class Notes: </dt>
+	<dd><%= @course_meeting.class_notes%></dd>
+</div>
+
+<%= link_to 'Edit Meeting', edit_course_session_course_meeting_path(@course_session, @course_meeting) %> |
+<%= link_to 'Back to Course', course_session_path(@course_session) %> |
+<%= link_to 'View All Course Meetings', course_session_course_meetings_path(@course_session) %>

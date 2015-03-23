@@ -9,7 +9,7 @@
 <% else %>
 <ul class="users">
 <% @user.course_sessions.where(active: true).each do |c| %>
-        <%= link_to c.instructor.name, course_session_path(c) %> </br>
+        <%= link_to c.instructor.name, user_path(c.instructor) %> </br>
 <% end %>
 </ul>
 <% end %>
@@ -17,9 +17,11 @@
 <h2>My Reading Instructors</h2>
 
 <% unless @followers.empty? %>
+<ul class="users">
 <% @followers.each do |f|%>
-<%= f.name %>
+<li><%= f.name %></li>
 <% end %>
+</ul>
 <% end %>
 
 

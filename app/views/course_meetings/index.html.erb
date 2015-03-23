@@ -1,0 +1,23 @@
+<h1>Listing course_meetings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @course_meetings.each do |course_meeting| %>
+      <tr>
+        <td><%= link_to 'Show', course_meeting %></td>
+        <td><%= link_to 'Edit', edit_course_meeting_path(course_meeting) %></td>
+        <td><%= link_to 'Destroy', course_meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Course meeting', new_course_meeting_path %>
