@@ -11,7 +11,7 @@
   </thead>
   <tbody>
   <% @course_sessions.each do |c| %>
-    <td><%#= link_to c.course.title, c %></td>
+    <td><%= link_to c.course.title, c %></td>
     <td><%= link_to c.title, c %></td>
     </tr>
   <% end %>
