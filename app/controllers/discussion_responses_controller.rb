@@ -43,7 +43,12 @@ class DiscussionResponsesController < ApplicationController
   def update
     @discussion_response.update_attribute(:comment_by, current_user.id)
     @discussion_response.update(discussion_response_params)
+    @user = @discussion_response.user
+    #is this secure?
+    @comment_user = current_user
+    UserMailer.comment_discussion_response_email(@user, @comment_user, @discussion_response).deliver
     respond_with(@discussion_question, @discussion_response)
+    flash[:notice] = "Successfully added comments and sent notification email!"
   end
 
   def destroy

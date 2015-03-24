@@ -78,5 +78,15 @@ class UserMailer < ActionMailer::Base
        :subject => "#{@discussion_response.user.name} has added a response to a question for #{@discussion_response.discussion_question.source}")
  end
 
+ def comment_discussion_response_email(user, comment_user, discussion_response)
+  @user = user
+  @comment_user = comment_user
+  @discussion_response = discussion_response
+  mail(:to => @user.email, 
+       :cc => @comment_user.email, 
+       :subject => "#{@comment_user.name} has added comments to your response for #{discussion_response.discussion_question.source}")
+ end
+
+
 
 end
