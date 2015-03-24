@@ -15,6 +15,10 @@ class DiscussionQuestion < ActiveRecord::Base
   	end
 
 
+  	def source
+  		article.nil? ? book.title : article.title
+  	end
+
 
   	scope :visible, where(:visible => true)
 

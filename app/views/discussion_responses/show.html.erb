@@ -15,13 +15,15 @@
 	<hr />
 	<dt>Comments:<dt>
 	<dd><%= @discussion_response.comments  %><dd>
+	<% unless @discussion_response.comment_by.nil? %>
 	<dt>Added By:<dt>
 	<dd><%= @user.name %><dd>
+	<% end %> 
 </div>
 
 <p>
 <% if current_user.is_admin? %>
-<%= link_to 'Edit', edit_discussion_question_discussion_response_path(@discussion_question, @discussion_response) %> |
+<%= link_to 'Add Comments', edit_discussion_question_discussion_response_path(@discussion_question, @discussion_response) %> |
 <%= link_to 'Back to responses', discussion_question_discussion_responses_path(@discussion_question) %> | 
 <% end %>
 <%= link_to 'Back to book', book_path(@discussion_question.book) %>

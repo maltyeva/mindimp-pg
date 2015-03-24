@@ -28,7 +28,6 @@ class DiscussionQuestionsController < ApplicationController
   def create
     @discussion_question = DiscussionQuestion.new(discussion_question_params)
     @discussion_question.save
-    @discussion_instructors = current_user.followers
     respond_with(@discussion_question)
   end
 

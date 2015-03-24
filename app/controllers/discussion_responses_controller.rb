@@ -32,7 +32,12 @@ class DiscussionResponsesController < ApplicationController
     @discussion_response = @discussion_question.discussion_responses.new(discussion_response_params)
     @discussion_response.update_attribute(:user, current_user)
     @discussion_response.save
+    @users = current_user.followers
+    @users.each do |u|
+        UserMailer.create_discussion_response_email(u, @discussion_response).deliver
+      end
     respond_with(@discussion_question, @discussion_response)
+    flash[:notice] = "Successfully created response and sent notification email!"
   end
 
   def update

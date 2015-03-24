@@ -71,7 +71,12 @@ class UserMailer < ActionMailer::Base
 
  #emails that are related to discussion questions
 
- 
+ def create_discussion_response_email(user, discussion_response)
+  @discussion_response = discussion_response
+  @user = user
+  mail(:to => @user.email, 
+       :subject => "#{@discussion_response.user.name} has added a response to a question for #{@discussion_response.discussion_question.source}")
+ end
 
 
 end
