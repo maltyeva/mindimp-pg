@@ -37,11 +37,21 @@ class UserMailer < ActionMailer::Base
          :subject => "Your MindImp password has been reset")
   end
 
+  #emails that are related to assignments in courses
+
+
+  def instructor_create_assignment_email(instructor, course_assignment)
+    @course_assignment = course_assignment
+    @instructor = instructor
+    mail(:to => @instructor.email,
+         :subject => "[#{@course_assignment.course_session.course.abbreviation}: #{@course_assignment.course_session.course_period.title}]: #{@course_assignment.title} (instructor confirmation)")
+  end
+
+
   def create_assignment_email(user, course_assignment)
     @user = user
     @course_assignment = course_assignment
     mail(:to => user.email,
-         :cc => @course_assignment.course_session.instructor.email,
          :subject => "[#{@course_assignment.course_session.course.abbreviation}: #{@course_assignment.course_session.course_period.title}]: #{@course_assignment.title}", 
          :from => @course_assignment.course_session.instructor.email )
   end
