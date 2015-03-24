@@ -10,6 +10,7 @@
     <th>Description </th>
     <th>Genres</th>
     <th>Category</th>
+    <th> Lexile Measure</th>
 
   </tr>
   </thead>
@@ -22,10 +23,15 @@
     <td><%= link_to book.genre, book %></td>
     <% unless book.book_categories.nil? %>
         <td><% book.book_categories.each do |c| %>
-              <%= link_to c.title, book_category_path(c) %> </br>
+            <%= link_to c.title, book_category_path(c) %> </br>
             <% end %></td> 
     <% else %>
          <td><%= link_to "None", book %></td>
+    <% end %>
+       <% if book.lexile_measure.nil? %>
+        <td><%= link_to "(none)", book %></td>
+    <% else %>
+        <td><%= link_to book.lexile_measure, book %></td>
     <% end %>   
     </tr>
   <% end %>
