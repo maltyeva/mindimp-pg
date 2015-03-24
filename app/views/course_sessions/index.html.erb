@@ -5,14 +5,22 @@
 <table id="table_course_sessions" class="datatable-wide table table-striped table-bordered">
   <thead>
     <tr>
+      <th>Academic Term</th>
       <th>Course </th>
-      <th>Session Name </ht>
+      <th>Session Name </th>
+      <th>Instructor</th>
     </tr>
   </thead>
   <tbody>
   <% @course_sessions.each do |c| %>
+    <td><%= link_to c.course_period.title, c %></td>
     <td><%= link_to c.course.title, c %></td>
     <td><%= link_to c.title, c %></td>
+    <% if c.instructor.nil? %>
+        <td><%= link_to "(none)", c %></td>
+    <% else %>
+        <td><%= link_to c.instructor.name, c %></td>
+    <% end %>
     </tr>
   <% end %>
   </tbody>
