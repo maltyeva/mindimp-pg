@@ -17,4 +17,8 @@
   </div>
 <% end %>
 
-<%= link_to 'Back', book_path(@discussion_question.book) %>
+<% if !@discussion_question.book.nil? %>
+<%= link_to 'Back to Book', book_path(@discussion_question.book) %>
+<% else %>
+<%= link_to 'Back to Article', article_path(@discussion_question.article) %>
+<% end %> 
