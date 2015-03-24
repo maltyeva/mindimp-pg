@@ -18,10 +18,12 @@ class CourseAssignmentsController < ApplicationController
 
   def new
     @course_assignment = CourseAssignment.new
+    @sessions = CourseSession.where(instructor: current_user).all
     respond_with(@course_assignment)
   end
 
   def edit
+    @sessions = CourseSession.where(instructor: current_user).all
   end
 
   def create
