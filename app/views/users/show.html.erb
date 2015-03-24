@@ -106,7 +106,7 @@
                 <dt> Total Discussion Questions Answered: <%= @responses.count %></dt> </br>
                 <% unless @responses.empty? %>
                 <dt> Latest Discussion Question Submitted on: </dt>
-                <dd><%= @responses.last.created_at %> for <%= link_to @responses.last.discussion_question.book.title, book_path(@responses.last.discussion_question.book) %></dd>
+                <dd><%= @responses.last.created_at %> for <%= @responses.last.discussion_question.source %></dd>
                 <hr />
                 <%= link_to "View All Responses", responses_user_path(@user) %>
                 <% end %>

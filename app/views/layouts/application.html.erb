@@ -21,35 +21,45 @@
   <![endif]-->
   <a href="#Top"></a>
 </head>
+
+
 <body>
 
+<div class="page-container">
 
 <!--Navigation Bar -->
 <%= render 'layouts/navbar' %>
 
+ <div class="container">
 
-  <% if current_page?(root_path) %>
-    <% if content_for?(:jumbotron) %>
-      <div class="jumbotron">
-        <div class="container">
-            <% flash.each do |message_type, message| %>
-           <div class="alert alert-<%= message_type %>"><%= message %></div>
-          <% end %>
-          <%= yield :jumbotron %>
-        </div>
-      </div>
-    <% end %>
+  <% if current_user %>
+
+  <div class="row row-offcanvas row-offcanvas-left">
+    
+    <!-- sidebar -->
+    <%= render 'layouts/sidebar'%>
+
+    <!-- main area -->
+    <div class="col-xs-12 col-sm-10">
+        <%= yield %>
+
+    </div><!-- /.col-xs-12 main -->
+  </div><!--/.row-->
+
   <% else %>
-    <div class="container">
-        <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-        <% end %>
-  <% end %>
+
   <%= yield %>
 
+  <% end %>
+
+
+
+</div><!--/.container-->
+
+</div> <!-- /container -->
 
 <%= render 'layouts/footer' %>
 
-  </div> <!-- /container -->
+
 </body>
 </html>

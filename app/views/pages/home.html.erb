@@ -6,18 +6,23 @@
   </div>
 
 
-  <% if current_user && current_user.is_admin %>
+<% if current_user && current_user.is_admin %>
     <div id="nav" style="text-align: center" class="center jumbotron  ">
 
       <%= link_to "Administrator Portal", admin_portal_path, class: "btn btn-lg btn-info" %>
       <%= link_to "Student Portal", student_portal_path, class: "btn btn-lg btn-info" %>
     </div>
-  <% elsif current_user && current_user.is_student %>
+
+
+<% elsif current_user && current_user.is_student %>
       <div id="nav" style="text-align: center" class="center jumbotron  ">
       <%= link_to "Student Portal", student_portal_path, class: "btn btn-lg btn-info" %>
       <%= link_to "My Profile", user_path(current_user.id), class: "btn btn-lg btn-info" %>
     </div>
-  <% else %>
+  
+
+
+<% else %>
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
@@ -76,5 +81,12 @@
     <script src="../../assets/js/docs.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script>
+    $(document).ready(function() {
+  $('[data-toggle=offcanvas]').click(function() {
+    $('.row-offcanvas').toggleClass('active');
+  });
+});
+    </script>
   </body>
 </html>
