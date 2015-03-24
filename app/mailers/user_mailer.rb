@@ -38,15 +38,12 @@ class UserMailer < ActionMailer::Base
   end
 
   #emails that are related to assignments in courses
-
-
   def instructor_create_assignment_email(instructor, course_assignment)
     @course_assignment = course_assignment
     @instructor = instructor
     mail(:to => @instructor.email,
          :subject => "[#{@course_assignment.course_session.course.abbreviation}: #{@course_assignment.course_session.course_period.title}]: #{@course_assignment.title} (instructor confirmation)")
   end
-
 
   def create_assignment_email(user, course_assignment)
     @user = user
@@ -55,7 +52,6 @@ class UserMailer < ActionMailer::Base
          :subject => "[#{@course_assignment.course_session.course.abbreviation}: #{@course_assignment.course_session.course_period.title}]: #{@course_assignment.title}", 
          :from => @course_assignment.course_session.instructor.email )
   end
-
 
   def submit_assignment_email(instructor, assignment_response)
     @instructor = instructor
@@ -72,6 +68,10 @@ class UserMailer < ActionMailer::Base
          :subject => "[#{@assignment_response.course_assignment.course_session.course.abbreviation}: #{@assignment_response.course_assignment.course_session.course_period.title}]: An assignment has been graded!")
   end
 
+
+ #emails that are related to discussion questions
+
+ 
 
 
 end

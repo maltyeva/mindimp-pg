@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   before_filter :require_admin, only: [:edit, :new]
-  before_filter :set_courses #, :except [:index]
+  before_filter :set_courses, except: [:index, :show]
 
 
   respond_to :html
