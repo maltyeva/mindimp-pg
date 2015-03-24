@@ -19,10 +19,12 @@ class CourseSessionsController < ApplicationController
 
   def new
     @course_session = CourseSession.new
+    @instructors = User.where(is_admin: true).all
     respond_with(@course_session)
   end
 
   def edit
+    @instructors = User.where(is_admin: true).all
   end
 
   def create
