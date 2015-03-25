@@ -24,6 +24,7 @@
     <% if current_user == @user || current_user.is_admin? %>
     <li><a href="#class">Class Information</a></li>
     <li><a href="#books">Books</a></li>
+    <li><a href="#certifications">Certifications</a></li>
     <li><a href="#assessments">Assessments</a></li>
     <% end %>
     <% if current_user.is_admin? %>
@@ -115,16 +116,28 @@
     </div>
 </section> 
 
+<section id="certifications">
+<h3>Certifications</h3>
+<div class="row">
+    <div class="col-md-8">
+     <div class="well">
+        Coming soon.
+    </div>
+</div>
+</div>
+</section>
+
 <section id="assessments">
 <h3>Assessments</h3>
 <div class="row">
     <div class="col-md-8">
      <div class="well">
-        There are no assessments at this time. 
+        Coming soon.
     </div>
 </div>
 </div>
 </section>
+
 
 <% end %>
 
@@ -159,7 +172,12 @@
         <dt>Skype ID</dt>
         <dd><%= @user.skype_id %></dd>  
         <dt>Phone Number</dt>
-        <dd><%= @user.phone %></dd>      
+        <dd><%= @user.phone %></dd> 
+        <dt>Parent Name</dt>
+        <dd><%= @user.parent_name %></dd>  
+        <dt>Parent Email</dt>
+        <dd><%= @user.parent_email %></dd>   
+        <hr />
         <dt>Last Logged In: </dt>
         <%# this takes care of displaying in China Standard Time %>
         <% if @user.last_login.nil? %>
