@@ -3,7 +3,7 @@ class DiscussionQuestionsController < ApplicationController
 
 
   before_filter :require_login
-  before_filter :require_admin
+  before_filter :require_admin, only: [:edit, :index, :update]
   
 
   respond_to :html
@@ -38,7 +38,8 @@ class DiscussionQuestionsController < ApplicationController
 
   def destroy
     @discussion_question.destroy
-    respond_with(@discussion_question)
+   # respond_with(@discussion_question)
+    redirect_to articles_path 
   end
 
   private

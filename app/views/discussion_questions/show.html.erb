@@ -1,9 +1,4 @@
-<% if !@discussion_question.book.nil? %>
-<h1><%= @discussion_question.book.title %>, Week <%= @discussion_question.week_number %></h1>
-<% else %>
-<h1><%= @discussion_question.article.title %>, Week <%= @discussion_question.week_number %></h1>
-<% end %> 
-
+<h1><%= @discussion_question.source %></h1>
 
 
 
@@ -12,8 +7,12 @@
 <div class="row">
     <div class="col-md-8">
         <div class="well">
+        <% if !@discussion_question.book.nil? %>
+         <dt>Week:</dt>
+        <dd><%= @discussion_question.week_number %></dd>
        	<dt>Chapter:</dt>
         <dd><%= @discussion_question.chapters %></dd>
+        <% end %>
         <dt>Question:</dt>
         <dd><%= @discussion_question.question %></dd>
         </div>
@@ -23,8 +22,11 @@
 </div>
 
 
-
+<% if current_user.is_admin? %>
 <%= link_to 'Edit Question', edit_discussion_question_path(@discussion_question) %> |
+<%= link_to 'Destroy Question', @discussion_question, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+<hr />
 <% if !@discussion_question.book.nil? %>
 <%= link_to 'Back to Book', book_path(@discussion_question.book) %>
 <% else %>

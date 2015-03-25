@@ -21,7 +21,7 @@
         <% else %>
         <ol>
         <% @article.discussion_questions.each do |q|%>
-         <li> <%= q.question %> </li>
+         <li> <%= link_to q.question, discussion_question_path(q) %> </li>
          <dt><%= link_to "Respond", new_discussion_question_discussion_response_path(q)%> </dt>
          <% if current_user.is_admin?%> 
             <%= link_to "Edit Question", edit_discussion_question_path(q) %> | 
