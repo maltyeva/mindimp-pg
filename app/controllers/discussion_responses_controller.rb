@@ -16,8 +16,8 @@ class DiscussionResponsesController < ApplicationController
   end
 
   def show
-    respond_with(@discussion_response)
-    @user = User.where(user_id: :comment_by)
+    respond_with(@discussion_question, @discussion_response)
+    @user = User.where(id: @discussion_response.comment_by)
   end
 
   def new
