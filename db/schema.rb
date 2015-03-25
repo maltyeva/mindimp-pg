@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323063441) do
+ActiveRecord::Schema.define(version: 20150325032747) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20150323063441) do
     t.text     "class_notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
   end
 
   create_table "course_periods", force: true do |t|
@@ -255,6 +256,8 @@ ActiveRecord::Schema.define(version: 20150323063441) do
     t.string   "major"
     t.string   "hobbies"
     t.string   "fav_book"
+    t.string   "parent_email"
+    t.string   "parent_name"
   end
 
   add_index "users", ["activation_token"], name: "index_users_on_activation_token", using: :btree

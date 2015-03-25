@@ -55,6 +55,6 @@ class CourseMeetingsController < ApplicationController
 
     def course_meeting_params
       params.require(:course_meeting).permit(:course_session_id, :instructor_notes, 
-                                             :preparation_notes, :class_notes)
+                                             :preparation_notes, :class_notes, :title)
     end
 end

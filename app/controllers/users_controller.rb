@@ -148,7 +148,7 @@ end
                                   :last_name, :nick_name, :age, :is_admin, :is_student, 
                                   :profile_photo, :last_login, :bio, :hometown, :high_school,
                                   :phone, :skype_id, :books, :articles, :courses, :college, 
-                                  :major, :hobbies, :fav_book, :book_ids => [])
+                                  :major, :hobbies, :fav_book, :parent_name, :parent_email, :book_ids => [])
    end
 
   # Stores the URL trying to be accessed.
