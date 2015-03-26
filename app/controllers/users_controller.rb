@@ -21,13 +21,12 @@ class UsersController < ApplicationController
 
   def course_list
     @user = current_user
-    @course_sessions = CourseSession.includes(:users).where(user: { id: current_user.id })
+    @course_sessions = CourseSession.joins("join students_sessions on course_sessions.id = students_sessions.course_session_id").where("students_sessions.user_id = ?", @user.id)
   end
 
   def instructor_list
     @user = current_user
-    @sessions = CourseSession.joins("join students_sessions on user_id = students_sessions.user_id").where(["students_sessions.user_id = ?", @user.id])
-    @course_sessions = @sessions.uniq!   
+    @course_sessions = CourseSession.joins("join students_sessions on course_sessions.id = students_sessions.course_session_id").where("students_sessions.user_id = ?", @user.id)
     @followers = @user.followers.paginate(page: params[:page])
   end
 
