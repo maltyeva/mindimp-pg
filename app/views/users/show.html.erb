@@ -24,6 +24,7 @@
     <% if current_user == @user || current_user.is_admin? %>
     <li><a href="#class">Class Information</a></li>
     <li><a href="#books">Books</a></li>
+    <li><a href="#articles">Articles</a></li>
     <li><a href="#certifications">Certifications</a></li>
     <li><a href="#assessments">Assessments</a></li>
     <% end %>
@@ -83,11 +84,11 @@
 <div class="row">
     <div class="col-md-8">
         <div class="well">
-        <% if @user.course_sessions.nil? %>
+        <% if @course_sessions.empty? %>
         <h4><%= @user.name %> is not enrolled in any classes right now.</h4>
         <% else %>
         <ul class="users">
-        <% @user.course_sessions.where(active: true).each do |c| %>
+        <% @course_sessions.each do |c| %>
         <%= c.course_period.title %>: </br>
         <%= link_to c.full_title, course_session_path(c) %> </br>
         <% end %>
@@ -107,7 +108,25 @@
                 <dt> Total Discussion Questions Answered: <%= @responses.count %></dt> </br>
                 <% unless @responses.empty? %>
                 <dt> Latest Discussion Question Submitted on: </dt>
-                <dd><%= @responses.last.created_at %> for <%= @responses.last.discussion_question.source %></dd>
+                <dd><%= (@responses.last.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %> for <%= @responses.last.discussion_question.source %></dd>
+                <hr />
+                <%= link_to "View All Responses", responses_user_path(@user) %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</section> 
+
+
+ <section id="articles">
+    <h3>My A</h3>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="well">
+                <dt> Total Discussion Questions Answered: <%= @responses.count %></dt> </br>
+                <% unless @responses.empty? %>
+                <dt> Latest Discussion Question Submitted on: </dt>
+                <dd><%= (@responses.last.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %> for <%= @responses.last.discussion_question.source %></dd>
                 <hr />
                 <%= link_to "View All Responses", responses_user_path(@user) %>
                 <% end %>
