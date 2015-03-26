@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def instructor_list
     @user = current_user
-    @sessions = CourseSession.joins("left join students_sessions on user_id = students_sessions.user_id").where(["students_sessions.user_id = ?", @user.id])
+    @sessions = CourseSession.joins("join students_sessions on user_id = students_sessions.user_id").where(["students_sessions.user_id = ?", @user.id])
     @course_sessions = @sessions.uniq!   
     @followers = @user.followers.paginate(page: params[:page])
   end
@@ -34,12 +34,11 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user  = User.find(params[:id])
     @responses = DiscussionResponse.where(user_id: @user.id)
     @my_courses = CourseSession.where(instructor_id: @user.id)
-    @sessions = CourseSession.joins("left join students_sessions on user_id = students_sessions.user_id").where(["students_sessions.user_id = ?", @user.id])
-    @course_sessions = @sessions.uniq!   
-
-
+    @course_sessions = CourseSession.joins("join students_sessions on course_sessions.id = students_sessions.course_session_id").where("students_sessions.user_id = ?", @user.id)
+    #Page.joins("join pages_paragraphs on pages_paragraphs.page_id = pages.id").where("pages_paragraphs.paragraph_id = ?", paragraph_id)
   end
 
   # GET /users/new
