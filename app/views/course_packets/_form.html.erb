@@ -1,10 +1,32 @@
-<%= simple_form_for(@course_packet) do |f| %>
-  <%= f.error_notification %>
 
-  <div class="form-inputs">
+
+
+<%= form_for @course_packet, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
+  <div class="control-group">
+    <%= f.label :title, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, :class => 'text_field' %>
+    </div>
   </div>
 
+  <div class="control-group">
+    <%= f.label :course_files, :class => 'control-label' %>
+    <div class="controls">
+      <!-- The magic is coming ...look at my eyes....shazammmm -->
+      <!-- Use HTML5 multiple attribute to enable multiple selection
+           and pass back to controller all files as an array, ready 
+           for paperclip!!
+           file_field_tag, since images is not a gallery attribute
+       -->
+      <%= file_field_tag "files[]", type: :file, multiple: true %>
+    </div>
+  </div>
+
+  <br/>
+
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+      <br/><%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                course_packets_path, :class => 'btn btn-mini' %>
   </div>
 <% end %>

@@ -22,9 +22,17 @@ class CoursePacketsController < ApplicationController
 
   def create
     @course_packet = CoursePacket.new(course_packet_params)
-    @course_packet.save
+    if @course_packet.save
+
+      if params[:files]
+        params[:files].each { |file|
+          @course_packet.course_files.create(file: file)
+        }
+        end
     respond_with(@course_packet)
   end
+end
+
 
   def update
     @course_packet.update(course_packet_params)

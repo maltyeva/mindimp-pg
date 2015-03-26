@@ -1,4 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @course_packet.title %></h1>
+
+
+<% @course_packet.course_files.each do |c| %>
+
+<%= c %>
+<% end %>
+
+
 <%= link_to 'Edit', edit_course_packet_path(@course_packet) %> |
 <%= link_to 'Back', course_packets_path %>
