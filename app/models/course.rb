@@ -3,7 +3,10 @@ class Course < ActiveRecord::Base
 	#The Associations involved with course
 	belongs_to :course_category
 	belongs_to :book_category
-	has_many :course_sessions, dependent:   :destroy
+
+
+	has_many :course_sessions, dependent: 	:destroy
+	has_many :course_packets, dependent: 	:destroy
 
 	#validations
 	validates_presence_of :title, :abbreviation, :description, :session_no, :course_category

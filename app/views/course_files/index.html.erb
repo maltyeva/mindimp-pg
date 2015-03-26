@@ -1,0 +1,23 @@
+<h1>Listing course_files</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @course_files.each do |course_file| %>
+      <tr>
+        <td><%= link_to 'Show', course_file %></td>
+        <td><%= link_to 'Edit', edit_course_file_path(course_file) %></td>
+        <td><%= link_to 'Destroy', course_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Course file', new_course_file_path %>
