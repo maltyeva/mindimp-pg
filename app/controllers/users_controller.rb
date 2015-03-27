@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_filter :require_login
   skip_before_filter :require_login, only: [:new, :create, :activate]
 
-  before_filter :require_admin, only: [:index, :following, :followers, :destroya]
+  before_filter :require_admin, only: [:index, :following, :followers, :destroy]
   #before_filter :correct_user, only: [:edit, :update] 
 
   # GET /users
@@ -35,6 +35,9 @@ class UsersController < ApplicationController
   def show
     @user  = User.find(params[:id])
     @responses = DiscussionResponse.where(user_id: @user.id)
+   # @responses = DiscussionResponse.includes(:discussion_question).where("book_id = nil").where(user_id: @user_id).references(:discussion_question)
+
+
     @my_courses = CourseSession.where(instructor_id: @user.id)
     @course_sessions = CourseSession.joins("join students_sessions on course_sessions.id = students_sessions.course_session_id").where("students_sessions.user_id = ?", @user.id)
     #Page.joins("join pages_paragraphs on pages_paragraphs.page_id = pages.id").where("pages_paragraphs.paragraph_id = ?", paragraph_id)

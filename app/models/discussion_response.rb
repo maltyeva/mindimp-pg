@@ -8,4 +8,12 @@ class DiscussionResponse < ActiveRecord::Base
 	def book
     	self.discussion_question.book.title 
  	end
+
+ 	#alright, let's define some scope
+    scope :books, 
+    	joins(:discussion_questions).
+    	includes(:discussion_questions).
+    	where(article_id: => nil)
+
+
 end
