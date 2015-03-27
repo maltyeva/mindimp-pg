@@ -13,6 +13,7 @@
     <%= f.association :instructor, collection: @instructors, label_method: :name, value_method: :id, include_blank: false, :label => "Instructor" %>
     <%= f.association :users, label_method: :name, value_method: :id, include_blank: false, as: :check_boxes, :label => "Students" %>
     <%= f.input :active, :hint => "Check the box if the class is currently ongoing" %>
+    <%= f.input :has_course_packet, :hint => "Check if you'd like to use the course packets for this class" %>
     <%= f.button :submit %>
   </div>
 <% end %>

@@ -9,6 +9,7 @@
 <div id="subnavbar" class="subnav" role="navigation">
   <ul class="nav nav-pills">
     <li><a href="#class">Overview</a></li>
+    <li><a href="#course_packet">Course Packet </a></li>
     <li><a href="#assignments">Assignments </a></li>
     <li><a href="#meetings">Meetings </a></li>
     <li><a href="#students">Students Roster</a></li>
@@ -40,6 +41,27 @@
         </div>
     </div>
 </div>
+</section>
+
+<section id="course_packet">
+<div class="row">
+    <h3>Course Packet:</h3>
+    <div class="col-md-8">
+                <div class="well">
+                <% if @course_session.has_course_packet == false %>
+                <h3>This session is not using a course packet</h3>
+                <% else %>
+                    <% @course_session.course.course_packets.each do |p| %>
+                        <%= link_to p.title, p %>
+                        <ul><% p.course_files.each do |f|%>
+                            <li><%= link_to f.title, f.image.url, target: "_blank" %></li>
+                        <% end %>
+                        </ul>
+                    <% end %>                
+                <% end %> 
+                </div>
+            </div>
+        </div>
 </section>
 
 

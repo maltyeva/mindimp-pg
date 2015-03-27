@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150327062331) do
+ActiveRecord::Schema.define(version: 20150327074136) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(version: 20150327062331) do
     t.boolean  "active"
     t.integer  "instructor_id"
     t.string   "instructor_name"
+    t.boolean  "has_course_packet", default: false
   end
 
   create_table "courses", force: true do |t|

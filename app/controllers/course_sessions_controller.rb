@@ -61,6 +61,7 @@ class CourseSessionsController < ApplicationController
     def course_session_params
       params.require(:course_session).permit(:title, :time, :duration, 
                                              :course_id, :course_period_id, 
-                                             :active, :instructor_id, :instructor_name, :user_ids => [])
+                                             :active, :instructor_id, :instructor_name, 
+                                             :has_course_packet, :user_ids => [])
     end
 end
