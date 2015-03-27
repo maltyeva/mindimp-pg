@@ -20,6 +20,19 @@
             There is no book list for this class.
             <% end %>
         </div>
+        <div class="well">
+            <% if !@course.course_packets.nil? %>
+            <% @course.course_packets.each do |p| %>
+            <%= link_to p.title, p %>
+                <ul><% p.course_files.each do |f|%>
+                <li><%= link_to f.title, f.image.url, target: "_blank" %></li>
+                <% end %>
+                </ul>
+            <% end %>
+            <% else %>
+            There is no book list for this class.
+            <% end %>
+        </div>
     </div>
     <div class="col-md-4">
         <div class="well">

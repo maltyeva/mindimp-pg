@@ -1,13 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @course_packet.title %></h1>
+<h1><%= @course_packet.course.abbreviation + ": " + @course_packet.title %></h1>
+<h2>Course packet for <%= @course_packet.course.title %></h2>
 
 
+<div class="well">
+
+<h3> <%= @course_packet.course_files.count %> items </h3>
 <% @course_packet.course_files.each do |c| %>
-
-<%= c.title %>
+	<li><%= link_to c.title, c.image.url, target: "_blank" %></li>
 <% end %>
+</div>
+
+<hr/>
+<%= link_to "Back to Course", course_path(@course_packet.course)%>
 
 
-<%= link_to 'Edit', edit_course_packet_path(@course_packet) %> |
-<%= link_to 'Back', course_packets_path %>
+<% if current_user.is_admin? %>
+<hr/>
+<%= link_to 'Edit Course Packet', edit_course_packet_path(@course_packet) %> | 
+<%= link_to 'Destroy Course Packet', @course_packet, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>

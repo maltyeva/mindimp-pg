@@ -3,6 +3,9 @@ class CoursePacketsController < ApplicationController
 
   respond_to :html
 
+  before_filter :require_login
+  before_filter :require_admin, only: [:index, :edit, :update, :destroy, :new]
+
   def index
     @course_packets = CoursePacket.all
     respond_with(@course_packets)

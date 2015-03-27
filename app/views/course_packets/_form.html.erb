@@ -6,10 +6,11 @@
 
   <div class="form-actions">
   	<%= f.association :course %>
-    <%= f.input :title %>
+    <%= f.input :title, :label => "Course Packet Title" %>
     <%= f.simple_fields_for :course_files do |f| %>
-        <%= f.input :title %>
-        <%= f.input :image %>
+    	<hr/>
+        <%= f.input :image,:label => "Attachment" %>
+        <%= f.input :title, :label => "Description" %>
       <% end %>
 
 
