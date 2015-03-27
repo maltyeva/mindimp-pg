@@ -10,10 +10,10 @@ class DiscussionResponse < ActiveRecord::Base
  	end
 
  	#alright, let's define some scope
-    scope :books, 
-    	joins(:discussion_questions).
-    	includes(:discussion_questions).
-    	where(article_id: => nil)
+    # scope :books, 
+    # 	joins(:discussion_questions).
+    # 	includes(:discussion_questions).
+    # 	where(article_id: => nil)
 
 
 end
