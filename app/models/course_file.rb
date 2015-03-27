@@ -3,10 +3,11 @@ class CourseFile < ActiveRecord::Base
 	belongs_to :course_packet
 
 
-	#dealing with paperclip
-	has_attached_file :file
+	#yes, this is called image but this is for all attachments. 
+	has_attached_file :image, :styles => { :small => "150x150>", :large => "320x240>" }
+	
+	validates_attachment_presence :image
+	validates_attachment_size :image, :less_than => 5.megabytes
+	validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/png', 'application/pdf']
 
-	#need to change this not just be images
-	validates_attachment_content_type :file, :content_type => /\Aimage\/.*\Z/
-  	validates_with AttachmentSizeValidator, :attributes => :file, :less_than => 1.megabytes
 end

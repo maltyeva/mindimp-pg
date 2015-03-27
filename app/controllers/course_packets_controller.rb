@@ -14,10 +14,13 @@ class CoursePacketsController < ApplicationController
 
   def new
     @course_packet = CoursePacket.new
+    @course_packet.course_files.build
+
     respond_with(@course_packet)
   end
 
   def edit
+    @course_packet.course_files.build
   end
 
   def create
@@ -49,6 +52,6 @@ end
     end
 
     def course_packet_params
-      params.require(:course_packet).permit(:title, :course_id)
+      params.require(:course_packet).permit(:title, :course_id, course_files_attributes: [:id, :title, :image])
     end
 end

@@ -7,7 +7,12 @@
   <div class="form-actions">
   	<%= f.association :course %>
     <%= f.input :title %>
-    <%= f.input_field :course_file, as: :file, multiple: true, name: 'course_packet[files]' %>
+    <%= f.simple_fields_for :course_files do |f| %>
+        <%= f.input :title %>
+        <%= f.input :image %>
+      <% end %>
+
+
 
     <%= f.button :submit %>
   </div>

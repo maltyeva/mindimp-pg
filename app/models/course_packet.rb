@@ -1,7 +1,10 @@
 class CoursePacket < ActiveRecord::Base
 
 	belongs_to :course
-	has_many :course_files, dependent: :destroy
+	has_many :course_files
 
 	validates_presence_of :title, :course_id
+
+
+	accepts_nested_attributes_for :course_files
 end
