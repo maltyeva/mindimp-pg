@@ -46,7 +46,7 @@ class CourseAssignmentsController < ApplicationController
 
   def destroy
     @course_assignment.destroy
-    respond_with(@course_assignment)
+    redirect_to course_sessions_path 
   end
 
   private

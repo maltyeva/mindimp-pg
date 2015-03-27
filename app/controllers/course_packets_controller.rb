@@ -23,7 +23,6 @@ class CoursePacketsController < ApplicationController
   def create
     @course_packet = CoursePacket.new(course_packet_params)
     if @course_packet.save
-
       if params[:files]
         params[:files].each { |file|
           @course_packet.course_files.create(file: file)

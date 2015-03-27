@@ -77,6 +77,7 @@ Rails.application.routes.draw do
   get '/student_portal'    => 'high_voltage/pages#show', id: 'student_portal'
   get '/admin_portal'    => 'high_voltage/pages#show', id: 'admin_portal'
   get '/community' => 'high_voltage/pages#show', id: 'community'
+  get '/policies' => 'high_voltage/pages#show', id: 'policies'
   get '/zoom' => 'high_voltage/pages#show', id: 'zoom'
   get '/zoom_tour' => 'high_voltage/pages#show', id: 'zoom_tour'
   get '/zoom_tips' => 'high_voltage/pages#show', id: 'zoom_tips'
