@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
 
 
-  resources :course_files
-
   resources :course_packets
 
   #things related to assignments
