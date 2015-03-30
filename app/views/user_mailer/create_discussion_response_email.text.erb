@@ -4,9 +4,11 @@ Dear <%= @user.name %>
 <%= @discussion_response.user.name %> has added a new response to a question for <%= @discussion_response.discussion_question.source %>. 
 
 
-<%= @discussion_response.discussion_question.source %>
-<%= @discussion_response.discussion_question.question %>
-<%= @discussion_response.response %>
+Source: <%= @discussion_response.discussion_question.source %>
+Question: <%= @discussion_response.discussion_question.question %>
+Response: <%= @discussion_response.response %>
 Submitted: <%= (@discussion_response.created_at + 28800).strftime('%B %e, %Y')%>
+
+Check out the response here: <%= discussion_question_discussion_response_url(@discussion_response.discussion_question, @discussion_response) %>
 
 Have a great day!

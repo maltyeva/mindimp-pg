@@ -2,6 +2,8 @@ Dear <%= @user.name %>
 ===============================================
 
 <%= @comment_user.name %> has added comments to a discussion response for <%= @discussion_response.discussion_question.source %>. 
-Please log in to view them.
+
+Please log in to view the comments: <%= discussion_question_discussion_response_url(@discussion_response.discussion_question, @discussion_response) %>
+
 
 Have a great day!
