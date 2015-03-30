@@ -15,7 +15,11 @@ class UsersController < ApplicationController
   end
 
   def student_list
-    @users = User.all
+    @users = User.paginate(page: params[:page], per_page: 10).where(:is_admin => false)
+  end
+
+  def admin_list
+    @users = User.paginate(page: params[:page], per_page: 10).where(:is_admin => true)
   end
 
 

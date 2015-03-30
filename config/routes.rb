@@ -36,7 +36,8 @@ Rails.application.routes.draw do
   #Things related to users
   resources :users
   get 'register'  => 'users#new'
-  get 'student_list' => 'users#student_list', :as => :student_list
+  get 'student_list' => 'users#student_list', :as => :student_list  
+  get 'admin_list' => 'users#admin_list', :as => :admin_list
   get 'my_courses' => 'users#course_list', :as => :my_courses
   get 'my_instructors' => 'users#instructor_list', :as => :my_instructors
 

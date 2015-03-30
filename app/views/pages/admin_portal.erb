@@ -13,9 +13,14 @@
     <div class="col-md-4">
     	<h2> Students </h2>
 		<div class="well">
-		<%= link_to "All Students", users_path, class: "btn btn-info" %>  | 
+		<%= link_to "All Students", student_list_path, class: "btn btn-info" %>  | 
 		<%= link_to "My Students", following_user_path(current_user.id), class: "btn btn-info" %> <br></br>
 		<%= link_to "My Profile", user_path(current_user.id), class: "btn btn-info"%> 
+		<hr />
+		<%= link_to "All Instructors", admin_list_path, class: "btn btn-info" %>  | 
+		<%= link_to "All Users", users_path, class: "btn btn-info" %> 
+
+
 		</div> 
 	</div>
     <div class="col-md-4">
