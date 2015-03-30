@@ -15,7 +15,13 @@
     <h3><%= @title %></h3>
     <% if @users.any? %>
       <ul class="users follow">
-        <%= render @users %>
+        <% @users.each do |user|%>
+     <li>
+      <%= image_tag user.profile_photo.url(:thumb) %>
+      <%= link_to user.name, user %>
+      <%= user.activation_state == "pending" ? "(Pending Activation)" : " " %>
+      </li>
+      <% end %>
       </ul>
       <%= will_paginate %>
     <% end %>
