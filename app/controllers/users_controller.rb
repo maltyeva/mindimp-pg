@@ -34,8 +34,9 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user  = User.find(params[:id])
-    @responses = DiscussionResponse.where(user_id: @user.id)
-   # @responses = DiscussionResponse.includes(:discussion_question).where("book_id = nil").where(user_id: @user_id).references(:discussion_question)
+    #@responses = DiscussionResponse.where(user_id: @user.id)
+    @article_responses = DiscussionResponse.joins(:discussion_question).where(:discussion_questions => { :book_id => nil }).where(user_id: @user.id)
+    @book_responses = DiscussionResponse.joins(:discussion_question).where(:discussion_questions => { :article_id => nil }).where(user_id: @user.id)
 
 
     @my_courses = CourseSession.where(instructor_id: @user.id)

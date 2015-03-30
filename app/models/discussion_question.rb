@@ -20,6 +20,15 @@ class DiscussionQuestion < ActiveRecord::Base
   	end
 
 
-  	scope :visible, where(:visible => true)
+
+    #scopes 
+  	scope :visible, lambda { where(:visible => true) }
+
+    scope :books, lambda { where(:article_id => nil) }
+
+    scope :articles, lambda { where(:book_id => nil) }
+
+
+
 
 end

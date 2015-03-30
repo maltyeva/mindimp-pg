@@ -105,10 +105,10 @@
     <div class="row">
         <div class="col-md-8">
             <div class="well">
-                <dt> Total Discussion Questions Answered: <%= @responses.count %></dt> </br>
-                <% unless @responses.empty? %>
+                <dt> Total Discussion Questions Answered: <%= @book_responses.count %></dt> </br>
+                <% unless @book_responses.empty? %>
                 <dt> Latest Discussion Question Submitted on: </dt>
-                <dd><%= (@responses.last.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %> for <%= @responses.last.discussion_question.source %></dd>
+                <dd><%= (@book_responses.last.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %> for <%= @book_responses.last.discussion_question.source %></dd>
                 <hr />
                 <%= link_to "View All Responses", responses_user_path(@user) %>
                 <% end %>
@@ -123,10 +123,10 @@
     <div class="row">
         <div class="col-md-8">
             <div class="well">
-                <dt> Total Discussion Questions Answered: <%= @responses.count %></dt> </br>
-                <% unless @responses.empty? %>
+                <dt> Total Discussion Questions Answered: <%= @article_responses.count %></dt> </br>
+                <% unless @article_responses.empty? %>
                 <dt> Latest Discussion Question Submitted on: </dt>
-                <dd><%= (@responses.last.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %> for <%= @responses.last.discussion_question.source %></dd>
+                <dd><%= (@article_responses.last.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %> for <%= @article_responses.last.discussion_question.source %></dd>
                 <hr />
                 <%= link_to "View All Responses", responses_user_path(@user) %>
                 <% end %>
