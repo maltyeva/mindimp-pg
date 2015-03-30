@@ -110,7 +110,7 @@
                 <dt> Latest Discussion Question Submitted on: </dt>
                 <dd><%= (@book_responses.last.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %> for <%= @book_responses.last.discussion_question.source %></dd>
                 <hr />
-                <%= link_to "View All Responses", responses_user_path(@user) %>
+                <%= link_to "View All Responses", book_responses_user_path(@user) %>
                 <% end %>
             </div>
         </div>
@@ -128,7 +128,7 @@
                 <dt> Latest Discussion Question Submitted on: </dt>
                 <dd><%= (@article_responses.last.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %> for <%= @article_responses.last.discussion_question.source %></dd>
                 <hr />
-                <%= link_to "View All Responses", responses_user_path(@user) %>
+                <%= link_to "View All Responses", article_responses_user_path(@user) %>
                 <% end %>
             </div>
         </div>

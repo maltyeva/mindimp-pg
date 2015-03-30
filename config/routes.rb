@@ -54,7 +54,8 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :following, :followers
-      get :responses
+      get :book_responses
+      get :article_responses
     end
   end
   resources :relationships,       only: [:create, :destroy]

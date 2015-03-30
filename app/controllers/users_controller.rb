@@ -127,10 +127,17 @@ end
   end
 
 
-  def responses
+  def book_responses
     @title = "Reading Responses"
     @user  = User.find(params[:id])
-    @responses = DiscussionResponse.where(user_id: @user.id)
+    @responses = DiscussionResponse.joins(:discussion_question).where(:discussion_questions => { :article_id => nil }).where(user_id: @user.id)
+    render 'responses'
+  end
+
+  def article_responses
+    @title = "Article Responses"
+    @user  = User.find(params[:id])
+    @responses = DiscussionResponse.joins(:discussion_question).where(:discussion_questions => { :book_id => nil }).where(user_id: @user.id)
     render 'responses'
   end
 
