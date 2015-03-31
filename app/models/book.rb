@@ -4,11 +4,8 @@ class Book < ActiveRecord::Base
 	has_and_belongs_to_many :book_categories, join_table: :books_categories
   has_many :discussion_questions, dependent: :destroy
 
-  has_many :watching_users, class_name: "BookList", 
-                            foreign_key: "watcher_id", 
-                            dependent: :destroy
-  has_many :watchers, through: :watching_users, source: :watcher
-
+  has_many :book_lists, dependent: :destroy
+  has_many :watchers, through: :book_lists, class_name: "User", foreign_key: "watcher_id"
 
   
 	validates_presence_of :title, :author, :description 
@@ -23,5 +20,13 @@ class Book < ActiveRecord::Base
 
   validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/
   validates_with AttachmentSizeValidator, :attributes => :cover, :less_than => 1.megabytes
+
+
+
+
+  #helper methods to set up book lists
+  def add_book(book)
+    self.book_associations.build(:book => book)
+  end
 
 end

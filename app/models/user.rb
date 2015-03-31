@@ -22,12 +22,10 @@ class User < ActiveRecord::Base
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
-
   #these associations will set up the book lists
-  # has_many :book_lists, class_name: "BookList", 
-  #                          foreign_key: "book_id", 
-  #                          dependent: :destroy
-  # has_many :books, through: :book_lists
+  has_many :book_lists, foreign_key: "watcher_id",
+                        dependent: :destroy
+  has_many :books, through: :book_lists
 
 
   #user validations
@@ -89,10 +87,6 @@ class User < ActiveRecord::Base
   def following?(other_user)
     following.include?(other_user)
   end
-
-
-
-
 
   private
 
