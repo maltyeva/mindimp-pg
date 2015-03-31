@@ -8,6 +8,14 @@ class CourseFile < ActiveRecord::Base
 	
 	validates_attachment_presence :image
 	validates_attachment_size :image, :less_than => 10.megabytes
-	validates_attachment_content_type :image, :content_type => ['application/pdf', 'application/msword', 'text/plain', 'image/jpeg', 'image/png']
+	validates_attachment_content_type :image, :content_type => ['application/pdf', 'application/msword', 'text/plain', 'image/jpeg', 'image/png', 'application/zip', 'application/rar']
+
+	before_post_process :skip_for_zip
+
+
+	def skip_for_zip
+   	! %w(application/zip application/rar).include?(image.content_type)
+	end
+
 
 end
