@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150327074136) do
+ActiveRecord::Schema.define(version: 20150401083041) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -268,9 +268,9 @@ ActiveRecord::Schema.define(version: 20150327074136) do
     t.string   "reset_password_token"
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
-    t.boolean  "articles"
-    t.boolean  "books"
-    t.boolean  "courses"
+    t.boolean  "articles_permissions"
+    t.boolean  "books_permissions"
+    t.boolean  "courses_permissions"
     t.string   "college"
     t.string   "major"
     t.string   "hobbies"
