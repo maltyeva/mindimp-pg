@@ -21,12 +21,4 @@ class Book < ActiveRecord::Base
   validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/
   validates_with AttachmentSizeValidator, :attributes => :cover, :less_than => 1.megabytes
 
-
-
-
-  #helper methods to set up book lists
-  def add_book(book)
-    self.book_associations.build(:book => book)
-  end
-
 end

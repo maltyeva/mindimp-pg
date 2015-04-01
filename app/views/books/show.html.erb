@@ -2,9 +2,12 @@
 <h1><%= @book.title + ", " + @book.author %></h1>
 
 
-
-
 <p id="notice"><%= notice %></p>
+
+<hr/>
+<%#= render partial: "users/book_form",  locals: {book: @book}%>
+<%= render "users/book_form" %>
+<hr/>
 
 <div class="row">
     <div class="col-md-8">

@@ -59,6 +59,7 @@ Rails.application.routes.draw do
       get :following, :followers
       get :book_responses
       get :article_responses
+      get :book_lists
     end
   end
   resources :relationships,       only: [:create, :destroy]

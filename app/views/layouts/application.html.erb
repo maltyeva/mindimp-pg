@@ -34,6 +34,8 @@
 
   <% if current_user %>
 
+
+
   <div class="row row-offcanvas row-offcanvas-left">
     
     <!-- sidebar -->
@@ -41,7 +43,9 @@
 
     <!-- main area -->
     <div class="col-xs-12 col-sm-10">
-        <%= yield %>
+    
+      <%= render 'layouts/progress_bar' %>
+    <%= yield %>
 
     </div><!-- /.col-xs-12 main -->
   </div><!--/.row-->

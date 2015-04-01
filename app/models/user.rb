@@ -88,12 +88,27 @@ class User < ActiveRecord::Base
     following.include?(other_user)
   end
 
+
+  #helper methods to set up book lists
+  def add_book(book)
+    self.book_lists.create(:book_id => book.id)
+  end
+
+  def remove_book(book)
+    self.book_lists.find_by(:book_id => book.id).destroy
+  end
+
+  def has_book?(book)
+    books.include?(book)
+  end
+
   private
 
   # Converts email to all lower-case.
   def downcase_email
     self.email = email.downcase
   end
+
 
   
 end

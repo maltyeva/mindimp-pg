@@ -3,7 +3,7 @@ class BookListsController < ApplicationController
 before_filter :require_login
 
   def create
-    @book = Book.find(params[:id])
+    @book = Book.find(params[:book_id])
     current_user.add_book(@book)
     respond_to do |format|
       format.html { redirect_to @book }
@@ -12,10 +12,10 @@ before_filter :require_login
   end
 
   def destroy
-    @user = Relationship.find(params[:id]).followed
-    current_user.unfollow(@user)
+    @book = BookList.find(params[:id]).book
+    current_user.remove_book(@book)
     respond_to do |format|
-      format.html { redirect_to @user }
+      format.html { redirect_to @book }
       format.js
     end
   end

@@ -1,0 +1,7 @@
+  <div id="book_form">
+  <% if current_user.has_book?(@book) %>
+   <%= render "users/remove_book" %>
+  <% else %>
+    <%= render "users/add_book" %>
+  <% end %>
+  </div>
