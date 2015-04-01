@@ -1,13 +1,19 @@
 
-<h1><%= @book.title + ", " + @book.author %></h1>
+<h1><%= @book.title + ", " + @book.author %> <%= render "users/book_form" %></h1>
+
 
 
 <p id="notice"><%= notice %></p>
 
 <hr/>
-<%#= render partial: "users/book_form",  locals: {book: @book}%>
-<%= render "users/book_form" %>
-<hr/>
+  <div id="read_book_form">
+  <% if current_user.has_read_book?(@book) %>
+   <%= render "users/unread_book" %>
+  <% else %>
+    <%= render "users/read_book" %>
+  <% end %>
+  </div>
+  <hr/>
 
 <div class="row">
     <div class="col-md-8">

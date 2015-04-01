@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150401083041) do
+ActiveRecord::Schema.define(version: 20150401085508) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -201,6 +201,17 @@ ActiveRecord::Schema.define(version: 20150401083041) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "read_books", force: true do |t|
+    t.integer  "reader_id"
+    t.integer  "read_book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "read_books", ["read_book_id"], name: "index_read_books_on_read_book_id", using: :btree
+  add_index "read_books", ["reader_id", "read_book_id"], name: "index_read_books_on_reader_id_and_read_book_id", unique: true, using: :btree
+  add_index "read_books", ["reader_id"], name: "index_read_books_on_reader_id", using: :btree
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"

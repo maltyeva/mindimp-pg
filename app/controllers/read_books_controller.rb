@@ -1,10 +1,10 @@
-class BookListsController < ApplicationController
+class ReadBooksController < ApplicationController
 
 before_filter :require_login
 
   def create
-    @book = Book.find(params[:book_id])
-    current_user.add_book(@book)
+    @book = Book.find(params[:read_book_id])
+    current_user.add_read_book(@book)
     respond_to do |format|
       format.html { redirect_to @book }
       format.js
@@ -12,13 +12,16 @@ before_filter :require_login
   end
 
   def destroy
-    @book = BookList.find(params[:id]).book
-    current_user.remove_book(@book)
+    @book = ReadBook.find(params[:id]).book
+    current_user.remove_read_book(@book)
     respond_to do |format|
       format.html { redirect_to @book }
       format.js
     end
   end
 
-  
+
+
+
+
 end

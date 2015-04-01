@@ -1,0 +1,6 @@
+<%= form_for(current_user.read_books.find_by(read_book_id: @book.id),
+             html: { method: :delete },
+             remote: true) do |f| %>
+  <%= f.submit "In my read list!", class: "btn" %>
+<% end %>
+

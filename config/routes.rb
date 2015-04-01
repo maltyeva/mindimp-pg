@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   get 'categories_table' => 'book_categories#table_index', :as => :categories_table\
 
   resources :book_lists,       only: [:create, :destroy]
+  resources :read_books,       only: [:create, :destroy]
+
 
 
   #Things related to users
@@ -65,7 +67,7 @@ Rails.application.routes.draw do
   resources :relationships,       only: [:create, :destroy]
 
 
-  resources :users do
+ resources :users do
     member do
       get :activate
     end

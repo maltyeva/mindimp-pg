@@ -27,6 +27,12 @@ class User < ActiveRecord::Base
                         dependent: :destroy
   has_many :books, through: :book_lists
 
+  #these associations will set up the read books lists
+  has_many :read_books, foreign_key: "reader_id",
+                        dependent: :destroy
+  has_many :books_read, through: :read_books, class_name: "Book", foreign_key: "read_book_id", source: :book
+
+
 
   #user validations
   validates :first_name, presence: true, length: { maximum: 50 }
@@ -53,7 +59,7 @@ class User < ActiveRecord::Base
   validates_with AttachmentSizeValidator, :attributes => :profile_photo, :less_than => 1.megabytes
 
 
-  #using roles to 
+  #are we using this? 
   royce_roles %w[ articles books classes ] 
 
 
@@ -101,6 +107,20 @@ class User < ActiveRecord::Base
   def has_book?(book)
     books.include?(book)
   end
+
+  #helper methods to set up book lists
+  def add_read_book(book)
+    self.read_books.create(:read_book_id => book.id)
+  end
+
+  def remove_read_book(book)
+    self.read_books.find_by(:read_book_id => book.id).destroy
+  end
+
+  def has_read_book?(book)
+    books_read.include?(book)
+  end
+
 
   private
 
