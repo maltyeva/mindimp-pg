@@ -1,0 +1,17 @@
+<% provide(:title, @title) %>
+
+<h1><%= @title %></h1>
+
+<div class="row">
+
+<% @user.books.each do |b| %>
+
+	 <div class="col-xs-6 col-md-3">
+        <div class="thumbnail">
+        <%= image_tag b.cover.url(:medium) %>
+        <dt><%= link_to b.title, book_path(b)%></dt>
+        </div>    
+    	</div>
+
+<% end %>
+</div>

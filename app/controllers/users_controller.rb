@@ -142,16 +142,12 @@ end
   end
 
 
-  #adding a book to the book list
-  def add_book
-    @book = Book.find(params[:book])
-    @books_students = Book.where(:id => params[:book_category_id])
-    @user_books = []
-    current_user.follow(@user)
-    respond_to do |format|
-      format.html { redirect_to @user }
-      format.js
-    end
+  #showing the 
+  def user_books
+    @title = "My Books"
+    @user  = User.find(params[:id])
+    @books = @user.book_lists.paginate(page: params[:page])
+    render 'user_books'
   end
 
 

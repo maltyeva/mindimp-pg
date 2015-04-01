@@ -11,7 +11,7 @@
     <li><a href="#" data-toggle="collapse" data-target="#sub1">Books</a>
       <ul class="nav collapse" id="sub1">
         <li><%= link_to "Book List", books_path %></li>
-        <li><a href="#">My Books (coming soon)</a></li>
+        <li><%= link_to "My Books", books_user_path(current_user.id) %></li>
       </ul>
     </li>
     <% end %>

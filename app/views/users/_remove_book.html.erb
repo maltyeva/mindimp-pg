@@ -1,6 +1,6 @@
 <%= form_for(current_user.book_lists.find_by(book_id: @book.id),
              html: { method: :delete },
              remote: true) do |f| %>
-  <%= f.submit "Remove Book", class: "btn" %>
+  <%= f.submit "Remove from my books", class: "btn" %>
 <% end %>
 
