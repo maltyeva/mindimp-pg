@@ -39,7 +39,7 @@ class DiscussionQuestionsController < ApplicationController
   def destroy
     @discussion_question.destroy
    # respond_with(@discussion_question)
-    redirect_to articles_path 
+    redirect_to :back
   end
 
   private

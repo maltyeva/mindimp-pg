@@ -23,8 +23,7 @@
 
 
 <% if current_user.is_admin? %>
-<%= link_to 'Edit Question', edit_discussion_question_path(@discussion_question) %> |
-<%= link_to 'Destroy Question', @discussion_question, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Edit Question', edit_discussion_question_path(@discussion_question) %> 
 <% end %>
 <hr />
 <% if !@discussion_question.book.nil? %>
