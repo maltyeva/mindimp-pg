@@ -10,7 +10,7 @@
     <% if current_user.books_permissions == true || current_user.is_admin? %>
     <li><a href="#" data-toggle="collapse" data-target="#sub1">Books</a>
       <ul class="nav collapse" id="sub1">
-        <li><%= link_to "Book List", books_path %></li>
+        <li><%= link_to "All Books", books_path %></li>
         <li><%= link_to "My Books", books_user_path(current_user.id) %></li>
       </ul>
     </li>
@@ -18,7 +18,7 @@
     <% if current_user.articles_permissions == true || current_user.is_admin? %>
     <li><a href="#" data-toggle="collapse" data-target="#sub2">Articles</a>
       <ul class="nav collapse" id="sub2">
-        <li><%= link_to "Article List", articles_path %></li>
+        <li><%= link_to "All Articles", articles_path %></li>
         <li><a href="#">My Articles (coming soon)</a></li>
     </ul>
     <% end %>
