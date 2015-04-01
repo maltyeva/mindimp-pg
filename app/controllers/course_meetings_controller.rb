@@ -7,7 +7,7 @@ class CourseMeetingsController < ApplicationController
   before_filter :require_login
   before_filter :load_course_session
 
-  before_filter :require_admin, only: [:edit, :index, :update]
+  before_filter :require_admin, only: [:edit, :index, :update, :show]
 
 
   def index
@@ -39,8 +39,8 @@ class CourseMeetingsController < ApplicationController
   end
 
   def destroy
-    @course_session.course_meeting.destroy
-    respond_with(@course_session, @course_meeting)
+    @course_meeting.destroy
+    redirect_to course_sessions_path  
   end
 
   private

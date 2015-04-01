@@ -12,5 +12,7 @@
 </div>
 
 <%= link_to 'Edit Meeting', edit_course_session_course_meeting_path(@course_session, @course_meeting) %> |
+<%= link_to "Delete Meeting", [@course_session, @course_meeting], :method  => :delete, 
+ data: { confirm: 'Are you sure?' } %> | 
 <%= link_to 'Back to Course', course_session_path(@course_session) %> |
 <%= link_to 'View All Course Meetings', course_session_course_meetings_path(@course_session) %>

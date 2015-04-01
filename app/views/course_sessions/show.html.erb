@@ -101,7 +101,11 @@
                 <% else %>
                     <% @course_session.course_meetings.each do |c| %>
                     <li><div class="well">
+                        <% if current_user.is_admin? %>
+                        <dt><%= link_to c.title, course_session_course_meeting_path(@course_session, c) %></dt>
+                        <% else %>
                         <dt><%= c.title %></dt>
+                        <% end %>
                         <%= c.preparation_notes %>
                     <% if current_user.is_admin? %>
                         <dt>Instructor Notes: </dt>
