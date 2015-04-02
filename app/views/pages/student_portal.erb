@@ -19,6 +19,7 @@
 		<% if current_user.articles_permissions == true || current_user.is_admin? %>
 		</br></br>
 		<%= link_to "Article List", articles_path, class: "btn btn-lg btn-info" %> | 
+		<%= link_to "My Articles", articles_user_path(current_user.id), class: "btn btn-lg btn-info" %>
 		<% end %>
 		<% if current_user.courses_permissions == true || current_user.is_admin? %>
 		</br></br>

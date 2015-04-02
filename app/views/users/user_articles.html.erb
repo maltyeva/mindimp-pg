@@ -1,0 +1,16 @@
+<% provide(:title, @title) %>
+
+<h1><%= @title %></h1>
+
+<div class="row">
+
+<% @user.articles.each do |a| %>
+
+	 <div class="col-xs-6 col-md-3">
+        <div class="thumbnail">
+        <dt><%= link_to a.title, article_path(a)%></dt>
+        </div>    
+    	</div>
+
+<% end %>
+</div>

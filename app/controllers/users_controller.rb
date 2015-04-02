@@ -142,7 +142,7 @@ end
   end
 
 
-  #showing the 
+  #showing the book & article lists
   def user_books
     @title = "My Books"
     @user  = User.find(params[:id])
@@ -150,6 +150,12 @@ end
     render 'user_books'
   end
 
+  def user_articles
+    @title = "My Articles"
+    @user  = User.find(params[:id])
+    @articles = @user.article_lists.paginate(page: params[:page])
+    render 'user_articles'
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

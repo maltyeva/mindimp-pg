@@ -19,7 +19,7 @@
     <li><a href="#" data-toggle="collapse" data-target="#sub2">Articles</a>
       <ul class="nav collapse" id="sub2">
         <li><%= link_to "All Articles", articles_path %></li>
-        <li><a href="#">My Articles (coming soon)</a></li>
+        <li><%= link_to "My Articles", articles_user_path(current_user.id) %></li>
     </ul>
     <% end %>
     <% if current_user.is_admin? %>
