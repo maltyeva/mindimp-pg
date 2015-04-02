@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150401085508) do
+ActiveRecord::Schema.define(version: 20150402031449) do
+
+  create_table "article_lists", force: true do |t|
+    t.integer  "watcher_id"
+    t.integer  "article_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "article_lists", ["article_id"], name: "index_article_lists_on_article_id", using: :btree
+  add_index "article_lists", ["watcher_id", "article_id"], name: "index_article_lists_on_watcher_id_and_article_id", unique: true, using: :btree
+  add_index "article_lists", ["watcher_id"], name: "index_article_lists_on_watcher_id", using: :btree
 
   create_table "articles", force: true do |t|
     t.string   "title"

@@ -10,12 +10,11 @@ class Book < ActiveRecord::Base
 
  #complicated relationships between books & users  
   has_many :book_lists, dependent: :destroy
-  has_many :watchers, through: :book_lists, class_name: "User", foreign_key: "watcher_id"
+  has_many :watchers, through: :book_lists, class_name: "User", foreign_key: "watcher_id", source: :user
 
 
-  belongs_to :read_books, dependent: :destroy
-  has_many :readers, through: :read_books, class_name: "User", foreign_key: "reader_id"
-
+  has_many :read_books, foreign_key: "read_book_id", dependent: :destroy
+  has_many :readers, through: :read_books, class_name: "User", foreign_key: "reader_id", source: :user
 
 
 #creates cover photo 

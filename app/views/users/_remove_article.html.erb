@@ -1,0 +1,6 @@
+<%= form_for(current_user.article_lists.find_by(article_id: @article.id),
+             html: { method: :delete },
+             remote: true) do |f| %>
+  <%= f.submit "Remove from my articles", class: "btn" %>
+<% end %>
+

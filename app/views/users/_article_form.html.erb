@@ -1,0 +1,7 @@
+  <div id="article_form">
+  <% if current_user.has_article?(@article) %>
+   <%= render "users/remove_article" %>
+  <% else %>
+    <%= render "users/add_article" %>
+  <% end %>
+  </div>

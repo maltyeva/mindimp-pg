@@ -32,6 +32,12 @@ class User < ActiveRecord::Base
                         dependent: :destroy
   has_many :books_read, through: :read_books, class_name: "Book", foreign_key: "read_book_id", source: :book
 
+  #these associations will set up the article lists
+   has_many :article_lists, foreign_key: "watcher_id",
+                        dependent: :destroy
+   has_many :articles, through: :article_lists
+
+
 
 
   #user validations
@@ -108,7 +114,7 @@ class User < ActiveRecord::Base
     books.include?(book)
   end
 
-  #helper methods to set up book lists
+  #helper methods to set up read book lists
   def add_read_book(book)
     self.read_books.create(:read_book_id => book.id)
   end
@@ -119,6 +125,19 @@ class User < ActiveRecord::Base
 
   def has_read_book?(book)
     books_read.include?(book)
+  end
+
+    #helper methods to set up article lists
+  def add_article(article)
+    self.article_lists.create(:article_id => article.id)
+  end
+
+  def remove_article(article)
+    self.article_lists.find_by(:article_id => article.id).destroy
+  end
+
+  def has_article?(article)
+    articles.include?(article)
   end
 
 

@@ -1,0 +1,6 @@
+<%= form_for(current_user.article_lists.
+                          build(article_id: @article.id),
+                          remote: true) do |f| %>
+  <div><%= hidden_field_tag :article_id, @article.id %></div>
+  <%= f.submit "Add to my articles", class: "btn btn-primary" %>
+<% end %>

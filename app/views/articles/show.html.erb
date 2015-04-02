@@ -1,14 +1,13 @@
-<h1><%= @article.title + ", " + @article.source %></h1>
-
-
-
-
 <p id="notice"><%= notice %></p>
+
+<h1><%= @article.title + ", " + @article.source %></h1>
 
 <div class="row">
     <div class="col-md-8">
 
     	<dd><%= @article.description %></dd><hr />
+
+<%= render "users/article_form" %>
 
 
         <div class="well">

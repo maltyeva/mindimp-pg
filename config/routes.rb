@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get 'categories_table' => 'book_categories#table_index', :as => :categories_table\
 
   resources :book_lists,       only: [:create, :destroy]
+  resources :article_lists,       only: [:create, :destroy]
   resources :read_books,       only: [:create, :destroy]
 
 
