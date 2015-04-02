@@ -5,7 +5,10 @@ class CourseFile < ActiveRecord::Base
 
 	#yes, this is called image but this is for all attachments. 
 	has_attached_file :image, :styles => { :small => "150x150>", :large => "320x240>" }
-	
+
+	validates_presence_of :title
+
+		
 	validates_attachment_presence :image
 	validates_attachment_size :image, :less_than => 10.megabytes
 	validates_attachment_content_type :image, :content_type => ['application/pdf', 'application/msword', 'text/plain', 'image/jpeg', 'image/png', 'application/zip', 'application/rar']
