@@ -1,11 +1,11 @@
-Dear <%= @instructor.name %>
-===============================================
+	Dear <%= @instructor.name %>,
+	===============================================
 
-<%= @assignment_response.user.name %> has submitted a new response to <%= @assignment_response.course_assignment.title %>. 
+	<%= @assignment_response.user.name %> has submitted a new response to <%= @assignment_response.course_assignment.title %>. 
 
 
-<%= @assignment_response.course_assignment.title %>
-<%= @assignment_response.text %>
-Submitted: <%= (@assignment_response.submitted + 28800).strftime('%B %e, %Y')%>
+	<%= @assignment_response.course_assignment.title %>
+	<%= @assignment_response.text %>
+	Submitted: <%= (@assignment_response.submitted + 28800).strftime('%B %e, %Y')%>
 
-Have a great day!
+	Have a great day!

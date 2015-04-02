@@ -11,4 +11,41 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.activation_success_email
   end
 
+  def create_discussion_response_email
+  	UserMailer.create_discussion_response_email(User.first, DiscussionResponse.first)
+  end
+  
+  def activation_needed_email
+  	UserMailer.activation_needed_email(User.first)
+  end
+
+  def activation_success_email
+  	UserMailer.activation_success_email(User.first)
+  end
+
+  def comment_discussion_response_email
+  	UserMailer.comment_discussion_response_email(User.first, User.last, DiscussionResponse.first)
+  end
+
+  def create_assignment_email
+  	UserMailer.create_assignment_email(User.first, CourseAssignment.first)
+  end
+
+  def grade_assignment_email
+  	UserMailer.grade_assignment_email(User.first, AssignmentResponse.first)
+  end
+
+  def instructor_create_assignment_email
+  	UserMailer.instructor_create_assignment_email(User.first, CourseAssignment.first)
+  end
+
+  def reset_password_email
+  	UserMailer.reset_password_email(User.first)
+  end
+
+  def submit_assignment_email
+  	UserMailer.submit_assignment_email(User.first, AssignmentResponse.first)
+  end
+
+
 end
