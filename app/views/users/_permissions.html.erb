@@ -1,0 +1,9 @@
+<% if @user.courses_permissions == true %>
+    <%= link_to "Course Student", user_path(@user), class: "btn btn-info" %> 
+<% end %>
+<% if @user.books_permissions == true %>
+    <%= link_to "Books Program Participant", user_path(@user), class: "btn btn-info" %> 
+<% end %>
+<% if @user.articles_permissions == true %>
+    <%= link_to "Article Program Participant", user_path(@user), class: "btn btn-info" %> 
+<% end %>

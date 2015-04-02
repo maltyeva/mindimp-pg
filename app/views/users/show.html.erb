@@ -1,3 +1,6 @@
+<p id="notice"><%= notice %></p>
+
+
 <h1><%= @user.first_name + " " + (!@user.nick_name.blank? ? "(#{@user.nick_name}) " : "") + @user.last_name %> 
 <%= @user.activation_state == "pending" ? "| Pending Activation" : "" %> </h1>  
 
@@ -11,10 +14,7 @@
 <%= render 'follow_form' %> 
 <% end %>
 
-<%# link_to, %>
-
-<p id="notice"><%= notice %></p>
-
+<%= render  'permissions' %>
 
 <hr />
 <!-- SUBNAV SECTION -->
