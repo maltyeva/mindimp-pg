@@ -1,11 +1,15 @@
 <% provide(:title, @title) %>
 
-<h1><%= current_user == @user ? "My Books" : "#{@user.name}'s Books"%></h1>
+<h1><%= current_user == @user ? "My Bookshelf" : "#{@user.name}'s Bookshelf"%></h1>
 
+
+<h2>Have read </h2>
+
+<h2>Currently reading</h2>
+
+<h2>Want to read</h2>
 <div class="row">
-
 <% @user.books.each do |b| %>
-
 	 <div class="col-xs-6 col-md-3">
         <div class="thumbnail">
         <%= image_tag b.cover.url(:medium) %>

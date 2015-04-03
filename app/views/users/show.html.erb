@@ -94,6 +94,18 @@
 <div class="row">
     <div class="col-md-8">
         <div class="well">
+        <% if @user.is_admin? %>
+        <% if @my_courses.empty? %>
+        <h4><%= @user.name %> is not teaching any classes right now.</h4>
+        <% else %>
+        <ul class="users">
+        <% @my_courses.each do |c| %>
+        <%= c.course_period.title %>: </br>
+        <%= link_to c.full_title, course_session_path(c) %> </br>
+        <% end %>
+        </ul>
+        <% end %>
+        <% else %>
         <% if @course_sessions.empty? %>
         <h4><%= @user.name %> is not enrolled in any classes right now.</h4>
         <% else %>
@@ -103,6 +115,7 @@
         <%= link_to c.full_title, course_session_path(c) %> </br>
         <% end %>
         </ul>
+        <% end %>
         <% end %>
         </div>
     </div>
@@ -132,10 +145,11 @@
                 <dt> Latest Discussion Question Submitted on: </dt>
                 <dd><%= (@book_responses.last.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %> for <%= @book_responses.last.discussion_question.source %></dd>
                 <hr />
-                <%= link_to "View All Responses", book_responses_user_path(@user) %> | 
+                <%= link_to "View All Responses", book_responses_user_path(@user) %> 
+                <% end %>
+                <% end %>
+                <hr/>
                 <%= link_to "#{@user.first_name}'s Books", books_user_path(@user)%>
-                <% end %>
-                <% end %>
             </div>
         </div>
     </div>
@@ -156,9 +170,10 @@
                 <dt> Latest Discussion Question Submitted on: </dt>
                 <dd><%= (@article_responses.last.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %> for <%= @article_responses.last.discussion_question.source %></dd>
                 <hr />
-                <%= link_to "View All Responses", article_responses_user_path(@user) %> | 
-                <%= link_to "#{@user.first_name}'s Articles", articles_user_path(@user)%>
+                <%= link_to "View All Responses", article_responses_user_path(@user) %> 
                 <% end %>
+                <hr/>
+                <%= link_to "#{@user.first_name}'s Articles", articles_user_path(@user)%>
             </div>
         </div>
     </div>
@@ -207,14 +222,6 @@
     <div class="col-md-8">
     <h3>Settings</h3>
          <div class="well">
-        <h4>Permissions: </h4>
-        <dt>Articles</dt>
-        <dd><%= @user.articles_permissions %></dd>
-        <dt>Books</dt>
-        <dd><%= @user.books_permissions %></dd>
-        <dt>Courses</dt>
-        <dd><%= @user.courses_permissions %></dd>
-        <hr />
         <dt>Skype ID</dt>
         <dd><%= @user.skype_id %></dd>  
         <dt>Phone Number</dt>

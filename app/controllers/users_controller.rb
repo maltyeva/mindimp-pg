@@ -15,11 +15,15 @@ class UsersController < ApplicationController
   end
 
   def student_list
+    @title = "Current MindImp Students"
     @users = User.paginate(page: params[:page], per_page: 10).where(:is_admin => false)
+    render 'user_list'
   end
 
   def admin_list
+    @title = "Current MindImp Instructors"
     @users = User.paginate(page: params[:page], per_page: 10).where(:is_admin => true)
+    render 'user_list'
   end
 
 
