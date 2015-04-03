@@ -2,25 +2,26 @@
 
 <h1><%= @title %></h1>
 
+
+
+<h2>Want to read</h2>
 <div class="row">
-
 <% @user.articles.each do |a| %>
-
 	 <div class="col-xs-6 col-md-3">
         <div class="thumbnail">
         <dt><%= link_to a.title, article_path(a)%></dt>
         </div>    
-    	</div>
-
+     </div>
 <% end %>
 </div>
 
 
-<h1>Read</h1>
+<h2>Currently reading</h2>
+Coming Soon
 
 
-<h1>Reading</h1>
+<h2>Have already read</h2>
+Coming Soon
 
-<h1>Want to read</h1>
 
 
