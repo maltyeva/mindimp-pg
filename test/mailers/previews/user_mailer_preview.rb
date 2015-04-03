@@ -47,5 +47,8 @@ class UserMailerPreview < ActionMailer::Preview
   	UserMailer.submit_assignment_email(User.first, AssignmentResponse.first)
   end
 
+ def activation_admin_email
+  UserMailer.activation_admin_email(User.first)
+ end
 
 end

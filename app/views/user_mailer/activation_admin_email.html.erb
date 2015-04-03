@@ -28,14 +28,13 @@
         </tr>
         <tr>
           <td>
-          <h1>Congratulations <%= @user.first_name %>,</h1>
+          <h1>Dear Iris,</h1>
           </td>
         </tr>
-        <tr> <td>You have successfully activated your MindImp account, your username is: <%= @user.email %>.</td></tr>
+        <tr> <td>  <%= @user.name %> has successfully activated their MindImp Acccount. </td></tr>
         <tr>
           <td valign="top">
-            <p>To login to the site, click <%= link_to "here", @url %>, or  follow this link: <%= @url %>.</p>
-            <p>Please be sure to update your <%= link_to "user profile", user_path(@user)%>!  </p>
+            <p>Please visit their <%= link_to "profile", user_path(@user)%> to create their account permissions.  </p>
           </td>
         </tr>
         <tr>

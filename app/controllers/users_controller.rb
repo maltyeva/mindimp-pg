@@ -65,9 +65,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        #UserMailer.account_activation(@user).deliver!
-        # format.html { redirect_to :root, notice: 'Please check your email to activate your account.' }
-        #log_in @user
         format.html { redirect_to :root, notice: 'Thank you for creating your MindImp Account! Please check your email for more details.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -104,6 +101,7 @@ class UsersController < ApplicationController
   def activate
   if (@user = User.load_from_activation_token(params[:id]))
     @user.activate!
+    UserMailer.activation_admin_email(@user).deliver
     redirect_to(login_path, :notice => 'User was successfully activated.')
   else
     not_authenticated
