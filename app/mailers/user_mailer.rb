@@ -33,7 +33,8 @@ class UserMailer < ActionMailer::Base
 
   def activation_admin_email(user)
     @user = user
-    mail(:to => "maria@mindimp.com", 
+    mail(:to => "iris@mindimp.com", 
+         :cc => "maria@mindimp.com"
          :subject => "#{@user.name} has registered on the site." )
   end
 
