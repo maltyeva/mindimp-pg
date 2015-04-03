@@ -66,6 +66,9 @@ gem 'bcrypt', '~> 3.1.7'
 #using mysql in development
 gem 'mysql', group: :development
 
+#using this for badges
+gem 'merit'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
