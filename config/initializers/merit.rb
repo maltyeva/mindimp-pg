@@ -4,7 +4,7 @@ Merit.setup do |config|
   # config.checks_on_each_request = true
 
   # Define ORM. Could be :active_record (default) and :mongoid
-  # config.orm = :active_record
+  config.orm = :active_record
 
   # Add application observers to get notifications when reputation changes.
   # config.add_observer 'MyObserverClassName'

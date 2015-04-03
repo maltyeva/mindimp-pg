@@ -1,50 +1,39 @@
 
-<h1><%= @book.title + ", " + @book.author %> <%= render "users/book_form" %></h1>
-
+<div class="row">
+    <div class="col-md-4">
+        <div class="thumbnail">
+        <%= image_tag @book.cover.url(:medium) %>
+        </div>
+    </div>
+    
+    <div class="col-md-8">
+      <h1><%= @book.title + ", " + @book.author %> <%= render "users/book_form" %></h1>
+        <hr/>
+      <div id="read_book_form">
+      <% if current_user.has_read_book?(@book) %>
+       <%= render "users/unread_book" %>
+      <% else %>
+        <%= render "users/read_book" %>
+      <% end %>
+      </div>
+      <hr/>
+    </div>
+</div>
 
 
 <p id="notice"><%= notice %></p>
 
-<hr/>
-  <div id="read_book_form">
-  <% if current_user.has_read_book?(@book) %>
-   <%= render "users/unread_book" %>
-  <% else %>
-    <%= render "users/read_book" %>
-  <% end %>
-  </div>
-  <hr/>
-
 <div class="row">
     <div class="col-md-8">
+       
         <div class="well">
-    
         <dd><%= @book.description %></dd>
         </div>
+      </div>
+    
+    <div class="col-md-4">
 
-        <h2>Discussion Questions: </h2>
-        <% if @book.discussion_questions.empty? && current_user.is_admin? %>
-         There don't seem to be any discussion questions, would you like to add some? </br>
-         <%= link_to "New Discussion Question", new_discussion_question_path, class: "btn btn-info"%>
-        <% elsif @book.discussion_questions.empty? %>
-          There are no discussion questions for this book. 
-        <% else %>
-        <% @book.discussion_questions.each do |q|%>
-         <div class="well">
-         <dt>Week: <%= q.week_number %>, Chapters <%= q.chapters %></dt> <%= q.question %> 
-         <dt><%= link_to "Respond", new_discussion_question_discussion_response_path(q)%> </dt>
-         <% if current_user.is_admin?%> 
-            <%= link_to "Edit Question", edit_discussion_question_path(q) %> | 
-            <%= link_to 'Delete Question', q, method: :delete, data: { confirm: 'Are you sure?' } %> | 
-            <%=link_to "View all responses", discussion_question_discussion_responses_path(q) %>
-         <% end %>
-         </div>
-         <% end %>
-        <% end %>
-
-    </br></br>
-
-        <div class="well">
+      <div class="well">
         <dt>Page Count </dt>
         <dd><%= @book.page_count %></dd>
         <dt>Lexile Measure </dt>
@@ -59,18 +48,40 @@
            <dd>  <%= link_to c.title, book_category_path(c) %> </dd> 
           <% end %>
         <% end %>
-        </div>
-    </div>
-
-
-
-    <div class="col-md-4">
-        <div class="thumbnail">
-        <%= image_tag @book.cover.url(:medium) %>
-        </div>
+        <hr/>
         <%= link_to "Buy this book!", @book.url, :class => "btn btn-info" %>
+        </div>
     </div>
+</div>
     
+
+
+
+<div class="row">
+      <div class="col-md-8">
+        <h2>Discussion Questions: </h2>
+        <% if @book.discussion_questions.empty? && current_user.is_admin? %>
+          <div class="well">
+
+         There don't seem to be any discussion questions, would you like to add some? </br>
+         <%= link_to "New Discussion Question", new_discussion_question_path, class: "btn btn-info"%>
+        <% elsif @book.discussion_questions.empty? %>
+          There are no discussion questions for this book. 
+        </div>
+        <% else %>
+        <% @book.discussion_questions.each do |q|%>
+         <div class="well">
+         <dt>Week: <%= q.week_number %>, Chapters <%= q.chapters %></dt> <%= q.question %> 
+         <dt><%= link_to "Respond", new_discussion_question_discussion_response_path(q)%> </dt>
+         <% if current_user.is_admin?%> 
+            <%= link_to "Edit Question", edit_discussion_question_path(q) %> | 
+            <%= link_to 'Delete Question', q, method: :delete, data: { confirm: 'Are you sure?' } %> | 
+            <%=link_to "View all responses", discussion_question_discussion_responses_path(q) %>
+         <% end %>
+         </div>
+         <% end %>
+        <% end %>
+</div>
 </div>
 
 

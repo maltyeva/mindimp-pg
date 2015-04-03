@@ -18,4 +18,16 @@
 Coming Soon
 
 <h2>Have read </h2>
-Coming Soon
+<div class="row">
+<% @user.books_read.each do |b| %>
+	 <div class="col-xs-6 col-md-3">
+        <div class="thumbnail">
+        <%= image_tag b.cover.url(:medium) %>
+        <dt><%= link_to b.title, book_path(b)%></dt>
+        </div>    
+    	</div>
+<% end %>
+</div>
+
+
+
