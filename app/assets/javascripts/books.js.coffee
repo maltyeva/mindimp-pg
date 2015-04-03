@@ -4,4 +4,6 @@
 
 
 jQuery ->
-        $('#table_books').dataTable()
+        $('#table_books').dataTable( {
+        	"order": [[2, "asc" ]]
+        })

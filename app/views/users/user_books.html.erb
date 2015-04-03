@@ -1,6 +1,6 @@
 <% provide(:title, @title) %>
 
-<h1><%= @title %></h1>
+<h1><%= current_user == @user ? "My Books" : "#{@user.name}'s Books"%></h1>
 
 <div class="row">
 

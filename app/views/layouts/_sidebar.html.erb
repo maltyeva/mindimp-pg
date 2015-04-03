@@ -1,6 +1,6 @@
 <div data-spy="affix-top" data-offset-top="10">
 <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
-  <ul class="nav">
+  <ul class="nav nav-stacked affix"">
       <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "Home", root_path %></li>
     <li><%= link_to "My Profile", user_path(current_user.id) %></li>
     <% if current_user.courses_permissions == true || current_user.is_admin? %>
@@ -10,16 +10,16 @@
     <% if current_user.books_permissions == true || current_user.is_admin? %>
     <li><a href="#" data-toggle="collapse" data-target="#sub1">Books</a>
       <ul class="nav collapse" id="sub1">
-        <li><%= link_to "All Books", books_path %></li>
         <li><%= link_to "My Books", books_user_path(current_user.id) %></li>
+        <li><%= link_to "All Books", books_path %></li>
       </ul>
     </li>
     <% end %>
     <% if current_user.articles_permissions == true || current_user.is_admin? %>
     <li><a href="#" data-toggle="collapse" data-target="#sub2">Articles</a>
       <ul class="nav collapse" id="sub2">
-        <li><%= link_to "All Articles", articles_path %></li>
         <li><%= link_to "My Articles", articles_user_path(current_user.id) %></li>
+        <li><%= link_to "All Articles", articles_path %></li>
     </ul>
     <% end %>
     <% if current_user.is_admin? %>
