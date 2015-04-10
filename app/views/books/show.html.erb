@@ -62,7 +62,6 @@
         <h2>Discussion Questions: </h2>
         <% if @book.discussion_questions.empty? && current_user.is_admin? %>
           <div class="well">
-
          There don't seem to be any discussion questions, would you like to add some? </br>
          <%= link_to "New Discussion Question", new_discussion_question_path, class: "btn btn-info"%>
         <% elsif @book.discussion_questions.empty? %>
