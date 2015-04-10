@@ -24,14 +24,20 @@
 <p>
 <% if current_user.is_admin? %>
 <%= link_to 'Add Comments', edit_discussion_question_discussion_response_path(@discussion_question, @discussion_response) %> |
-<%= link_to 'Back to responses', discussion_question_discussion_responses_path(@discussion_question) %> | 
+<%= link_to 'Show all responses for question', discussion_question_discussion_responses_path(@discussion_question) %> 
 <% end %>
 
+<hr/>
 
 <% if !@discussion_question.book.nil? %>
-<%= link_to 'Back to Book', book_path(@discussion_question.book) %>
+<%= link_to 'Back to Book', book_path(@discussion_question.book) %> | 
+<%= link_to "View All Responses", book_responses_user_path(@discussion_response.user) %> 
 <% else %>
-<%= link_to 'Back to Article', article_path(@discussion_question.article) %>
+<%= link_to 'Back to Article', article_path(@discussion_question.article) %> | 
+<%= link_to "View All Responses", article_responses_user_path(@discussion_response.user) %> 
+
 <% end %> 
 </p>
+
+
 
