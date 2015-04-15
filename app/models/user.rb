@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :assignment_responses, foreign_key: "user_id"
   has_many :assignment_responses, foreign_key: "grader_id"
 
+  has_many :assessments
 
   has_many :discusson_responses
 

@@ -6,7 +6,7 @@ class CourseSession < ActiveRecord::Base
 	belongs_to :instructor, :class_name => "User", foreign_key: "instructor_id"
 
 
-
+    has_many :assessments
 	has_many :course_assignments
 	has_many :course_meetings
     has_and_belongs_to_many :users, join_table: :students_sessions

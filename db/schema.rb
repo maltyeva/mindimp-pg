@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20150410082150) do
     t.string   "progress_grade"
     t.text     "progress_comments"
     t.text     "gen_comments"
+    t.integer  "user_id"
+    t.integer  "course_session_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

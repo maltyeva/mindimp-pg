@@ -16,6 +16,8 @@ class CreateAssessments < ActiveRecord::Migration
       t.string :progress_grade
       t.text   :progress_comments
       t.text   :gen_comments
+      t.integer :user_id
+      t.integer :course_session_id
 
       t.timestamps
     end
