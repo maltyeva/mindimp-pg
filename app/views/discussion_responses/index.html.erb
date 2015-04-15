@@ -23,8 +23,9 @@
     <% for d in @discussion_question.discussion_responses %>
       <tr>
       <td> <%= link_to d.response, discussion_question_discussion_response_path(@discussion_question, d)%></td>
-      <td> <%= d.user.name %>
-      <td><%=(d.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %><td>
+      <td> <%= d.user.name %></td>
+      <td> <%=(d.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %></td>
+      <td> <%= link_to 'Destroy Response' , [d.discussion_question, d], method: :delete, data: { confirm: 'Are you sure you want to delete this response?' } %></td>
       <% end %>
       </tr>
   </tbody>

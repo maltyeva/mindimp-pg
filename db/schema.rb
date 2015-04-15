@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150403081111) do
+ActiveRecord::Schema.define(version: 20150410082150) do
 
   create_table "article_lists", force: true do |t|
     t.integer  "watcher_id"
@@ -40,6 +40,26 @@ ActiveRecord::Schema.define(version: 20150403081111) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+  end
+
+  create_table "assessments", force: true do |t|
+    t.string   "effort_grade"
+    t.text     "effort_comments"
+    t.string   "communication_grade"
+    t.text     "communication_comments"
+    t.string   "eng_writing_grade"
+    t.text     "eng_writing_comments"
+    t.string   "eng_speaking_grade"
+    t.text     "eng_speaking_comments"
+    t.string   "eng_reading_grade"
+    t.text     "eng_reading_comments"
+    t.string   "crit_thinking_grade"
+    t.text     "crit_thinking_comments"
+    t.string   "progress_grade"
+    t.text     "progress_comments"
+    t.text     "gen_comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "assignment_responses", force: true do |t|

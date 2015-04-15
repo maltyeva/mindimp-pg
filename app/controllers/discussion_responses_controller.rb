@@ -52,7 +52,7 @@ class DiscussionResponsesController < ApplicationController
   end
 
   def destroy
-    @discussion_question.discussion_response.destroy
+    @discussion_response.destroy
     respond_with(@discussion_question, @discussion_response)
   end
 

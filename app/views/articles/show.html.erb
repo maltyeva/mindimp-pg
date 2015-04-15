@@ -46,7 +46,7 @@
         <dd><%= @article.word_count %></dd>
         <dt>Reading Level: </dt>
         <dd><%= @article.level %></dd><hr />
-        <p><%= link_to "Read Article", @article.url, class: "btn btn-info" %></p>
+        <p><%= link_to "Read Article", @article.url, class: "btn btn-info", :target => "_blank" %></p>
         <p><%= link_to "Download Article", @article.attachment.url, target: "_blank", class: "btn btn-info" %></p>
 
        </div>
