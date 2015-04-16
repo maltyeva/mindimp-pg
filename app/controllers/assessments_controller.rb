@@ -1,19 +1,28 @@
 class AssessmentsController < ApplicationController
   before_action :set_assessment, only: [:show, :edit, :update, :destroy]
+  
+  before_filter :require_login
+  before_filter :load_user
+
+  before_filter :require_admin, only: [:edit, :index, :update]
+  before_filter :correct_user, only: [:show]
+
+
 
   respond_to :html
 
   def index
-    @assessments = Assessment.all
+    @assessments = @user.assessments.all
     respond_with(@assessments)
   end
 
   def show
-    respond_with(@assessment)
+    respond_with(@user, @assessment)
   end
 
   def new
-    @assessment = Assessment.new
+    @assessment = @user.assessments.new
+    @course_sessions = CourseSession.joins("join students_sessions on course_sessions.id = students_sessions.course_session_id").where("students_sessions.user_id = ?", @user.id)
     respond_with(@assessment)
   end
 
@@ -21,9 +30,9 @@ class AssessmentsController < ApplicationController
   end
 
   def create
-    @assessment = Assessment.new(assessment_params)
+    @assessment = @user.assessments.new(assessment_params)
     @assessment.save
-    respond_with(@assessment)
+    respond_with(@user, @assessment)
   end
 
   def update
@@ -37,6 +46,12 @@ class AssessmentsController < ApplicationController
   end
 
   private
+
+    def load_user
+      @user = User.find(params[:user_id])
+    end
+
+
     def set_assessment
       @assessment = Assessment.find(params[:id])
     end

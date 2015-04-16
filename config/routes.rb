@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
 
-
-  resources :assessments
-
   resources :course_packets
 
   #things related to assignments
@@ -60,6 +57,7 @@ Rails.application.routes.draw do
 
 
   resources :users do
+    resources :assessments
     member do
       get :following, :followers
       get :book_responses

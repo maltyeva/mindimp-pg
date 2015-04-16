@@ -131,7 +131,8 @@
                 <ul class="users">
                  <% @course_session.users.each do |u| %>
                 <li> <%= image_tag u.profile_photo.url(:thumb) %>
-                <%= link_to u.name, user_path(u) %>   </li>              
+                <%= link_to u.name, user_path(u) %>  
+                <% if current_user.is_admin? %> | <%= link_to "Add Assessment", new_user_assessment_path(u) %> <% end %> </li>              
                 <% end %>
                 </ul>
                 </div>

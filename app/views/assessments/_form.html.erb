@@ -1,10 +1,42 @@
-<%= simple_form_for(@assessment) do |f| %>
+<%= simple_form_for([@user, @assessment]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
   </div>
 
   <div class="form-actions">
+  	<%= f.association :course_session, :collection => @course_sessions, label_method: :full_title %>
+  	<hr/>
+  	<h4>Effort</h4>
+  	<%= f.input :effort_grade, :label => "Grade:" %>
+  	<%= f.input :effort_comments, :label => "Comments:" %>
+    <hr/>
+  	<h4>Manner and quality of communication with advisor</h4>
+  	<%= f.input :communication_grade, :label => "Grade:" %>
+  	<%= f.input :communication_comments, :label => "Comments:" %>
+  	<hr/>
+  	<h4>English Writing Level</h4>
+  	<%= f.input :eng_writing_grade, :label => "Grade:" %>
+  	<%= f.input :eng_writing_comments, :label => "Comments:" %>
+ 	<hr/>
+  	<h4>English Speaking Level</h4>
+  	<%= f.input :eng_speaking_grade, :label => "Grade:" %>
+  	<%= f.input :eng_speaking_comments, :label => "Comments:" %> 	
+  	<hr/>
+  	<h4>English Reading Level</h4>
+  	<%= f.input :eng_reading_grade, :label => "Grade:" %>
+  	<%= f.input :eng_reading_comments, :label => "Comments:" %>
+  	<hr/>
+  	<h4>Critical thinking</h4>
+  	<%= f.input :crit_thinking_grade, :label => "Grade:" %>
+  	<%= f.input :crit_thinking_comments, :label => "Comments:" %>  	
+  	<hr/>
+  	<h4>Progress towards preparedness for college</h4>
+  	<%= f.input :progress_grade, :label => "Grade:" %>
+  	<%= f.input :progress_comments, :label => "Comments:" %>
+  	<hr/>
+  	<%= f.input :gen_comments, :label => "General Comments:" %>
+  	
     <%= f.button :submit %>
   </div>
 <% end %>

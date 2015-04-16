@@ -1,4 +1,66 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_assessment_path(@assessment) %> |
-<%= link_to 'Back', assessments_path %>
+<h1><%= @user.name + ", " + @assessment.course_session.full_title %></h1>
+
+
+
+<div class="row">
+	<div class="col-md-9">
+	<div class="well">
+		<ul>
+		<dt>Submitted:  <%= (@assessment.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %></dt>
+		<hr/>
+		<dt>Effort: <%= @assessment.effort_grade %></dt>
+		<dd><%= @assessment.effort_comments%></dd>
+		<hr/>
+		<dt>Manner and quality of communication with advisor: <%= @assessment.communication_grade %></dt>
+		<dd><%= @assessment.communication_comments%></dd>
+		<hr/>		
+		<dt>English Writing Level: <%= @assessment.eng_writing_grade %></dt>
+		<dd><%= @assessment.eng_writing_comments%></dd>
+		<hr/>		
+		<dt>English Speaking Level: <%= @assessment.eng_speaking_grade %></dt>
+		<dd><%= @assessment.eng_speaking_comments%></dd>
+		<hr/>		
+		<dt>English Reading Level: <%= @assessment.eng_reading_grade %></dt>
+		<dd><%= @assessment.eng_reading_comments%></dd>
+		<hr/>		
+		<dt>Critical thinking: <%= @assessment.crit_thinking_grade %></dt>
+		<dd><%= @assessment.crit_thinking_comments%></dd>
+		<hr/>
+		<dt>Progress towards preparedness for college: <%= @assessment.progress_grade %></dt>
+		<dd><%= @assessment.progress_comments%></dd>
+		<hr/><dt>Other Comments: </dt>
+		<dd><%= @assessment.gen_comments%></dd>
+		<hr/>
+
+		</ul>
+	</div>
+	</div>
+
+	<div class="col-md-3">
+	<div class="well">
+	 <h4>Past assessments</h4>
+	 <% if @user.assessments.nil? %>
+	 	(none)
+	 <% else %>
+	    <% @user.assessments.each do |a| %>
+	    <%= link_to (a.created_at + 28800).strftime('%B %e, %Y %l:%M %p'), user_assessment_path(@user, a) %>
+	    <% end %>
+	 <% end %>
+
+
+	</div>
+</div>
+
+
+</div>
+
+<% if current_user.is_admin? %>
+<%= link_to 'Edit Assessment', edit_user_assessment_path(@user, @assessment) %> 
+<% end %>
+
+
+<br/>
+<%= link_to 'All Assessments', user_assessments_path %>
+

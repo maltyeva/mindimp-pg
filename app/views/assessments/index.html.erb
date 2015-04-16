@@ -1,23 +1,26 @@
-<h1>Listing assessments</h1>
+<h1>Assessments: <%= @user.name %></h1>
 
-<table>
+
+<table id="table_responses" class="datatable-wide table table-striped table-bordered">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th> Course </th>
+      <th> Submitted </th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @assessments.each do |assessment| %>
+  <tbody> 
+    <% for a in @user.assessments %>
       <tr>
-        <td><%= link_to 'Show', assessment %></td>
-        <td><%= link_to 'Edit', edit_assessment_path(assessment) %></td>
-        <td><%= link_to 'Destroy', assessment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td> <%= link_to a.course_session.full_title, course_session_path(a.course_session) %></td>
+      <td> <%= link_to (a.created_at + 28800).strftime('%B %e, %Y %l:%M %p'), user_assessment_path(@user, a) %>
+</td>
+      <td> <%= link_to 'Destroy Assessment' , [a.user , a], method: :delete, data: { confirm: 'Are you sure you want to delete this assessment?' } %></td>
+      <% end %>
       </tr>
-    <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Assessment', new_assessment_path %>
+<%= link_to 'Add an assessment', new_user_assessment_path(@user) %>
