@@ -58,9 +58,6 @@
 
 <% if current_user.is_admin? %>
 <%= link_to 'Edit Assessment', edit_user_assessment_path(@user, @assessment) %> 
-<% end %>
-
-
-<br/>
 <%= link_to 'All Assessments', user_assessments_path %>
+<% end %>
 

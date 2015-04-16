@@ -195,8 +195,15 @@
 <div class="row">
     <div class="col-md-8">
      <div class="well">
-        Coming soon.
-    </div>
+     <% if @user.assessments.nil? %>
+        <h4>There are no assessments at this time </h4>
+     <% else %>
+     <ul>
+        <% @user.assessments.each do |a| %>
+        <li><%= link_to (a.created_at + 28800).strftime('%B %e, %Y %l:%M %p'), user_assessment_path(@user, a) %></li>
+        <% end %>
+    </ul>
+     <% end %>    </div>
 </div>
 </div>
 </section>
