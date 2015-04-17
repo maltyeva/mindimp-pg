@@ -1,0 +1,14 @@
+Dear <%= @user.name %>
+===============================================
+
+ <% if @assessment.course_session.nil? %>
+A new assessment has been added for your reading program.
+<% else %>
+A new assessment has been added to the <%= @assessment.course_session.full_title %> course.
+ <% end %>
+
+
+Please log in to view the results: <%= user_assessment_url(@user, @assessment)%>
+
+
+Have a great day!

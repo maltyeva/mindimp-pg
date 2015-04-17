@@ -96,5 +96,13 @@ class UserMailer < ActionMailer::Base
  end
 
 
+#emails that are related to assessments
+def create_assessment_email(user, assessment)
+  @user = user
+  @assessment = assessment
+  mail(:to => @user.email, 
+       :subject => "A new assessment has been added!")
+end
+
 
 end

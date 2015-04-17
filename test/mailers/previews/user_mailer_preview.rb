@@ -51,4 +51,8 @@ class UserMailerPreview < ActionMailer::Preview
   UserMailer.activation_admin_email(User.first)
  end
 
+ def create_assessment_email
+  UserMailer.create_assessment_email(User.first, Assessment.first)
+ end
+
 end

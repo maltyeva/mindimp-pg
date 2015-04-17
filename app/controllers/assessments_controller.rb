@@ -32,6 +32,8 @@ class AssessmentsController < ApplicationController
   def create
     @assessment = @user.assessments.new(assessment_params)
     @assessment.save
+    UserMailer.create_assessment_email(@user, @assessment).deliver
+    flash[:notice] = "Successfully created assessment and sent notification email"
     respond_with(@user, @assessment)
   end
 
