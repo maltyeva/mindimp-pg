@@ -4,7 +4,7 @@
 <table id="table_responses" class="datatable-wide table table-striped table-bordered">
   <thead>
     <tr>
-      <th> Course </th>
+      <th> Course/Program </th>
       <th> Submitted </th>
     </tr>
   </thead>
@@ -12,7 +12,11 @@
   <tbody> 
     <% for a in @user.assessments %>
       <tr>
-      <td> <%= link_to a.course_session.full_title, course_session_path(a.course_session) %></td>
+        <% if a.course_session.nil? %>
+        <td> <%= link_to "Reading Program", books_path %></td>
+        <% else %>
+        <td> <%= link_to a.course_session.full_title, course_session_path(a.course_session) %></td>
+        <% end %>
       <td> <%= link_to (a.created_at + 28800).strftime('%B %e, %Y %l:%M %p'), user_assessment_path(@user, a) %>
 </td>
       <td> <%= link_to 'Destroy Assessment' , [a.user , a], method: :delete, data: { confirm: 'Are you sure you want to delete this assessment?' } %></td>

@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<% if @assessment.course_session.nil? %>
+<h1><%= @user.name + ", Reading Program Assessment" %></h1>
+<% else %>
 <h1><%= @user.name + ", " + @assessment.course_session.full_title %></h1>
+<% end %>
 
 
 

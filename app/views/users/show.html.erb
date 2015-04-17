@@ -149,7 +149,11 @@
                 <% end %>
                 <% end %>
                 <hr/>
-                <%= link_to "#{@user.first_name}'s Books", books_user_path(@user)%>
+                <%= link_to "#{@user.first_name}'s Books", books_user_path(@user), :class => "btn btn-lg"%>
+                <br>
+                <% if current_user.is_admin? %>
+                <%= link_to "Add New Assessment", new_user_assessment_path(@user), :class => "btn btn-lg"%>
+                <% end %>
             </div>
         </div>
     </div>
@@ -157,7 +161,6 @@
 
 
 <% if current_user == @user || current_user.is_admin? %>
-
 
 
  <section id="articles">
@@ -173,7 +176,11 @@
                 <%= link_to "View All Responses", article_responses_user_path(@user) %> 
                 <% end %>
                 <hr/>
-                <%= link_to "#{@user.first_name}'s Articles", articles_user_path(@user)%>
+                <%= link_to "#{@user.first_name}'s Articles", articles_user_path(@user), :class => "btn btn-lg" %>
+                <br>
+                <% if current_user.is_admin? %>
+                <%= link_to "Add New Assessment", new_user_assessment_path(@user), :class => "btn btn-lg"%>
+                <% end %>
             </div>
         </div>
     </div>

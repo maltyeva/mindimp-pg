@@ -4,7 +4,7 @@ class AssessmentsController < ApplicationController
   before_filter :require_login
   before_filter :load_user
 
-  before_filter :require_admin, only: [:edit, :index, :update]
+  before_filter :require_admin, only: [:edit, :index, :update, :new, :create]
   before_filter :correct_user, only: [:show]
 
 

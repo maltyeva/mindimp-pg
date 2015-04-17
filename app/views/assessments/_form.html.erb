@@ -5,7 +5,7 @@
   </div>
 
   <div class="form-actions">
-  	<%= f.association :course_session, :collection => @course_sessions, label_method: :full_title %>
+  	<%= f.association :course_session, :collection => @course_sessions, label_method: :full_title, :hint => "Leave blank if you're creating an assessment for the reading program" %>
   	<hr/>
   	<h4>Effort</h4>
   	<%= f.input :effort_grade, :label => "Grade:" %>
