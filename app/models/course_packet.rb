@@ -8,5 +8,9 @@ class CoursePacket < ActiveRecord::Base
 	accepts_nested_attributes_for :course_files
 
 
+	#scopes 
+  	scope :visible, lambda { where(:visible => true) }
+
+
 
 end

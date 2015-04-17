@@ -35,9 +35,8 @@ class CoursePacketsController < ApplicationController
         }
         end
     respond_with(@course_packet)
+    end
   end
-end
-
 
   def update
     @course_packet.update(course_packet_params)
@@ -47,6 +46,11 @@ end
   def destroy
     @course_packet.destroy
     respond_with(@course_packet)
+  end
+
+
+  def resources
+    @course_packets = CoursePacket.visible.all
   end
 
   private

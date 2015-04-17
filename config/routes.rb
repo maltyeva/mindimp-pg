@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 
-  resources :course_packets
 
   #things related to assignments
   resources :course_assignments do
@@ -21,6 +20,11 @@ Rails.application.routes.draw do
   resources :course_categories
   resources :courses
 
+  resources :course_packets
+  get 'resources' => 'course_packets#resources'  
+
+
+
   #Things related to books
   resources :discussion_questions do
       resources :discussion_responses
@@ -30,7 +34,7 @@ Rails.application.routes.draw do
   resources :articles
 
   resources :book_categories
-  get 'categories_table' => 'book_categories#table_index', :as => :categories_table\
+  get 'categories_table' => 'book_categories#table_index', :as => :categories_table
 
   resources :book_lists,       only: [:create, :destroy]
   resources :article_lists,       only: [:create, :destroy]
