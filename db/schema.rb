@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410082150) do
+ActiveRecord::Schema.define(version: 20150417021716) do
 
   create_table "article_lists", force: true do |t|
     t.integer  "watcher_id"
@@ -176,6 +176,7 @@ ActiveRecord::Schema.define(version: 20150410082150) do
     t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "visible",    default: false
   end
 
   create_table "course_periods", force: true do |t|

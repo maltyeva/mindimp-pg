@@ -1,8 +1,9 @@
-<% unless current_user.is_admin? %> 
+<% if !current_user.is_admin? %> 
 
 <h1><%= "Sorry, you are not authorized to access this page!" %> </h1>
 
 <% else %> 
+
 <h1>Administrator Portal </h1>
 
 
@@ -39,7 +40,8 @@
 		<%= link_to "Subject Areas", course_categories_path, class: "btn btn-info" %> </br> </br>
 		<%= link_to "Sessions ", course_sessions_path, class: "btn btn-info" %> | 
 		<%= link_to "Academic Terms ", academic_terms_path, class: "btn btn-info" %> </br> </br>
-		<%= link_to "My Courses ", my_sessions_path, class: "btn btn-info" %> 
+		<%= link_to "My Courses ", my_sessions_path, class: "btn btn-info" %>  | 
+		<%= link_to "Instructor Resources", courses_path, class: "btn btn-info" %>
 		</div>
 	</div>
 </div>

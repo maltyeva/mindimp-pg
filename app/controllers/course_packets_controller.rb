@@ -55,6 +55,7 @@ end
     end
 
     def course_packet_params
-      params.require(:course_packet).permit(:title, :course_id, course_files_attributes: [:id, :title, :image])
+      params.require(:course_packet).permit(:title, :course_id, :visible, 
+                                            course_files_attributes: [:id, :title, :image])
     end
 end

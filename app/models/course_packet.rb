@@ -5,6 +5,8 @@ class CoursePacket < ActiveRecord::Base
 
 	validates_presence_of :title, :course_id
 
-
 	accepts_nested_attributes_for :course_files
+
+
+
 end
