@@ -1,23 +1,27 @@
-<h1> All Course Packets</h1>
+<% provide(:title) %>
 
-<table>
+
+<h1> <%= @title %></h1>
+
+
+<table id="table_courses" class="datatable-wide table table-striped table-bordered">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Course </th>
+      <th>Packet Title</th>
+      <th>Attachment count </th>
     </tr>
   </thead>
-
   <tbody>
-    <% @course_packets.each do |course_packet| %>
-      <tr>
-        <td><%= link_to 'Show', course_packet %></td>
-        <td><%= link_to 'Edit', edit_course_packet_path(course_packet) %></td>
-        <td><%= link_to 'Destroy', course_packet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <% @course_packets.each do |c| %>
+    <td><%= link_to c.course.title, course_path(c.course) %></td>
+    <td><%= link_to c.title, course_packet_path(c) %></td>    
+    <td><%= link_to c.course_files.count, course_packet_path(c) %></td>
+  </tr>
+  <% end %>
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Course packet', new_course_packet_path %>
+
+<%= link_to 'Add a Course packet', new_course_packet_path %>

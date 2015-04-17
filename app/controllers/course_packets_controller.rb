@@ -7,9 +7,17 @@ class CoursePacketsController < ApplicationController
   before_filter :require_admin, only: [:index, :edit, :update, :destroy, :new]
 
   def index
+    @title = "All Course Packets"
     @course_packets = CoursePacket.all
     respond_with(@course_packets)
   end
+
+  def resources
+    @title = "Instructor Resources"
+    @course_packets = CoursePacket.visible.all
+    render 'index'
+  end
+
 
   def show
     respond_with(@course_packet)
@@ -46,11 +54,6 @@ class CoursePacketsController < ApplicationController
   def destroy
     @course_packet.destroy
     respond_with(@course_packet)
-  end
-
-
-  def resources
-    @course_packets = CoursePacket.visible.all
   end
 
   private
