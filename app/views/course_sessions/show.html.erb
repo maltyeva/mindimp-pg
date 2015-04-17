@@ -38,7 +38,14 @@
         <dd><%= @course_session.time %></dd>
         <dt> Duration </dt>
         <dd><%= @course_session.duration %></dd>
+        <% if current_user.is_admin?%>
+        <h4>Instructor resources</h4>
+        <% @resources.each do |r| %>
+           <%= link_to r.title, course_packet_path(r) %>
+        <% end %>
+        <% end %>
         </div>
+
     </div>
 </div>
 </section>

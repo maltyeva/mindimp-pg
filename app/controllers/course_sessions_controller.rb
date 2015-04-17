@@ -14,6 +14,8 @@ class CourseSessionsController < ApplicationController
   end
 
   def show
+    @course_session = CourseSession.find(params[:id])
+    @resources = @course_session.course.course_packets.visible.all
     respond_with(@course_session)
   end
 
