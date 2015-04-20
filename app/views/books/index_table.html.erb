@@ -1,0 +1,51 @@
+
+<h1>Book Directory</h1>
+
+<table id="table_books" class="datatable-wide table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th> </th>
+    <th>Title </th>
+    <th>Author</th>
+    <th>Description </th>
+    <th>Genres</th>
+    <th>Category</th>
+    <th> Lexile Measure</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <% for book in @books %>
+    <td><%= image_tag book.cover(:thumb) %> </td>
+    <td><%= link_to book.title, book %></td>
+    <td><%= link_to book.author, book %></td>    
+    <td><%= link_to book.description, book %></td>
+    <td><%= link_to book.genre, book %></td>
+    <% unless book.book_categories.nil? %>
+        <td><% book.book_categories.each do |c| %>
+            <%= link_to c.title, book_category_path(c) %> </br>
+            <% end %></td> 
+    <% else %>
+         <td><%= link_to "None", book %></td>
+    <% end %>
+       <% if book.lexile_measure.nil? %>
+        <td><%= link_to "(none)", book %></td>
+    <% else %>
+        <td><%= link_to book.lexile_measure, book %></td>
+    <% end %>   
+    </tr>
+  <% end %>
+</tbody>
+</table>
+
+
+
+<br>
+
+
+<%= link_to "Back to Books", books_path, :class => "btn" %>
+
+
+<% if current_user.is_admin? %>
+  <%= link_to "Add a New Book", new_book_path, :class => "btn" %>
+<% end %>

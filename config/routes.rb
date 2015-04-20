@@ -35,6 +35,8 @@ Rails.application.routes.draw do
       get :questions
     end
   end
+  get 'index_table' => 'books#index_table', :as => :index_table
+
   resources :articles
 
   resources :book_categories

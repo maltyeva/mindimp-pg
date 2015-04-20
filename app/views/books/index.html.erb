@@ -1,45 +1,73 @@
 <h1>Book Directory</h1>
 
 
-<table id="table_books" class="datatable-wide table table-striped table-bordered">
-  <thead>
-  <tr>
-    <th> </th>
-    <th>Title </th>
-    <th>Author</th>
-    <th>Description </th>
-    <th>Genres</th>
-    <th>Category</th>
-    <th> Lexile Measure</th>
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
 
-  </tr>
-  </thead>
-  <tbody>
-  <% for book in @books %>
-    <td><%= image_tag book.cover(:thumb) %> </td>
-    <td><%= link_to book.title, book %></td>
-    <td><%= link_to book.author, book %></td>    
-    <td><%= link_to book.description, book %></td>
-    <td><%= link_to book.genre, book %></td>
-    <% unless book.book_categories.nil? %>
-        <td><% book.book_categories.each do |c| %>
-            <%= link_to c.title, book_category_path(c) %> </br>
-            <% end %></td> 
-    <% else %>
-         <td><%= link_to "None", book %></td>
-    <% end %>
-       <% if book.lexile_measure.nil? %>
-        <td><%= link_to "(none)", book %></td>
-    <% else %>
-        <td><%= link_to book.lexile_measure, book %></td>
-    <% end %>   
-    </tr>
-  <% end %>
-</tbody>
-</table>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <a href="https://app.mindimp.com/books/17">
+      <img src="http://i.imgur.com/rqb6g5M.jpg" alt="...">
+    </a>
+      <div class="carousel-caption">
+        <h3>Jane Austen</h3>
+        <p>Pride and Prejudice </p>
+      </div>
+    </div>
+    <div class="item">
+      <a href="https://app.mindimp.com/books/14">
+      <img src="http://i.imgur.com/c3YnLmY.jpg" alt="...">
+    </a>
+      <div class="carousel-caption">
+        <h3>Yann Martel</h3>
+        <p>Life of Pi</p>
+      </div>
+    </div>
+    <div class="item">
+      <a href="https://app.mindimp.com/books/32">
+      <img src="http://i.imgur.com/jopZ1AR.jpg" alt="...">
+      </a>
+      <div class="carousel-caption">
+        <h3>Lois Lowry</h3>
+        <p>The Giver</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div> <!-- Carousel -->
+
+<hr/>
+
+<div class="row">
+<% @books.each do |b| %>
+   <div class="col-xs-6 col-md-3">
+        <div class="thumbnail">
+        <%= image_tag b.cover.url(:medium) %>
+        <dt><%= link_to b.title, book_path(b)%></dt>
+        </div>    
+      </div>
+<% end %>
+</div>
+
 
 
 <br>
+
+  <%= link_to "View as table", index_table_path, :class => "btn" %>
+
 
 <% if current_user.is_admin? %>
   <%= link_to "Add a New Book", new_book_path, :class => "btn" %>

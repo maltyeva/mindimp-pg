@@ -13,6 +13,10 @@ class BooksController < ApplicationController
     respond_with(@books)
   end
 
+  def index_table
+    @books = Book.all
+  end
+
   def show
     #@category = Book.find
     @book = Book.find(params[:id])

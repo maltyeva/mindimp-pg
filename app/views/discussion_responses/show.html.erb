@@ -31,10 +31,10 @@
 
 <% if !@discussion_question.book.nil? %>
 <%= link_to 'Back to Book', book_path(@discussion_question.book) %> | 
-<%= link_to "View All Responses", book_responses_user_path(@discussion_response.user) %> 
+<%= link_to "View all of #{@discussion_response.user.first_name}'s responses", book_responses_user_path(@discussion_response.user) %> 
 <% else %>
 <%= link_to 'Back to Article', article_path(@discussion_question.article) %> | 
-<%= link_to "View All Responses", article_responses_user_path(@discussion_response.user) %> 
+<%= link_to "View all of #{@discussion_response.user.first_name}'s responses", article_responses_user_path(@discussion_response.user) %> 
 
 <% end %> 
 </p>
