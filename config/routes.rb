@@ -30,7 +30,11 @@ Rails.application.routes.draw do
       resources :discussion_responses
   end 
   
-  resources :books
+  resources :books do
+    member do
+      get :questions
+    end
+  end
   resources :articles
 
   resources :book_categories

@@ -1,0 +1,27 @@
+<h1>All Discussion Questions for <%= @book.title %></h1>
+
+
+<table id="table_questions" class="datatable-wide table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th> Question </th>
+      <th> Created  </th>
+      <th> Visible </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @discussion_questions.each do |q| %>
+      <tr>
+      <td> <%= link_to q.question, edit_discussion_question_path(q) %></td>
+      <td> <%=(q.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %></td>
+      <td> <%= q.visible %></td>
+      <td> <%= link_to 'Destroy Question' , q, method: :delete, data: { confirm: 'Are you sure you want to delete this question?' } %></td>
+      <% end %>
+      </tr>
+  </tbody>
+</table>
+
+
+<hr/>
+<%= link_to 'Back to Book', book_path(@book) %>

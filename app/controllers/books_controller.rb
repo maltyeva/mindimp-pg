@@ -14,9 +14,10 @@ class BooksController < ApplicationController
   end
 
   def show
-    respond_with(@book)
     #@category = Book.find
-    @book.discussion_questions = DiscussionQuestion.where(book_id: @book.id)
+    @book = Book.find(params[:id])
+    @discussion_questions = @book.discussion_questions.visible.all
+    respond_with(@book)
   end
 
   def new
@@ -46,6 +47,14 @@ class BooksController < ApplicationController
     @book.destroy
     respond_with(@book)
   end
+
+
+  #pages related to discussion questions
+  def questions
+    @book = Book.find(params[:id])
+    @discussion_questions = @book.discussion_questions.all
+  end
+
 
   private
     def set_book
