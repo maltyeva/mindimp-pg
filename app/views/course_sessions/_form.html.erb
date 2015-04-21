@@ -11,6 +11,7 @@
     <%= f.input :time, :label => "Class Meeting Time" %>
     <%= f.input :duration, :label => "Class Time Duration" %>
     <%= f.association :instructor, collection: @instructors, label_method: :name, value_method: :id, include_blank: false, :label => "Instructor" %>
+    <%= f.input :survey_link, :label => "Add the Class Survey Link" %>
     <%= f.association :users, label_method: :name, value_method: :id, include_blank: false, as: :check_boxes, :label => "Students" %>
     <%= f.input :active, :hint => "Check the box if the class is currently ongoing" %>
     <%= f.input :has_course_packet, :hint => "Check if you'd like to use the course packets for this class" %>

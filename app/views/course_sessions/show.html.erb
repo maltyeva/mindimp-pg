@@ -18,6 +18,9 @@
 <hr />
 <!-- SUBBODY SECTION -->
 
+<% unless @course_session.survey_link.length ==0 %>
+<%= link_to "Take the Class Survey!", @course_session.survey_link, target: "_blank", :class => "btn btn-lg" %>
+<% end %>
 
 <section id="class">
 <div class="row">
