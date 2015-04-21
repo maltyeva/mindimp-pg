@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  #before_filter :require_login
+  before_filter :require_profile
   helper_method :current_user
 
   def current_user
@@ -46,6 +46,16 @@ class ApplicationController < ActionController::Base
 
   def require_admin(new_path=root_path)
     restricted_redirect_to(new_path) unless current_user.is_admin?
+  end
+
+  def require_profile
+    if current_user
+    @user = current_user
+    unless @user.profile_completed?
+      redirect_to edit_user_path(@user)
+      flash[:error] = "Please complete your profile first!"
+    end
+    end
   end
 
   def require_login

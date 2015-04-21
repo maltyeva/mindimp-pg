@@ -10,9 +10,8 @@
 
 
 <% if current_user == @user %>
-<%= link_to 'My Profile', @user %> |
+<%= link_to 'Back to my profile', @user, class: "btn btn-lg" %> 
 <% else %>
-<%= link_to 'Back to Profile', @user %> |
+<%= link_to 'Back to profile', @user, class: "btn btn-lg"  %> 
 <% end %>
 
-<%= link_to 'Back', users_path %>

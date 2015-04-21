@@ -262,7 +262,7 @@
 </br>
 
 <% if current_user == @user || current_user.is_admin? %>
-<%= link_to 'Edit Profile', edit_user_path(@user) %>
+<%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-lg" %>
 <% end %>
 
 <%= link_to 'Back', root_path,  class: "btn btn-lg btn-info"%>

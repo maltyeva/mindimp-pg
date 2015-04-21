@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
 
   has_merit
 
-
   #authentication
   authenticates_with_sorcery!
 
@@ -144,6 +143,13 @@ class User < ActiveRecord::Base
   def has_article?(article)
     articles.include?(article)
   end
+
+
+
+  def profile_completed?
+    !bio.nil? && !profile_photo.nil? && !skype_id.nil? && !high_school.nil?
+  end
+
 
 
   private

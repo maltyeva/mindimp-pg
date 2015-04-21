@@ -12,7 +12,11 @@ class UserSessionsController < ApplicationController
     if @user = login(params[:user][:email],params[:user][:password],params[:remember],false)
       @user.update_attribute(:last_login, Time.now)
       session[:user_id] = @current_user.id
+      if @user.profile_completed?
       redirect_back_or_to(:root, :notice => 'Welcome to MindImp!')
+      else
+      redirect_to edit_user_path(@user)
+      end 
     else
       @user = User.new
       flash.now[:error] = "There was a problem logging you in. Please check your email and password"; render :action => "new"

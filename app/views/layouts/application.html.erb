@@ -45,14 +45,17 @@
 
     <!-- main area -->
     <div class="col-xs-12 col-sm-10">
-    
-      <%= render 'layouts/progress_bar' %>
+     
+    <% if !current_user.profile_completed? %> 
+    <%= render 'layouts/progress_bar' %>
+    <% end %>
+   
     <%= yield %>
 
     </div><!-- /.col-xs-12 main -->
-  </div><!--/.row-->
-
-  <% else %>
+    </div><!--/.row-->
+  
+    <% else %>
 
   <%= yield %>
 
