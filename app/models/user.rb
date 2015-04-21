@@ -43,7 +43,6 @@ class User < ActiveRecord::Base
 
 
 
-
   #user validations
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: { maximum: 50 }
@@ -146,7 +145,7 @@ class User < ActiveRecord::Base
 
 
   def profile_completed?
-    !bio.nil? && !profile_photo.nil? && !skype_id.nil? && !high_school.nil?
+    bio.length != 0 && !profile_photo_file_name.nil? && skype_id.length != 0 && high_school.length !=0
   end
 
 

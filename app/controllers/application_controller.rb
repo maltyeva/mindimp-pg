@@ -50,9 +50,8 @@ class ApplicationController < ActionController::Base
 
   def require_profile
     if current_user
-    @user = current_user
-    unless @user.profile_completed?
-      redirect_to edit_user_path(@user)
+    unless current_user.profile_completed?
+      redirect_to edit_user_path(current_user)
       flash[:error] = "Please complete your profile first!"
     end
     end

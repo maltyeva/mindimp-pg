@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   before_filter :require_login
   skip_before_filter :require_login, only: [:new, :create, :activate]
+  skip_before_filter :require_profile, only: [:edit, :update, :show]
+
 
   before_filter :require_admin, only: [:index, :following, :followers, :destroy]
   #before_filter :correct_user, only: [:edit, :update] 

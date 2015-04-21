@@ -1,11 +1,19 @@
 <ol class="progress-list">
 	<h3><small>User Profile Status:</small></h3>
+	<% if current_user.bio.length == 0 %>
 	<ol class="selected-step-2">
+	<% elsif current_user.skype_id.length == 0 %>
+	<ol class="selected-step-3">
+    <% elsif current_user.high_school.length == 0%>
+    <ol class="selected-step-4">
+   <% elsif  !current_user.profile_photo?%>
+ 	<ol class="selected-step-5">
+ 	<% end %>
     <li class="step-1">Fill out your name</li>
     <li class="step-2">Add an "About Me"</li>
-    <li class="step-3">Add a Profile Photo</li>
+    <li class="step-3">Add your Skype ID</li>
     <li class="step-4">Add your High School</li>
-    <li class="step-5">Add your Skype ID</li>
+    <li class="step-5">Add a Profile Photo</li>
 </ol>
 </ol>
 
