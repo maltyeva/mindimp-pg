@@ -23,7 +23,7 @@
 
 <p>
 <% if current_user.is_admin? %>
-<%= link_to 'Add Comments', edit_discussion_question_discussion_response_path(@discussion_question, @discussion_response) %> |
+<%= link_to 'Add/Edit Comments', edit_discussion_question_discussion_response_path(@discussion_question, @discussion_response) %> |
 <%= link_to 'Show all responses for question', discussion_question_discussion_responses_path(@discussion_question) %> 
 <% end %>
 
