@@ -25,7 +25,8 @@
   <%= f.input :bio, :hint => "Please use HTML tags to set paragraphs, bold, italic, etc: http://www.w3schools.com/tags/" %>
   <%= f.input :hobbies, :hint => "Enter hobbies, separated by commas" %>
   <%= f.input :fav_book, :label => "Favorite Book" %>
-  <%= f.input :skype_id, :label => "Skype ID" %>
+  <%= f.input :skype_id, :label => "Skype ID", :hint => "Visible only to instructors" %>
+  <%= f.input :wechat_id, :label => "WeChat ID", :hint => "Visible on public profile" %>
   <%= f.input :phone, :hint => "ex. +86 123-4567-890" %>
   <%= f.input :parent_name, :hint => "Please enter the name and email of one of your parents" %>
   <%= f.input :parent_email %>

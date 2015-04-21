@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417021716) do
+ActiveRecord::Schema.define(version: 20150421081742) do
 
   create_table "article_lists", force: true do |t|
     t.integer  "watcher_id"
@@ -202,6 +202,7 @@ ActiveRecord::Schema.define(version: 20150417021716) do
     t.integer  "instructor_id"
     t.string   "instructor_name"
     t.boolean  "has_course_packet", default: false
+    t.string   "survey_link"
   end
 
   create_table "courses", force: true do |t|
@@ -373,6 +374,7 @@ ActiveRecord::Schema.define(version: 20150417021716) do
     t.string   "parent_name"
     t.integer  "sash_id"
     t.integer  "level",                           default: 0
+    t.string   "wechat_id"
   end
 
   add_index "users", ["activation_token"], name: "index_users_on_activation_token", using: :btree

@@ -60,6 +60,7 @@
 
     <div class="col-md-8">
         <div class="well">
+        <dl class="dl-horizontal">
         <dt>About Me</dt>
         <% unless @user.bio.nil? %>
         <dd><%= @user.bio.html_safe %></dd>
@@ -74,11 +75,15 @@
         <dd><%= @user.hometown %></dd>
         <dt>High School</dt>
         <dd><%= @user.high_school %></dd>
+        <dt>WeChat ID</dt>
+        <dd><%= @user.wechat_id %></dd>
         <% if @user.is_admin? %>
-        <dt>College</dt>
+        <hr/>
+        <dt>Education</dt>
         <dd><%= @user.college %></dd>
-        <dt>Major</dt>
+        <dt>College Major</dt>
         <dd><%= @user.major %></dd>
+        </dl>
         <% end %>
 
         </div>
