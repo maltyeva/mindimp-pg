@@ -31,4 +31,5 @@
 
 <% if current_user.is_admin? %>
   <%= link_to "Add a New Article", new_article_path, :class => "btn" %>
+  <%= link_to "Add a New Article Source", new_article_source_path, :class => "btn" %>
 <% end %>

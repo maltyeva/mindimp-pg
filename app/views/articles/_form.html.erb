@@ -11,6 +11,7 @@
     <%= f.input :word_count %>
     <%= f.input :level, :label => "Reading Level" %>
     <%= f.input :category %>
+    <%= f.association :article_source %>
     <%= f.input :published, as: :date, start_year: Date.today.year - 30,
                               end_year: Date.today.year%>
 

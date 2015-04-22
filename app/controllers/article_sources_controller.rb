@@ -42,6 +42,6 @@ class ArticleSourcesController < ApplicationController
     end
 
     def article_source_params
-      params[:article_source]
+      params.require(:article_source).permit(:title, :description, :url, :photo)
     end
 end
