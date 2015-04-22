@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421081742) do
+ActiveRecord::Schema.define(version: 20150422032407) do
 
   create_table "article_lists", force: true do |t|
     t.integer  "watcher_id"
@@ -23,6 +23,18 @@ ActiveRecord::Schema.define(version: 20150421081742) do
   add_index "article_lists", ["article_id"], name: "index_article_lists_on_article_id", using: :btree
   add_index "article_lists", ["watcher_id", "article_id"], name: "index_article_lists_on_watcher_id_and_article_id", unique: true, using: :btree
   add_index "article_lists", ["watcher_id"], name: "index_article_lists_on_watcher_id", using: :btree
+
+  create_table "article_sources", force: true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.string   "description"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -40,6 +52,7 @@ ActiveRecord::Schema.define(version: 20150421081742) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.integer  "article_source_id"
   end
 
   create_table "assessments", force: true do |t|

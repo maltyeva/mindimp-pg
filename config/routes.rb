@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 
 
+  resources :article_sources
+
   #things related to assignments
   resources :course_assignments do
     resources :assignment_responses

@@ -1,0 +1,23 @@
+<h1>Listing article_sources</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @article_sources.each do |article_source| %>
+      <tr>
+        <td><%= link_to 'Show', article_source %></td>
+        <td><%= link_to 'Edit', edit_article_source_path(article_source) %></td>
+        <td><%= link_to 'Destroy', article_source, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Article source', new_article_source_path %>
