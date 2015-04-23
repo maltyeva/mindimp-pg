@@ -26,11 +26,3 @@
 <% else %>
 <%= link_to 'Back to Article', article_path(@discussion_question.article), :class => "btn btn-lg" %>
 <% end %> 
-
-
-<script = "text/javascript">
-$("#response-field").on("keyup", function(){
-    length = $(this).val().length;
-    $("#body-count").html(length);
-});
-</script>
