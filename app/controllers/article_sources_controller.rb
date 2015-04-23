@@ -1,6 +1,11 @@
 class ArticleSourcesController < ApplicationController
   before_action :set_article_source, only: [:show, :edit, :update, :destroy]
 
+
+  before_filter :require_login
+  before_filter :require_admin, only: [:edit, :new]
+  before_filter :set_articles
+
   respond_to :html
 
   def index

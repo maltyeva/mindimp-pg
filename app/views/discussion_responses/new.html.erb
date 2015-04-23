@@ -12,13 +12,25 @@
   </div>
 
   <div class="form-actions">
-  	<%= f.input :response %>
+    <div id ="response-field">
+  	<%= f.input :response, id: "response-field"%>
+  </div>
+  	<span id="body-count">0</span> Characters
     <%= f.button :submit %>
   </div>
 <% end %>
 
+<hr/>
 <% if !@discussion_question.book.nil? %>
-<%= link_to 'Back to Book', book_path(@discussion_question.book) %>
+<%= link_to 'Back to Book', book_path(@discussion_question.book), :class => "btn btn-lg" %>
 <% else %>
-<%= link_to 'Back to Article', article_path(@discussion_question.article) %>
+<%= link_to 'Back to Article', article_path(@discussion_question.article), :class => "btn btn-lg" %>
 <% end %> 
+
+
+<script = "text/javascript">
+$("#response-field").on("keyup", function(){
+    length = $(this).val().length;
+    $("#body-count").html(length);
+});
+</script>
