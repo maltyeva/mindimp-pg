@@ -145,7 +145,7 @@ class User < ActiveRecord::Base
 
 
   def profile_completed?
-    !bio.length.nil? && !profile_photo_file_name.nil? && !skype_id.nil? && !high_school.nil?
+    !bio.nil? && !profile_photo_file_name.nil? && !skype_id.nil? && !high_school.nil?
   end
 
 
