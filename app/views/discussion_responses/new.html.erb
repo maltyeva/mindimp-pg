@@ -12,10 +12,8 @@
   </div>
 
   <div class="form-actions">
-    <div id ="response-field">
-  	<%= f.input :response, id: "response-field"%>
-  </div>
-  	<span id="body-count">0</span> Characters
+  	<%= f.input :response, :onkeyup => "update_word_count(this);"%>
+  	<span id="word-count-container">0</span> Characters
     <%= f.button :submit %>
   </div>
 <% end %>
@@ -26,3 +24,12 @@
 <% else %>
 <%= link_to 'Back to Article', article_path(@discussion_question.article), :class => "btn btn-lg" %>
 <% end %> 
+
+
+
+<script type="text/javascript">
+  function update_word_count(object) {
+    words = object.value.match(/\S+/g).length.toString();
+    $('#word-count-container').innerHTML = words + " out of 25 used";
+  }
+</script>

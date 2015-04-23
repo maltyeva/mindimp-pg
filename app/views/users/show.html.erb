@@ -63,7 +63,7 @@
         <dl class="dl-horizontal">
         <dt>About Me</dt>
         <% unless @user.bio.nil? %>
-        <dd><%= @user.bio.html_safe %></dd>
+        <dd><%= simple_format(@user.bio.html_safe) %></dd>
         <% end %>
         <dt>Hobbies</dt>
         <dd><%= @user.hobbies %></dd>

@@ -10,7 +10,7 @@
         <div class="well">
         	<dd>Assignment no. <%= @course_assignment.number%></dd>
         	<dt>Guidelines: </dt>
-        	<dd><%= @course_assignment.description %></dd>
+        	<dd><%= simple_format(@course_assignment.description) %></dd>
         	<dt>Type: </dt>
         	<dd><%= @course_assignment.format %></dd>
         	<dt>Due Date: </dt>
