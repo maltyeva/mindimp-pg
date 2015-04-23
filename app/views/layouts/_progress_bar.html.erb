@@ -1,10 +1,10 @@
 <ol class="progress-list">
 	<h3><small>User Profile Status:</small></h3>
-	<% if current_user.bio.length == 0 %>
+	<% if current_user.bio.nil? || current_user.bio.length == 0 %>
 	<ol class="selected-step-2">
-	<% elsif current_user.skype_id.length == 0 %>
+	<% elsif current_user.skype_id.nil? || current_user.skype_id.length == 0 %>
 	<ol class="selected-step-3">
-    <% elsif current_user.high_school.length == 0%>
+    <% elsif current_user.high_school.nil? || current_user.high_school.length == 0%>
     <ol class="selected-step-4">
    <% elsif  !current_user.profile_photo?%>
  	<ol class="selected-step-5">
