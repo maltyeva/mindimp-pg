@@ -20,6 +20,7 @@
       <ul class="nav collapse" id="sub2">
         <li><%= link_to "My Articles", articles_user_path(current_user.id) %></li>
         <li><%= link_to "All Articles", articles_path %></li>
+       <li><%= link_to "All Sources", article_sources_path %></li>
     </ul>
     <% end %>
     <% if current_user.is_admin? %>

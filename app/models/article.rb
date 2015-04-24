@@ -1,6 +1,6 @@
 class Article < ActiveRecord::Base
 
-	validates_presence_of :title, :author, :source
+	validates_presence_of :title, :author, :article_source_id
 
 
 	belongs_to :article_source
@@ -9,6 +9,11 @@ class Article < ActiveRecord::Base
   	has_many :article_lists, dependent: :destroy
   	has_many :watchers, through: :article_lists, class_name: "User", foreign_key: "watcher_id"
 
+
+
+  	def full_title
+     [title, article_source.title].join(", ")
+  	end
 
 
 	#creating the attachment

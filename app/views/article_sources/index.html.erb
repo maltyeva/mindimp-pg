@@ -1,23 +1,21 @@
-<h1>Listing article_sources</h1>
+<h1>MindImp Article Sources</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row">
+<% @article_sources.each do |a| %>
+   <div class="col-xs-6 col-md-3">
+        <div class="thumbnail">
+        <%= image_tag a.photo.url(:medium) %>
+        <dt><%= link_to a.title, article_source_path(a)%></dt>
+        </div>  
+        <br/><br/>
+  
+      </div>
+<% end %>
+</div>
 
-  <tbody>
-    <% @article_sources.each do |article_source| %>
-      <tr>
-        <td><%= link_to 'Show', article_source %></td>
-        <td><%= link_to 'Edit', edit_article_source_path(article_source) %></td>
-        <td><%= link_to 'Destroy', article_source, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Article source', new_article_source_path %>
+
+<% if current_user.is_admin? %>
+<%= link_to 'Add an Article source', new_article_source_path %>
+<% end %>

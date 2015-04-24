@@ -68,8 +68,12 @@
   <tbody>
   <% for article in @articles %>
     <td><%= link_to article.title, article %></td>
-    <td><%= link_to article.author, article %></td>    
+    <td><%= link_to article.author, article %></td> 
+    <% if article.article_source.nil? %> 
     <td><%= link_to article.source, article %></td>
+      <% else %>
+    <td><%= link_to article.article_source.title, article %></td>
+    <% end %>
     <td><%= link_to article.category, article %></td> 
     <% unless article.level.nil? %>
     <td> <%= link_to article.level, article %></td> 

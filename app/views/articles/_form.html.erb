@@ -4,14 +4,13 @@
   <div class="form-inputs">
   	<%= f.input :title %>
     <%= f.input :author %>
-    <%= f.input :source %>
+    <%= f.association :article_source, :label => "Source" %>
     <%= f.input :description %>
     <%= f.input :url, :label => "URL" %>
     <%= f.input :attachment %>
     <%= f.input :word_count %>
     <%= f.input :level, :label => "Reading Level" %>
     <%= f.input :category %>
-    <%= f.association :article_source %>
     <%= f.input :published, as: :date, start_year: Date.today.year - 30,
                               end_year: Date.today.year%>
 
