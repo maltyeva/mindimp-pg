@@ -4,7 +4,7 @@
 	<ol class="selected-step-2">
 	<% elsif current_user.skype_id.nil? || current_user.skype_id.length == 0 %>
 	<ol class="selected-step-3">
-    <% elsif current_user.high_school.nil? || current_user.high_school.length == 0%>
+    <% elsif current_user.high_school.nil? || current_user.high_school.length == 0 || current_user.parent_email.nil? || current_user.parent_email.length == 0 %>
     <ol class="selected-step-4">
    <% elsif  !current_user.profile_photo?%>
  	<ol class="selected-step-5">
@@ -12,7 +12,7 @@
     <li class="step-1">Fill out your name</li>
     <li class="step-2">Add an "About Me"</li>
     <li class="step-3">Add your Skype ID</li>
-    <li class="step-4">Add your High School</li>
+    <li class="step-4">Add your High School/Parent Email</li>
     <li class="step-5">Add a Profile Photo</li>
 </ol>
 </ol>
