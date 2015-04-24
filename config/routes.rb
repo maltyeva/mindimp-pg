@@ -55,6 +55,8 @@ Rails.application.routes.draw do
   get 'register'  => 'users#new'
   get 'student_list' => 'users#student_list', :as => :student_list  
   get 'admin_list' => 'users#admin_list', :as => :admin_list
+  get 'alumni_list' => 'users#alumni_list', :as => :alumni_list
+
   get 'my_courses' => 'users#course_list', :as => :my_courses
   get 'my_instructors' => 'users#instructor_list', :as => :my_instructors
 

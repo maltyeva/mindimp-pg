@@ -74,7 +74,9 @@ class User < ActiveRecord::Base
 
 
   #ok, let's define the scopes here
-  #scope :instructor, lambda { where('is_admin= ?', 'true') }
+  scope :active, lambda { where(:active => true) }
+
+  scope :alumni, lambda { where(:active => false) }
 
 
 

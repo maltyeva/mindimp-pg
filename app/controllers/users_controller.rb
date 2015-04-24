@@ -18,13 +18,19 @@ class UsersController < ApplicationController
 
   def student_list
     @title = "Current MindImp Students"
-    @users = User.paginate(page: params[:page], per_page: 10).where(:is_admin => false)
+    @users = User.active.paginate(page: params[:page], per_page: 10).where(:is_admin => false)
     render 'user_list'
   end
 
   def admin_list
     @title = "Current MindImp Instructors"
     @users = User.paginate(page: params[:page], per_page: 10).where(:is_admin => true)
+    render 'user_list'
+  end
+
+  def alumni_list
+    @title = "MindImp Alumni"
+    @users = User.alumni.paginate(page: params[:page], per_page: 10).where(:is_admin => false)
     render 'user_list'
   end
 
@@ -173,7 +179,7 @@ end
                                   :profile_photo, :last_login, :bio, :hometown, :high_school,
                                   :phone, :skype_id, :books_permissions, :articles_permissions, 
                                   :courses_permissions, :college, :major, :hobbies, :fav_book, 
-                                  :parent_name, :parent_email, :wechat_id, :book_ids => [])
+                                  :parent_name, :parent_email, :wechat_id, :active, :book_ids => [])
    end
 
   # Stores the URL trying to be accessed.
