@@ -4,11 +4,11 @@
 <h3>You don't seem to be enrolled in any classes right now.</h3>
 <% else %>
 <ul class="users">
-<% @user.course_sessions.where(active: true).each do |c| %>
+<% @course_sessions.each do |c| %>
         <%= link_to c.full_title, course_session_path(c) %> </br>
 <% end %>
 </ul>
 <% end %>
 
 </br>
-<%= link_to "Back", student_portal_path, class: "btn btn-lg btn-info"%>
+<%= link_to "Back", student_portal_path, class: "btn btn-lg"%>
