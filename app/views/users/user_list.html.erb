@@ -2,13 +2,18 @@
 
 
 <%= will_paginate %>
+
+
 <% @users.each do |u| %>
 	 <div class="col-xs-6 col-md-3">
+	 	<div class="row">
+
         <div class="thumbnail">
         <%= image_tag u.profile_photo.url(:medium) %>
         <dt><%= link_to u.name, user_path(u)%></dt>
         </div>    
     	</div>
+    </div>
 
 <% end %>
 
