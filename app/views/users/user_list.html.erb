@@ -3,7 +3,7 @@
 
 <%= will_paginate %>
 
-
+<div class="row">
 <% @users.each do |u| %>
 	 <div class="col-xs-6 col-md-3">
 
@@ -11,11 +11,10 @@
         <%= image_tag u.profile_photo.url(:medium) %>
         <dt><%= link_to u.name, user_path(u)%></dt>
         </div>    
+        <div class="clearfix visible-xs-block"></div>
     	</div>
-    	                  	 <div class="clearfix visible-xs-block"></div>
-
-
 <% end %>
+</div>
 
 <%= will_paginate %>
 
