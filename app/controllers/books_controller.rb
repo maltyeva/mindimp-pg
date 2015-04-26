@@ -9,7 +9,7 @@ class BooksController < ApplicationController
   respond_to :html
 
   def index
-    @books = Book.paginate(page: params[:page], per_page: 10).sort_by { |b| [ b.title.length ] }
+    @books = Book.all.sort_by { |b| [ b.title.length ] }
     respond_with(@books)
   end
 
