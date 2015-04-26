@@ -52,6 +52,7 @@
 <hr/>
 
 
+<%= will_paginate %>
 
 <div class="row">
 <% @books.each do |b| %>
@@ -60,11 +61,12 @@
         <%= image_tag b.cover.url(:medium) %>
         <dt><%= link_to b.title, book_path(b)%></dt>
         </div>  
-        <br/><br/>
-  
+        <div class="clearfix visible-xs-block"></div>
       </div>
 <% end %>
 </div>
+
+<%= will_paginate %>
 
 
 <br>
