@@ -103,7 +103,7 @@
                                 <%= a.number%>. <%= link_to a.title, course_assignment_path(a) %> </br>
                                 <%= a.description %></br>
                                 <dt>Due:</dt><%= (a.due_date + 28800).strftime('%B %e, %Y')%>
-                                 <% if current_user.is_admin?%> <%= link_to "(edit assignment)", edit_course_assignment_path(a) %><% end %></div>
+                                 <% if current_user.is_admin?%> <%= link_to "(edit assignment)", edit_course_assignment_path(a) %> | <%= link_to '(destroy assignment)', a, method: :delete, data: { confirm: 'Are you sure you want to delete this assignment? This will delete all associated responses and this action is irreversible.' } %><% end %></div>
                                  <% end %>
                                  <% end %>
                             </div>

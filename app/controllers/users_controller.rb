@@ -38,6 +38,7 @@ class UsersController < ApplicationController
   def course_list
     @user = current_user
     @course_sessions = CourseSession.joins("join students_sessions on course_sessions.id = students_sessions.course_session_id").where("students_sessions.user_id = ?", @user.id)
+    @my_courses = CourseSession.where(instructor_id: @user.id)
   end
 
   def instructor_list

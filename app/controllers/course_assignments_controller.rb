@@ -46,7 +46,7 @@ class CourseAssignmentsController < ApplicationController
 
   def destroy
     @course_assignment.destroy
-    redirect_to course_sessions_path 
+    redirect_to :back
   end
 
   private
