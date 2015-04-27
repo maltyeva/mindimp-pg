@@ -78,6 +78,9 @@ class User < ActiveRecord::Base
 
   scope :alumni, lambda { where(:active => false) }
 
+  scope :course_student, lambda { where(:courses_permissions => true) }
+
+
 
 
 
