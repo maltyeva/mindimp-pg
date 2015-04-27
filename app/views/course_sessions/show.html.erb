@@ -4,31 +4,45 @@
 
 <h1><%= @course_session.full_title + ", " + @course_session.course_period.title %></h1>
 
-<hr />
+<% if @course_session.survey_link? %>
+<% unless @course_session.survey_link.length ==0 %>
+<hr/>
+<%= link_to "Take the Class Survey!", "http://#{@course_session.survey_link}", target: "_blank", :class => "btn btn-lg" %>
+<% end %>
+<% end %>
+
+
+<div class="nav-course">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#sectionA">Overview</a></li>
+        <li><a data-toggle="tab" href="#sectionB">Assignments</a></li>
+        <li><a data-toggle="tab" href="#sectionC">Class Meetings</a></li>
+        <li><a data-toggle="tab" href="#sectionD">Course Packet</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="sectionA" class="tab-pane fade in active">
+            <h3></h3>
+
 <!-- SUBNAV SECTION -->
 <div id="subnavbar" class="subnav" role="navigation">
   <ul class="nav nav-pills">
     <li><a href="#class">Overview</a></li>
-    <li><a href="#course_packet">Course Packet </a></li>
+<!--     <li><a href="#course_packet">Course Packet </a></li>
     <li><a href="#assignments">Assignments </a></li>
-    <li><a href="#meetings">Meetings </a></li>
-    <li><a href="#students">Students Roster</a></li>
+    <li><a href="#meetings">Meetings </a></li> -->
+    <li><a href="#students">Student Roster</a></li>
   </ul>
 </div>
 <hr />
 <!-- SUBBODY SECTION -->
-<% if @course_session.survey_link? %>
-<% unless @course_session.survey_link.length ==0 %>
-<%= link_to "Take the Class Survey!", "http://#{@course_session.survey_link}", target: "_blank", :class => "btn btn-lg" %>
-<% end %>
-<% end %>
+
 
 <section id="class">
 <div class="row">
     <h3>Overview:</h3>
     <div class="col-md-8">
         <div class="well">
-        <dt> Instructor </dt>
+        <dt> Instructor: </dt>
         <% unless @course_session.instructor.nil? %>
         <dd><%= image_tag @course_session.instructor.profile_photo.url(:thumb) %><%= link_to @course_session.instructor.name, user_path(@course_session.instructor)%></dd>
         <% end %>
@@ -38,7 +52,7 @@
         <div class="well">
         <dt>Course</dt>
         <%= link_to @course_session.course.title, course_path(@course_session.course) %>
-    	<dt> Time </dt>
+        <dt> Time </dt>
         <dd><%= @course_session.time %></dd>
         <dt> Duration </dt>
         <dd><%= @course_session.duration %></dd>
@@ -53,86 +67,6 @@
     </div>
 </div>
 </section>
-
-<section id="course_packet">
-<div class="row">
-    <h3>Course Packet:</h3>
-    <div class="col-md-8">
-                <div class="well">
-                <% if @course_session.has_course_packet == false %>
-                <h3>This session is not using a course packet</h3>
-                <% else %>
-                    <% @course_session.course.course_packets.each do |p| %>
-                        <%= link_to p.title, p %>
-                        <ul><% p.course_files.each do |f|%>
-                            <li><%= link_to f.title, f.image.url, target: "_blank" %></li>
-                        <% end %>
-                        </ul>
-                    <% end %>                
-                <% end %> 
-                </div>
-            </div>
-        </div>
-</section>
-
-
-<section id="assignments">
-<div class="row">
-    <h3>Assignments:</h3>
-    <div class="col-md-8">
-                <div class="well">
-                <% if @course_session.course_assignments.empty? && current_user.is_admin? %>
-                There don't seem to be any assignments, would you like to add one? </br>
-                <%= link_to "New Assignment", new_course_assignment_path, class: "btn btn-info"%>
-                <% elsif @course_session.course_assignments.empty?  %>
-                There are no assignments for this course. 
-                <% else %>
-                <% @course_session.course_assignments.each do |a|%>
-                <div class="well">
-                    <%= a.number%>. <%= link_to a.title, course_assignment_path(a) %> </br>
-                    <%= a.description %></br>
-                    <dt>Due:</dt><%= (a.due_date + 28800).strftime('%B %e, %Y')%>
-                     <% if current_user.is_admin?%> <%= link_to "(edit assignment)", edit_course_assignment_path(a) %><% end %></div>
-                     <% end %>
-                     <% end %>
-                </div>
-            </div>
-        </div>
-</section>
-
-
-<section id="meetings">
-    <div class="row">
-        <div class="col-md-8">
-        <h3>Class Meetings</h3>
-            <div class="well">
-                <ol>
-                <%if @course_session.course_meetings.nil? %>
-                    There are no meeting listed for this course
-                <% else %>
-                    <% @course_session.course_meetings.each do |c| %>
-                    <li><div class="well">
-                        <% if current_user.is_admin? %>
-                        <dt><%= link_to c.title, course_session_course_meeting_path(@course_session, c) %></dt>
-                        <% else %>
-                        <dt><%= c.title %></dt>
-                        <% end %>
-                        <%= c.preparation_notes %>
-                    <% if current_user.is_admin? %>
-                        <dt>Instructor Notes: </dt>
-                        <dd><%= c.instructor_notes%></dd>
-                        <dt>Class Notes: </dt>
-                        <dd><%= c.class_notes%></dd>
-                    <% end %>
-                    </div></li>
-                    <% end %>
-                <% end %>
-                </ol>
-            </div>
-        </div>
-    </div>
-</section>
-
 
 <section id="students">
 <div class="row">
@@ -151,6 +85,94 @@
         </div>
 </section>
 
+        </div>
+        <div id="sectionB" class="tab-pane fade">
+            <section id="assignments">
+            <div class="row">
+                <h3>Assignments:</h3>
+                <div class="col-md-8">
+                            <div class="well">
+                            <% if @course_session.course_assignments.empty? && current_user.is_admin? %>
+                            There don't seem to be any assignments, would you like to add one? </br>
+                            <%= link_to "New Assignment", new_course_assignment_path, class: "btn btn-info"%>
+                            <% elsif @course_session.course_assignments.empty?  %>
+                            There are no assignments for this course. 
+                            <% else %>
+                            <% @course_session.course_assignments.each do |a|%>
+                            <div class="well">
+                                <%= a.number%>. <%= link_to a.title, course_assignment_path(a) %> </br>
+                                <%= a.description %></br>
+                                <dt>Due:</dt><%= (a.due_date + 28800).strftime('%B %e, %Y')%>
+                                 <% if current_user.is_admin?%> <%= link_to "(edit assignment)", edit_course_assignment_path(a) %><% end %></div>
+                                 <% end %>
+                                 <% end %>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+
+        </div>
+        <div id="sectionC" class="tab-pane fade">
+            <section id="meetings">
+                <div class="row">
+                    <div class="col-md-8">
+                    <h3>Class Meetings</h3>
+                        <div class="well">
+                            <ol>
+                            <%if @course_session.course_meetings.nil? %>
+                                There are no meeting listed for this course
+                            <% else %>
+                                <% @course_session.course_meetings.each do |c| %>
+                                <li><div class="well">
+                                    <% if current_user.is_admin? %>
+                                    <dt><%= link_to c.title, course_session_course_meeting_path(@course_session, c) %></dt>
+                                    <% else %>
+                                    <dt><%= c.title %></dt>
+                                    <% end %>
+                                    <%= c.preparation_notes %>
+                                <% if current_user.is_admin? %>
+                                    <dt>Instructor Notes: </dt>
+                                    <dd><%= c.instructor_notes%></dd>
+                                    <dt>Class Notes: </dt>
+                                    <dd><%= c.class_notes%></dd>
+                                <% end %>
+                                </div></li>
+                                <% end %>
+                            <% end %>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="sectionD" class="tab-pane fade">
+            <section id="course_packet">
+            <div class="row">
+                <h3>Course Packet:</h3>
+                <div class="col-md-8">
+                            <div class="well">
+                            <% if @course_session.has_course_packet == false %>
+                            <h3>This session is not using a course packet</h3>
+                            <% else %>
+                                <% @course_session.course.course_packets.each do |p| %>
+                                    <%= link_to p.title, p %>
+                                    <ul><% p.course_files.each do |f|%>
+                                        <li><%= link_to f.title, f.image.url, target: "_blank" %></li>
+                                    <% end %>
+                                    </ul>
+                                <% end %>                
+                            <% end %> 
+                            </div>
+                        </div>
+                    </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+
+<hr />
 
 <% if current_user.is_admin? %>
 <%= link_to "Add an Assignment", new_course_assignment_path %> |
