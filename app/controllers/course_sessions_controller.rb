@@ -15,6 +15,7 @@ class CourseSessionsController < ApplicationController
 
   def show
     @course_session = CourseSession.find(params[:id])
+    @assignments = @course_session.course_assignments.all.sort_by { |a| a.due_date - Time.now  }
     @resources = @course_session.course.course_packets.visible.all
     respond_with(@course_session)
   end
