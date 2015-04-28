@@ -17,7 +17,7 @@
   </thead>
   <tbody>
   <% for assignment in @course_assignments %>
-    <td><%= link_to assignment.course_session.full_title, assignment %></td>
+    <td><%#= link_to assignment.course_session.full_title, assignment %></td>
     <td><%= link_to assignment.title, assignment %></td>    
     <td><%= link_to assignment.description, assignment %></td>
     <td><%= link_to assignment.format, assignment %></td>

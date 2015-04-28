@@ -4,6 +4,6 @@ class CourseAssignment < ActiveRecord::Base
 		belongs_to :course_session
 		has_many :assignment_responses, dependent: :destroy
 
-		validates_presence_of :title
+		validates_presence_of :title, :course_session_id
 
 end
