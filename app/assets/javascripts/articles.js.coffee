@@ -5,5 +5,5 @@
 
 jQuery ->
         $('#table_articles').dataTable({
-           "order": [[0, "asc" ]]
+           "order": [[4, "asc" ]]
         })
