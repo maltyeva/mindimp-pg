@@ -18,14 +18,14 @@
 
         <div class="well">
        	<h2>Discussion Questions: </h2>
-        <% if @article.discussion_questions.empty? && current_user.is_admin? %>
+        <% if @questions.nil? && current_user.is_admin? %>
          <p>There don't seem to be any discussion questions, would you like to add some? </p>
          <%= link_to "New Discussion Question", new_discussion_question_path, class: "btn btn-info"%>
-        <% elsif @article.discussion_questions.empty? %>
+        <% elsif @questions.nil? %>
           There are no discussion questions for this article. 
         <% else %>
         <ol>
-        <% @article.discussion_questions.each do |q|%>
+        <% @questions.each do |q|%>
          <li> <%= link_to q.question, discussion_question_path(q) %> </li>
          <dt><%= link_to "Respond", new_discussion_question_discussion_response_path(q)%> </dt>
          <% if current_user.is_admin?%> 

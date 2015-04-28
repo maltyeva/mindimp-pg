@@ -14,7 +14,9 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    respond_with(@article)
+    #respond_with(@article)
+    @article = Article.find(params[:id])
+    @questions = @article.discussion_questions.all.sort_by { |q| [ q.week_number ] }
   end
 
   def new
