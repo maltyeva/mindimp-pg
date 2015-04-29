@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
 
   has_many :discusson_responses
 
+
+  #this allows a user to follow another user and vice versa
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
@@ -25,6 +27,18 @@ class User < ActiveRecord::Base
                                    dependent:   :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+
+  #this sets up relationships between students and their advisors
+  has_one :advisor_relationship, class_name: "Advisor Relationship", 
+                                 foreign_key: "advisor_id", 
+                                 dependent: :destroy
+  has_many :advisee_relationships, class_name: "Advisor Relationship", 
+                                   foreign_key: "advisee_id", 
+                                   dependent: :destroy
+  has_one :advisor, through: :advisor_relationship, source: :advisor
+  has_many :advisees, through: :advisee_relationships, source: :advisee
+
+
 
   #these associations will set up the book lists
   has_many :book_lists, foreign_key: "watcher_id",

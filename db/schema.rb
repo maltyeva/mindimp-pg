@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150423075533) do
+ActiveRecord::Schema.define(version: 20150428042853) do
+
+  create_table "advisor_relationships", force: true do |t|
+    t.integer  "advisor_id"
+    t.integer  "advisee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "advisor_relationships", ["advisee_id"], name: "index_advisor_relationships_on_advisee_id", using: :btree
+  add_index "advisor_relationships", ["advisor_id", "advisee_id"], name: "index_advisor_relationships_on_advisor_id_and_advisee_id", unique: true, using: :btree
+  add_index "advisor_relationships", ["advisor_id"], name: "index_advisor_relationships_on_advisor_id", using: :btree
 
   create_table "article_lists", force: true do |t|
     t.integer  "watcher_id"
