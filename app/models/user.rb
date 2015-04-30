@@ -29,16 +29,14 @@ class User < ActiveRecord::Base
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
-  #this sets up relationships between students and their advisors
-  has_one :advisor_relationship, class_name: "Advisor Relationship", 
-                                 foreign_key: "advisor_id", 
-                                 dependent: :destroy
-  has_many :advisee_relationships, class_name: "Advisor Relationship", 
-                                   foreign_key: "advisee_id", 
-                                   dependent: :destroy
-  has_one :advisor, through: :advisor_relationship, source: :advisor
-  has_many :advisees, through: :advisee_relationships, source: :advisee
-
+  has_and_belongs_to_many :advisors, foreign_key: "advisor_id", 
+                                     association_foreign_key: "advisee_id",
+                                     class_name:  "User", 
+                                     join_table: :users_advisors
+  has_and_belongs_to_many :advisees, foreign_key: "advisee_id", 
+                                     association_foreign_key: "advisor_id",
+                                     class_name: "User", 
+                                     join_table: :users_advisors
 
 
   #these associations will set up the book lists
@@ -124,17 +122,6 @@ class User < ActiveRecord::Base
   end
 
   #helper methods for advising students
-    # Follows a user.
-  def add_advisor(other_user)
-    advisor_relationship.create(advisee_id: other_user.id)
-  end
-
-  # Unfollows a user.
-  def remove_advisor(other_user)
-    advisor_relationship.find_by(advisee_id: other_user.id).destroy
-  end
-
-  # Returns true if the current user is following the other user.
   def advising?(other_user)
     advisees.include?(other_user)
   end

@@ -21,6 +21,7 @@
   <%= f.input :books_permissions %>
   <%= f.input :courses_permissions %>
   <%= f.association :course_period, :label => "Academic Term" %>
+  <%= f.association :advisors, label_method: :name, :collection => User.all.where(is_admin: true), value_method: :id, include_blank: false, :label => "Advisor" %>
   
   <%= f.button :submit %>
 

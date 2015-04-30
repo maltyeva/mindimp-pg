@@ -109,6 +109,8 @@ class UsersController < ApplicationController
 
   def update_profile
   @user = User.find(params[:id])
+  @advisor_relationships = User.where(:id => params[:user_id]).where(:is_admin => true)
+  @user.advisors << @advisor_relationships
   respond_to do |format|
     if @user.update_attributes(params[:user])
       format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -198,7 +200,8 @@ end
                                   :phone, :skype_id, :books_permissions, :articles_permissions, 
                                   :courses_permissions, :college, :major, :hobbies, :fav_book, 
                                   :parent_name, :parent_email, :wechat_id, :active, 
-                                  :course_period_id, :book_ids => [])
+                                  :course_period_id, :book_ids => [], :advisor_ids => [], 
+                                  :advisee_ids => [])
    end
 
   # Stores the URL trying to be accessed.
