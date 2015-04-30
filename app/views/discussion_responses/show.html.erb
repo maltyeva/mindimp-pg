@@ -6,7 +6,7 @@
 	<dt>Question:</dt>
 	<dd><%= @discussion_question.question %></dd>
 	<dt>Response</dt>
-	<dd><%= @discussion_response.response %></dd>
+	<dd><%= simple_format(@discussion_response.response) %></dd>
 	<hr />
 	<dt>Submitted:<dt>
 	<dd><%=(@discussion_response.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %><dd>
@@ -14,7 +14,7 @@
 	<dd><%=@discussion_response.user.name %><dd>
 	<hr />
 	<dt>Comments:<dt>
-	<dd><%= @discussion_response.comments  %><dd>
+	<dd><%= simple_format(@discussion_response.comments)  %><dd>
 	<% unless @discussion_response.comment_by.nil? %>
 	<dt>Added By:<dt>
 	<dd><%= @user.name %><dd>

@@ -3,8 +3,8 @@
 <ul>
 <% @responses.each do |b| %>
 <li>
-	<dt><%= b.discussion_question.question + " -- " + b.discussion_question.source %><dt>
-		<dd><%= link_to b.response, discussion_question_discussion_response_path(b.discussion_question, b) %></dd>
+	<dt><%= link_to b.discussion_question.question + " -- " + b.discussion_question.source, discussion_question_discussion_response_path(b.discussion_question, b) %><dt>
+		<dd><%= simple_format(b.response) %></dd>
 		<dd>Submitted: <%= (b.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %></dd>
 		<hr/>
 </li>
