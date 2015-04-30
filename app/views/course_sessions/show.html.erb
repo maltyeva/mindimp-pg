@@ -50,6 +50,10 @@
     </div>
     <div class="col-md-4">
         <div class="well">
+        <% if @course_session.active? %>
+        <%= link_to "Active Session ", course_session_path(@course_session), :class => "btn btn-info"%>
+        <hr/>
+        <% end %>
         <dt>Course</dt>
         <%= link_to @course_session.course.title, course_path(@course_session.course) %>
         <dt> Time </dt>

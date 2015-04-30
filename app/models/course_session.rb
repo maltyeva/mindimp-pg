@@ -14,8 +14,14 @@ class CourseSession < ActiveRecord::Base
 
 	validates_presence_of :title, :course, :course_period
 
- def full_title
-     [course.title, title].join(": ")
-  end
+ 	def full_title
+    	[course.title, title].join(": ")
+  	end
+
+
+  	scope :active, lambda { where(:active => true) }
+
+
+
 
 end

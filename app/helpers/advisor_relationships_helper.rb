@@ -1,0 +1,2 @@
+module AdvisorRelationshipsHelper
+end

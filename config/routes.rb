@@ -81,6 +81,8 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships,       only: [:create, :destroy]
+  resources :advisor_relationships,       only: [:create, :destroy]
+
 
 
  resources :users do

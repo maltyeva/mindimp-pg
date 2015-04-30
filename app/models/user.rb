@@ -122,6 +122,24 @@ class User < ActiveRecord::Base
     following.include?(other_user)
   end
 
+  #helper methods for advising students
+    # Follows a user.
+  def add_advisor(other_user)
+    advisor_relationship.create(advisee_id: other_user.id)
+  end
+
+  # Unfollows a user.
+  def remove_advisor(other_user)
+    advisor_relationship.find_by(advisee_id: other_user.id).destroy
+  end
+
+  # Returns true if the current user is following the other user.
+  def advising?(other_user)
+    advisees.include?(other_user)
+  end
+
+
+
 
   #helper methods to set up book lists
   def add_book(book)
