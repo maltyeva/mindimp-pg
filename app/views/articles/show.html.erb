@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <% if @article.article_source.nil? %>
-<h1><%= @article.title + ", " + @article.source %></h1>
+<h1><%= @article.title %>, (no source)</h1>
 <% else %>
 <h1><%= @article.full_title %></h1>
 <% end %>
@@ -44,7 +44,11 @@
         <dt>Author: </dt>
         <dd><%= @article.author %></dd>
         <dt>Source: </dt>
-        <dd><%= link_to @article.article_source.title, article_source_path(@article.article_source) %></dd>
+        <% if @article.article_source.nil? %>
+            <dd>(none)</dd>
+        <% else %>
+            <dd><%= link_to @article.article_source.title, article_source_path(@article.article_source) %></dd>
+        <% end %>
         <dt>Date of Publication: </dt>
         <dd><%= (@article.published + 28800).strftime('%B %e, %Y')%></dd>
         <dt>Word Count: </dt>

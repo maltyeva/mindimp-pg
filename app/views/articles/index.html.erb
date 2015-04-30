@@ -70,7 +70,7 @@
     <td><%= link_to article.title, article %></td>
     <td><%= link_to article.author, article %></td> 
     <% if article.article_source.nil? %> 
-    <td><%= link_to article.source, article %></td>
+    <td><%= link_to "(no source)", article %></td>
       <% else %>
     <td><%= link_to article.article_source.title, article %></td>
     <% end %>

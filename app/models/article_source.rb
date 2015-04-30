@@ -2,7 +2,7 @@ class ArticleSource < ActiveRecord::Base
 
 	validates_presence_of :title
 
-	has_many :articles, dependent: :destroy
+	has_many :articles, dependent: :nullify
 
 	has_attached_file :photo,
                  	  :styles => { :medium => "300x300>", :thumb => "50x50>" }, 
