@@ -9,8 +9,8 @@
   	<%= f.input :number %>
   	<%= f.input :title %>
     <%= f.input :description, :label => "Guidelines: " %>
-    <%= f.input :format %>
-    <%= f.input :due_date %>
+    <%= f.input :format, :hint => "e.g. 500-word essay" %>
+    <%= f.input :due_date, :as => :date, :order => [:month, :day, :year] %>
     <%= f.input :visible, :label => "Responses visible to students", :hint => "Check if you want students to see each other's responses." %>
     <%= f.button :submit %>
   </div>

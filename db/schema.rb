@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428042853) do
+ActiveRecord::Schema.define(version: 20150430033430) do
 
   create_table "advisor_relationships", force: true do |t|
     t.integer  "advisor_id"
@@ -400,6 +400,7 @@ ActiveRecord::Schema.define(version: 20150428042853) do
     t.integer  "level",                           default: 0
     t.string   "wechat_id"
     t.boolean  "active",                          default: true
+    t.integer  "course_period_id"
   end
 
   add_index "users", ["activation_token"], name: "index_users_on_activation_token", using: :btree
