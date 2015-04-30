@@ -29,17 +29,6 @@
 
             <% end %></h4>
     <hr/>
-
-
-
-    <%#= link_to "Add Advisor", user_path(@user), :class => "btn btn-lg" %>
-    <%#= form_for(current_user.advisor_relationships.
-                          build(advisee_id: @user.id),
-                          remote: true) do |f| %>
-  <div><%#= f.collection :advisor_id, @user.id %></div>
-  <%#= f.submit "Add Advisor", class: "btn btn-primary" %>
-    <%# end %>
-
     </div>
 </div>
 
@@ -183,12 +172,33 @@
         <!-- SUBNAV SECTION -->
         <div id="subnavbar" class="subnav" role="navigation">
           <ul class="nav nav-pills">
+            <li><a href="#advisors">Advisors</a></li>
             <li><a href="#books">Books</a></li>
             <li><a href="#articles">Articles</a></li>
           </ul>
         </div>
         <hr /> 
         <!-- SUBBODY SECTION -->
+
+        <section id="advisors">
+        <h3>Advisors</h3>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="well">
+                    <% if @user.advisors.nil? %>
+                    <h4><%= @user.name %> is currently not assigned an advisor.</h4>
+                    <% else %>
+                    <% @user.advisors.each do |a|%>
+                        <%= link_to image_tag(a.profile_photo.url(:medium)), user_path(a) %>
+                        <h4><%= link_to a.name, user_path(a)%></h4> 
+                        <h4><small><%= link_to a.email, user_path(a)%></small></h4>                    
+                    <% end %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
 
         <section id="books">
