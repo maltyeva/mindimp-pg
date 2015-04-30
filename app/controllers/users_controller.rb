@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   skip_before_filter :require_profile, only: [:edit, :update, :show]
 
 
-  before_filter :require_admin, only: [:index, :following, :followers, :destroy]
+  before_filter :require_admin, only: [:index, :following, :followers, :destroy, :edit_profile, :update_profile]
   #before_filter :correct_user, only: [:edit, :update] 
 
   # GET /users
@@ -66,10 +66,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  # GET /users/1/edit
-  def edit
-  end
-
   # POST /users
   # POST /users.json
   def create
@@ -87,6 +83,11 @@ class UsersController < ApplicationController
     end
   end
 
+
+    # GET /users/1/edit
+  def edit
+  end
+
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update    
@@ -100,6 +101,22 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def edit_profile
+      @user = User.find(params[:id])
+  end
+
+
+  def update_profile
+  @user = User.find(params[:id])
+  respond_to do |format|
+    if @user.update_attributes(params[:user])
+      format.html { redirect_to @user, notice: 'User was successfully updated.' }
+    else
+      format.html { render action: "edit_profile" }
+    end
+  end
+end
 
   # DELETE /users/1
   # DELETE /users/1.json
@@ -180,7 +197,8 @@ end
                                   :profile_photo, :last_login, :bio, :hometown, :high_school,
                                   :phone, :skype_id, :books_permissions, :articles_permissions, 
                                   :courses_permissions, :college, :major, :hobbies, :fav_book, 
-                                  :parent_name, :parent_email, :wechat_id, :active, :book_ids => [])
+                                  :parent_name, :parent_email, :wechat_id, :active, 
+                                  :course_period_id, :book_ids => [])
    end
 
   # Stores the URL trying to be accessed.

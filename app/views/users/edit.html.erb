@@ -1,17 +1,9 @@
-<% if current_user == @user %>
 <h1>Edit My Profile </h1>
-<% else %>
-<h1>Edit <%= @user.first_name %>'s Profile </h1>
-<% end %>
+
 
 
 
 <%= render 'form' %>
 
 
-<% if current_user == @user %>
 <%= link_to 'Back to my profile', @user, class: "btn btn-lg" %> 
-<% else %>
-<%= link_to 'Back to profile', @user, class: "btn btn-lg"  %> 
-<% end %>
-

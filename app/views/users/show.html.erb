@@ -22,9 +22,9 @@
             <%= link_to "Student", user_path(@user), class: "btn btn-info" %> 
             <hr/>
             <%= render  'permissions' %>
-            <% if !@course_sessions.empty? %>
+            <% if !@user.course_period.nil? %>
             <hr/>
-                <%= link_to @course_sessions.last.course_period.title, class: "btn btn-info" %>
+                <%= link_to @user.course_period.title, class: "btn btn-info" %>
             <% end %>
 
             <% end %></h4>
@@ -47,242 +47,300 @@
 <%= render 'follow_form' %> 
 <% end %>
 
-
-<hr />
-<!-- SUBNAV SECTION -->
-<div id="subnavbar" class="subnav" role="navigation">
-  <ul class="nav nav-pills">
-    <li><a href="#bio">Biographical Information</a></li>
-    <li><a href="#class">Class Information</a></li>
-    <li><a href="#books">Books</a></li>
-    <% if current_user == @user || current_user.is_admin? %>
-    <li><a href="#articles">Articles</a></li>
-    <li><a href="#certifications">Certifications</a></li>
-    <li><a href="#assessments">Assessments</a></li>
-    <% end %>
-    <% if current_user.is_admin? %>
-      <li><a href="#follow">Followers</a></li>
-      <li><a href="#admin">Settings</a></li>
-    <% end %>
-  </ul>
-</div>
-<hr />
-<!-- SUBBODY SECTION -->
-
-<section id="bio">
-<h3> About <%= @user.first_name %></h3>
-<div class="row">
-
-    <div class="col-md-8">
-        <div class="well">
-        <dl class="dl-horizontal">
-        <dt>About Me</dt>
-        <% unless @user.bio.nil? %>
-        <dd><%= simple_format(@user.bio.html_safe) %></dd>
-        <% end %>
-        <dt>Hobbies</dt>
-        <dd><%= @user.hobbies %></dd>
-        <dt>Favorite Book</dt>
-        <dd><%= @user.fav_book %></dd>
-        <dt>Age</dt>
-        <dd><%= @user.age %></dd>
-        <dt>Hometown</dt>
-        <dd><%= @user.hometown %></dd>
-        <dt>High School</dt>
-        <dd><%= @user.high_school %></dd>
-        <dt>WeChat ID</dt>
-        <dd><%= @user.wechat_id %></dd>
-        <% if @user.is_admin? %>
-        <hr/>
-        <dt>Education</dt>
-        <dd><%= @user.college %></dd>
-        <dt>College Major</dt>
-        <dd><%= @user.major %></dd>
-        </dl>
-        <% end %>
-
-        </div>
-    </div>
-
-</div>
-</section>
-
-
-
-<section id="class">
-<h3>My Classes </h3>
-<div class="row">
-    <div class="col-md-8">
-        <div class="well">
-        <% if @user.is_admin? %>
-        <% if @my_courses.empty? %>
-        <h4><%= @user.name %> is not teaching any classes right now.</h4>
-        <% else %>
-        <ul class="users">
-        <% @my_courses.each do |c| %>
-        <%= c.course_period.title %>: </br>
-        <%= link_to c.full_title, course_session_path(c) %> </br>
-        <% end %>
-        </ul>
-        <% end %>
-        <% else %>
-        <% if @course_sessions.empty? %>
-        <h4><%= @user.name %> is not enrolled in any classes right now.</h4>
-        <% else %>
-        <ul class="users">
-        <% @course_sessions.each do |c| %>
-        <%= c.course_period.title %>: </br>
-        <%= link_to c.full_title, course_session_path(c) %> </br>
-        <% end %>
-        </ul>
-        <% end %>
-        <% end %>
-        </div>
-    </div>
-</div>      
-</section>
-
-
- <section id="books">
-    <h3>My Books</h3>
-    <div class="row">
-        <div class="col-md-8">
-            <div class="well">
-                <dt>Books Read: <%= @user.read_books.count %></dt>
-                <div class="row">
-                    <% @user.books_read.each do |b| %>
-                    <div class="col-sm-6 col-md-3">
-                    <div class="thumbnail">
-                     <%= image_tag b.cover.url(:thumb) %>
-                    </div>                  
-                    </div>
-                     <% end %>
-              </div>
-                <% if current_user == @user || current_user.is_admin? %>
-                <hr/>
-                <dt> Total Discussion Questions Answered: <%= @book_responses.count %></dt> </br>
-                <% unless @book_responses.empty? %>
-                <dt> Latest Discussion Question Submitted on: </dt>
-                <dd><%= (@book_responses.last.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %> for <%= @book_responses.last.discussion_question.source %></dd>
-                <hr />
-                <%= link_to "View All Responses", book_responses_user_path(@user) %> 
-                <% end %>
-                <% end %>
-                <hr/>
-                <%= link_to "#{@user.first_name}'s Books", books_user_path(@user), :class => "btn btn-lg"%>
-                <br>
-                <% if current_user.is_admin? %>
-                <%= link_to "Add New Assessment", new_user_assessment_path(@user), :class => "btn btn-lg"%>
-                <% end %>
-            </div>
-        </div>
-    </div>
-</section> 
-
-
-<% if current_user == @user || current_user.is_admin? %>
-
-
- <section id="articles">
-    <h3>My Articles</h3>
-    <div class="row">
-        <div class="col-md-8">
-            <div class="well">
-                <dt> Total Discussion Questions Answered: <%= @article_responses.count %></dt> </br>
-                <% unless @article_responses.empty? %>
-                <dt> Latest Discussion Question Submitted on: </dt>
-                <dd><%= (@article_responses.last.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %> for <%= @article_responses.last.discussion_question.source %></dd>
-                <hr />
-                <%= link_to "View All Responses", article_responses_user_path(@user) %> 
-                <% end %>
-                <hr/>
-                <%= link_to "#{@user.first_name}'s Articles", articles_user_path(@user), :class => "btn btn-lg" %>
-                <br>
-                <% if current_user.is_admin? %>
-                <%= link_to "Add New Assessment", new_user_assessment_path(@user), :class => "btn btn-lg"%>
-                <% end %>
-            </div>
-        </div>
-    </div>
-</section> 
-
-<section id="certifications">
-<h3>Certifications</h3>
-<div class="row">
-    <div class="col-md-8">
-     <div class="well">
-        Coming soon.
-    </div>
-</div>
-</div>
-</section>
-
-<section id="assessments">
-<h3>Assessments</h3>
-<div class="row">
-    <div class="col-md-8">
-     <div class="well">
-     <% if @user.assessments.nil? %>
-        <h4>There are no assessments at this time </h4>
-     <% else %>
-     <ul>
-        <% @user.assessments.each do |a| %>
-        <li><%= link_to (a.created_at + 28800).strftime('%B %e, %Y %l:%M %p'), user_assessment_path(@user, a) %></li>
+<div class="nav-course">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#sectionA">Biographical Information</a></li>
+        <li><a data-toggle="tab" href="#sectionB">Class Information</a></li>
+        <li><a data-toggle="tab" href="#sectionC">Reading Program </a></li>
+        <li><a data-toggle="tab" href="#sectionD">Certificates </a></li>
+        <% if current_user.is_admin? %>
+        <li><a data-toggle="tab" href="#sectionE">Settings </a></li>
         <% end %>
     </ul>
-     <% end %>    </div>
-</div>
-</div>
-</section>
+    <div class="tab-content">
+        
+        <div id="sectionA" class="tab-pane fade in active">
+            <h3></h3>
+            <section id="bio">
+                <h3> About <%= @user.first_name %></h3>
+                <div class="row">
+
+                    <div class="col-md-8">
+                        <div class="well">
+                        <dl class="dl-horizontal">
+                        <dt>About Me</dt>
+                        <% unless @user.bio.nil? %>
+                        <dd><%= simple_format(@user.bio.html_safe) %></dd>
+                        <% end %>
+                        <dt>Hobbies</dt>
+                        <dd><%= @user.hobbies %></dd>
+                        <dt>Favorite Book</dt>
+                        <dd><%= @user.fav_book %></dd>
+                        <dt>Age</dt>
+                        <dd><%= @user.age %></dd>
+                        <dt>Hometown</dt>
+                        <dd><%= @user.hometown %></dd>
+                        <dt>High School</dt>
+                        <dd><%= @user.high_school %></dd>
+                        <dt>WeChat ID</dt>
+                        <dd><%= @user.wechat_id %></dd>
+                        <% if @user.is_admin? %>
+                        <hr/>
+                        <dt>Education</dt>
+                        <dd><%= @user.college %></dd>
+                        <dt>College Major</dt>
+                        <dd><%= @user.major %></dd>
+                        </dl>
+                        <% end %>
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>  
+        </div>
 
 
-<% end %>
+        <div id="sectionB" class="tab-pane fade">
+        <br/>
 
-<% if current_user.is_admin? %>
+        <!-- SUBNAV SECTION -->
+        <div id="subnavbar" class="subnav" role="navigation">
+          <ul class="nav nav-pills">
+            <li><a href="#class">Classes</a></li>
+            <% if current_user == @user || current_user.is_admin? %>
+            <li><a href="#assessments">Assessments</a></li>
+            <% end %>
+          </ul>
+        </div>
+        <hr /> 
+        <!-- SUBBODY SECTION -->
 
-<section id="follow">
-<h3>Followers</h3>
-<div class="row">
-    <div class="col-md-8">
-     <div class="well">
-        <%= render 'follow_stats' %> </br>
-    </div>
-</div>
-</div>
-</section>
 
-<section id="admin">
-    <div class="row">
-    <div class="col-md-8">
-    <h3>Settings</h3>
-         <div class="well">
-        <dt>Skype ID</dt>
-        <dd><%= @user.skype_id %></dd>  
-        <dt>Phone Number</dt>
-        <dd><%= @user.phone %></dd> 
-        <dt>Parent Name</dt>
-        <dd><%= @user.parent_name %></dd>  
-        <dt>Parent Email</dt>
-        <dd><%= @user.parent_email %></dd>   
-        <hr />
-        <dt>Last Logged In: </dt>
-        <%# this takes care of displaying in China Standard Time %>
-        <% if @user.last_login.nil? %>
-         <dd>(none)</dd>
-         <% else %> 
-        <dd><%= (@user.last_login + 28800).strftime('%B %e, %Y %l:%M %p')%></dd>
-         <% end %>
+        <section id="class">
+        <h3>My Classes </h3>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="well">
+                <% if @user.is_admin? %>
+                <% if @my_courses.empty? %>
+                <h4><%= @user.name %> is not teaching any classes right now.</h4>
+                <% else %>
+                <ul class="users">
+                <% @my_courses.each do |c| %>
+                <%= c.course_period.title %>: </br>
+                <%= link_to c.full_title, course_session_path(c) %> </br>
+                <% end %>
+                </ul>
+                <% end %>
+                <% else %>
+                <% if @course_sessions.empty? %>
+                <h4><%= @user.name %> is not enrolled in any classes right now.</h4>
+                <% else %>
+                <ul class="users">
+                <% @course_sessions.each do |c| %>
+                <%= c.course_period.title %>: </br>
+                <%= link_to c.full_title, course_session_path(c) %> </br>
+                <% end %>
+                </ul>
+                <% end %>
+                <% end %>
+                </div>
+            </div>
+        </div>      
+        </section>
+
+        <% if current_user == @user || current_user.is_admin? %>
+
+        <section id="assessments">
+        <h3>Assessments</h3>
+        <div class="row">
+            <div class="col-md-8">
+             <div class="well">
+             <% if @user.assessments.nil? %>
+                <h4>There are no assessments at this time </h4>
+             <% else %>
+             <ul>
+                <% @user.assessments.each do |a| %>
+                <% if a.course_session.nil? %>
+                    <li><%= link_to (a.created_at + 28800).strftime('%B %e, %Y %l:%M %p') + " for the Readng Program ", user_assessment_path(@user, a) %></li>
+                <% else %>
+                    <li><%= link_to (a.created_at + 28800).strftime('%B %e, %Y %l:%M %p') + " for " + a.course_session.full_title, user_assessment_path(@user, a) %></li>
+                <% end %>
+                <% end %>
+            </ul>
+             <% end %>    </div>
+        </div>
+        </div>
+        </section>
+
         <% end %>
+        </div>
+
+        <div id="sectionC" class="tab-pane fade">
+        <br/>
+
+        <!-- SUBNAV SECTION -->
+        <div id="subnavbar" class="subnav" role="navigation">
+          <ul class="nav nav-pills">
+            <li><a href="#books">Books</a></li>
+            <li><a href="#articles">Articles</a></li>
+          </ul>
+        </div>
+        <hr /> 
+        <!-- SUBBODY SECTION -->
+
+
+        <section id="books">
+        <h3>Books</h3>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="well">
+                    <dt>Books Read: <%= @user.read_books.count %></dt>
+                    <div class="row">
+                        <% @user.books_read.each do |b| %>
+                        <div class="col-sm-6 col-md-3">
+                        <div class="thumbnail">
+                         <%= image_tag b.cover.url(:thumb) %>
+                        </div>                  
+                        </div>
+                         <% end %>
+                  </div>
+                    <% if current_user == @user || current_user.is_admin? %>
+                    <hr/>
+                    <dt> Total Discussion Questions Answered: <%= @book_responses.count %></dt> </br>
+                    <% unless @book_responses.empty? %>
+                    <dt> Latest Discussion Question Submitted on: </dt>
+                    <dd><%= (@book_responses.last.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %> for <%= @book_responses.last.discussion_question.source %></dd>
+                    <hr />
+                    <%= link_to "View All Responses", book_responses_user_path(@user) %> 
+                    <% end %>
+                    <% end %>
+                    <hr/>
+                    <%= link_to "#{@user.first_name}'s Books", books_user_path(@user), :class => "btn btn-lg"%>
+                    <br>
+                    <% if current_user.is_admin? %>
+                    <%= link_to "Add New Assessment", new_user_assessment_path(@user), :class => "btn btn-lg"%>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </section> 
+
+     <section id="articles">
+        <h3>Articles</h3>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="well">
+                    <dt> Total Discussion Questions Answered: <%= @article_responses.count %></dt> </br>
+                    <% unless @article_responses.empty? %>
+                    <dt> Latest Discussion Question Submitted on: </dt>
+                    <dd><%= (@article_responses.last.created_at + 28800).strftime('%B %e, %Y %l:%M %p') %> for <%= @article_responses.last.discussion_question.source %></dd>
+                    <hr />
+                    <%= link_to "View All Responses", article_responses_user_path(@user) %> 
+                    <% end %>
+                    <hr/>
+                    <%= link_to "#{@user.first_name}'s Articles", articles_user_path(@user), :class => "btn btn-lg" %>
+                    <br>
+                    <% if current_user.is_admin? %>
+                    <%= link_to "Add New Assessment", new_user_assessment_path(@user), :class => "btn btn-lg"%>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </section> 
+
+    </div>
+
+
+    <div id="sectionD" class="tab-pane fade">
+
+        <section id="certifications">
+        <h3>Certifications</h3>
+        <div class="row">
+            <div class="col-md-8">
+             <div class="well">
+                Coming soon.
+            </div>
+        </div>
+        </div>
+        </section>
+
+    </div>
+
+    <% if current_user.is_admin? %>
+    <div id="sectionE" class="tab-pane fade">
+    <br/>
+
+
+    <!-- SUBNAV SECTION -->
+     <div id="subnavbar" class="subnav" role="navigation">
+      <ul class="nav nav-pills">
+          <li><a href="#follow">Followers</a></li>
+          <li><a href="#admin">Settings</a></li>
+      </ul>
+    </div>
+    <hr />
+    <!-- SUBBODY SECTION -->
+    
+
+
+    <section id="follow">
+    <h3>Followers</h3>
+    <div class="row">
+        <div class="col-md-8">
+         <div class="well">
+            <%= render 'follow_stats' %> </br>
+        </div>
+    </div>
+    </div>
+    </section>
+
+    <section id="admin">
+        <div class="row">
+        <div class="col-md-8">
+        <h3>Settings</h3>
+             <div class="well">
+            <dt>Skype ID</dt>
+            <dd><%= @user.skype_id %></dd>  
+            <dt>Phone Number</dt>
+            <dd><%= @user.phone %></dd> 
+            <dt>Parent Name</dt>
+            <dd><%= @user.parent_name %></dd>  
+            <dt>Parent Email</dt>
+            <dd><%= @user.parent_email %></dd>   
+            <hr />
+            <dt>Last Logged In: </dt>
+            <%# this takes care of displaying in China Standard Time %>
+            <% if @user.last_login.nil? %>
+             <dd>(none)</dd>
+             <% else %> 
+            <dd><%= (@user.last_login + 28800).strftime('%B %e, %Y %l:%M %p')%></dd>
+             <% end %>
+        </div>
+    </div>
+    </div>
+    </section>
+    </div>
+    <% end %>
+
+
     </div>
 </div>
-</div>
-</section>
+
+
+
+
+
 
 
 </br>
 
-<% if current_user == @user || current_user.is_admin? %>
+<% if current_user == @user %>
 <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-lg" %>
+<% end %>
+<% if current_user.is_admin? %>
+<%= link_to "Update #{@user.first_name}'s Profile", edit_profile_user_path(@user), class: "btn btn-lg" %>
 <% end %>
 
 <%= link_to 'Back', root_path,  class: "btn btn-lg btn-info"%>

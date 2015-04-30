@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   #associations
   has_and_belongs_to_many :course_sessions, foreign_key: "user_id", join_table: :students_sessions
   has_many :course_sessions, foreign_key: "instructor_id"
+  belongs_to :course_period
 
   has_many :assignment_responses, foreign_key: "user_id"
   has_many :assignment_responses, foreign_key: "grader_id"

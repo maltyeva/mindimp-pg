@@ -33,14 +33,9 @@
   <%= f.input :profile_photo %>
   <%= f.input :password %>
   <%= f.input :password_confirmation %>
-  <% if current_user && current_user.is_admin? %>
+  <% if current_user.is_admin? %>
   <%= f.input :college %>
   <%= f.input :major %>
-  <%= f.input :is_admin %>
-  <%= f.input :is_student %>
-  <%= f.input :articles_permissions%>
-  <%= f.input :books_permissions %>
-  <%= f.input :courses_permissions %>
   <% end %>
   
   <%= f.button :submit %>

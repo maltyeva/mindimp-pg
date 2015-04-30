@@ -78,6 +78,8 @@ Rails.application.routes.draw do
       get :article_responses
       get 'books' => 'users#user_books', :as => :books
       get 'articles' => 'users#user_articles', :as => :articles
+      get :edit_profile
+      put :update_profile
     end
   end
   resources :relationships,       only: [:create, :destroy]

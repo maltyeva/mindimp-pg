@@ -10,6 +10,9 @@
         <div class="thumbnail">
         <%= link_to image_tag(u.profile_photo.url(:medium)), user_path(u) %>
         <dt><%= link_to u.name, user_path(u)%></dt>
+         <% if !u.is_admin? && !u.course_period.nil? %>
+                <dt><%= link_to u.course_period.title, class: "btn btn-info" %></dt>
+         <% end %>
         </div>    
         <div class="clearfix visible-xs-block"></div>
     	</div>
