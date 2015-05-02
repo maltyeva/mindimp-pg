@@ -1,0 +1,74 @@
+<h1><%= @title %></h1>
+
+
+<h2>Reading Program</h2>
+<div class="row">
+<% @reading_users.each do |u| %>
+	 <div class="col-xs-6 col-md-3">
+
+        <div class="thumbnail">
+        <%= link_to image_tag(u.profile_photo.url(:medium)), user_path(u) %>
+        <dt><%= link_to u.name, user_path(u)%></dt>
+         <% if !u.is_admin? && u.books_permissions? %>
+                <dt>Reading Student</dt>
+         <% end %>
+          <% if !u.is_admin? && u.articles_permissions? %>
+                <dt>Article Student</dt>
+         <% end %>
+        </div>    
+        <div class="clearfix visible-xs-block"></div>
+    	</div>
+<% end %>
+</div>
+
+
+<h2>Courses</h2> 
+
+<% if @user.is_admin? %>
+
+<% @course_periods.each do |c| %>
+<div class="row">
+<h3><%= c.title %></h3>
+<div class="row">
+<% c.course_sessions.where(instructor_id: @user.id).each do | s| %>
+<h4><%= s.title %></h4>
+<div class="row">
+
+<% s.users.each do |u| %>
+	 <div class="col-xs-6 col-md-3">
+
+        <div class="thumbnail">
+        <%= link_to image_tag(u.profile_photo.url(:medium)), user_path(u) %>
+        <dt><%= link_to u.name, user_path(u)%></dt>
+        </div>    
+        <div class="clearfix visible-xs-block"></div>
+    	</div>
+
+<% end %>
+</div>
+<% end %>
+</div>
+<% end %>
+</div>
+
+
+<% else %>
+
+<% @course_sessions.each do |c| %>
+<div class="row">
+	 <div class="col-xs-6 col-md-3">
+
+        <div class="thumbnail">
+        <%= link_to image_tag(c.instructor.profile_photo.url(:medium)), user_path(c.instructor) %>
+        <dt><%= link_to c.instructor.name, user_path(c.instructor)%></dt>
+        <dt><%= link_to c.title, course_session_path(c)%></dt>
+        </div>    
+        <div class="clearfix visible-xs-block"></div>
+    	</div>
+
+<% end %>
+</div>
+</div>
+
+
+<% end %>

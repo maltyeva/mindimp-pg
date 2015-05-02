@@ -34,6 +34,27 @@ class UsersController < ApplicationController
     render 'user_list'
   end
 
+  def my_student_list
+    @title = "My Students"
+    @user  = User.find(params[:id])
+    @reading_users = @user.advisees
+    @course_periods = CoursePeriod.all
+
+    render 'my_user_list'
+
+  end
+
+  def my_instructor_list
+    @title = "My Instructors"
+    @user  = User.find(params[:id])
+    @reading_users = @user.advisors
+        @course_periods = CoursePeriod.all
+
+    @course_sessions = CourseSession.joins("join students_sessions on course_sessions.id = students_sessions.course_session_id").where("students_sessions.user_id = ?", @user.id)
+
+    render 'my_user_list'
+  end
+
 
   def course_list
     @user = current_user

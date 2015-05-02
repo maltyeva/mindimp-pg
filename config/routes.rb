@@ -58,7 +58,7 @@ Rails.application.routes.draw do
   get 'alumni_list' => 'users#alumni_list', :as => :alumni_list
 
   get 'my_courses' => 'users#course_list', :as => :my_courses
-  get 'my_instructors' => 'users#instructor_list', :as => :my_instructors
+  #get 'my_instructors' => 'users#instructor_list', :as => :my_instructors
 
 
   resources :user_sessions
@@ -76,6 +76,8 @@ Rails.application.routes.draw do
       get :following, :followers
       get :book_responses
       get :article_responses
+      get 'my_instructors' => "users#my_instructor_list", :as => :my_instructors
+      get 'my_students' => "users#my_student_list", :as => :my_students
       get 'books' => 'users#user_books', :as => :books
       get 'articles' => 'users#user_articles', :as => :articles
       get :edit_profile
