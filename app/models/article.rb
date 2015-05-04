@@ -3,11 +3,13 @@ class Article < ActiveRecord::Base
 	validates_presence_of :title, :author, :article_source_id
 
 
+
 	belongs_to :article_source
 
 	has_many :discussion_questions
-  	has_many :article_lists, dependent: :destroy
-  	has_many :watchers, through: :article_lists, class_name: "User", foreign_key: "watcher_id"
+
+  has_many :article_lists, dependent: :destroy
+  has_many :watchers, through: :article_lists, class_name: "User", foreign_key: "watcher_id"
 
 
 
