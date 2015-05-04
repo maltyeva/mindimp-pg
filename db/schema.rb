@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150430101751) do
+ActiveRecord::Schema.define(version: 20150504070450) do
 
   create_table "article_lists", force: true do |t|
     t.integer  "watcher_id"
@@ -243,6 +243,7 @@ ActiveRecord::Schema.define(version: 20150430101751) do
     t.integer  "week_number"
     t.string   "chapters"
     t.integer  "article_id"
+    t.integer  "sort_order"
   end
 
   create_table "discussion_responses", force: true do |t|

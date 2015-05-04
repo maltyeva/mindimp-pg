@@ -5,6 +5,7 @@
   	<%= f.input :question %>
   	<%= f.input :week_number, :label => "Question/Week Number"  %>
     <%= f.input :chapters, :hint => "e.g. 1-3" %>
+    <%= f.input :sort_order, :hint => "Sort Order for Books" %>
     <%= f.association :book %>
     <%= f.association :article %>
     <%= f.input :visible, :hint => "Check if you'd like the question to be visible on the book page" %>

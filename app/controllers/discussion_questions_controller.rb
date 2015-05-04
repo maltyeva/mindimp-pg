@@ -28,12 +28,20 @@ class DiscussionQuestionsController < ApplicationController
   def create
     @discussion_question = DiscussionQuestion.new(discussion_question_params)
     @discussion_question.save
-    respond_with(@discussion_question)
+    if @discussion_question.article.nil? 
+      redirect_to book_path(@discussion_question.book)
+    else 
+      redirect_to article_path(@discussion_question.article)
+    end
   end
 
   def update
     @discussion_question.update(discussion_question_params)
-    respond_with(@discussion_question)
+    if @discussion_question.article.nil? 
+      redirect_to book_path(@discussion_question.book)
+    else 
+      redirect_to article_path(@discussion_question.article)
+    end
   end
 
   def destroy
@@ -48,6 +56,8 @@ class DiscussionQuestionsController < ApplicationController
     end
 
     def discussion_question_params
-      params.require(:discussion_question).permit(:question, :week_number, :book_id, :visible, :chapters, :article_id)
+      params.require(:discussion_question).permit(:question, :week_number, :book_id, 
+                                                  :visible, :chapters, :article_id, 
+                                                  :sort_order)
     end
 end

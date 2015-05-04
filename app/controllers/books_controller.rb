@@ -20,8 +20,7 @@ class BooksController < ApplicationController
   def show
     #@category = Book.find
     @book = Book.find(params[:id])
-    @discussion_questions = @book.discussion_questions.visible.all.sort_by { |q| [ q.week_number ] }
-    respond_with(@book)
+    @discussion_questions = @book.discussion_questions.visible.all.order(week_number: :asc, sort_order: :asc)
   end
 
   def new
